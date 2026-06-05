@@ -1,20 +1,39 @@
-name: Publish ose-knowledge-mcp to PyPI
+name: Release — publish to PyPI + deploy MCP
 
-# Builds the knowledge base into a standalone MCP package (opencrane pack)
-# and publishes it via PyPI trusted publishing (OIDC) — no token secrets.
-# One-time setup on pypi.org: add a trusted publisher for project
-# "ose-knowledge-mcp" → repo opensourceeurope/ose-knowledge-rag, workflow
-# publish-pypi.yml (no GitHub environment).
+# On a GitHub release: build the ose-knowledge-mcp package (with the baked Milvus index)
+# and publish it to PyPI via trusted publishing (OIDC, no token), THEN deploy the MCP
+# container — which simply installs that just-published package and serves its bundled
+# index. The deploy job reuses the index the publish job already built; it does NOT
+# rebuild fetch/chunk/embed/index. The single source of truth for the index is this
+# publish job.
+#
+# PyPI trusted publisher (one-time, pypi.org): project "ose-knowledge-mcp" → repo
+# opensourceeurope/ose-knowledge-mcp, workflow publish-pypi.yml (no GitHub environment).
+# NOTE: keep this file named publish-pypi.yml — the OIDC workflow_ref must match.
+#
+# Deploy needs (added by the maintainer):
+#   secrets: SCW_ACCESS_KEY, SCW_SECRET_KEY, SCW_DEFAULT_PROJECT_ID, SCW_DEFAULT_ORGANIZATION_ID
+#   variables: SCW_REGION, SCW_REGISTRY_NAMESPACE, SCW_CONTAINER_ID
 
 on:
   release:
     types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Already-published version to (re)deploy to Scaleway, e.g. 0.0.4"
+        required: true
 
 permissions:
   contents: read
 
+concurrency:
+  group: release
+  cancel-in-progress: false
+
 jobs:
   publish:
+    if: ${{ github.event_name == 'release' }}
     runs-on: ubuntu-24.04
     permissions:
       contents: read
@@ -30,14 +49,13 @@ jobs:
           enable-cache: false
 
       - name: Rebuild the vector index from the committed chunks
-        # chunks.json + config.yaml are committed inputs; embeddings and
-        # milvus.db are derived (same strategy as the Docker image build).
+        # chunks.json + config.yaml are committed inputs; embeddings + milvus.db are
+        # derived here and baked into the package by `opencrane pack`.
         run: |
           uvx opencrane embed
           uvx opencrane index
 
-      # The version comes from the GitHub release tag, as-is with a leading
-      # "v" stripped (e.g. a release tagged "v2026.6.7" publishes 2026.6.7).
+      # The version comes from the GitHub release tag, "v" stripped (v0.0.4 -> 0.0.4).
       - name: Pack the MCP package
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
@@ -45,12 +63,76 @@ jobs:
           uvx opencrane pack --name ose-knowledge-mcp --version "$VERSION" --output .opencrane/pack
 
       - name: Build wheel + sdist
-        # opencrane pack scaffolds the source tree; `uv build` produces the dist/
-        # artefacts. (Don't `uv pip install --system build` — the runner's system
-        # Python is externally managed (PEP 668) and refuses system-wide installs.)
+        # `uv build` (not `uv pip install --system build` — the runner's system Python is
+        # externally managed, PEP 668, and refuses system-wide installs).
         run: uv build .opencrane/pack --out-dir .opencrane/pack/dist
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@ed0c53931b1dc9bd32cbe73a98c7f6766f8a527e # v1.13.0
         with:
           packages-dir: .opencrane/pack/dist
+
+  deploy:
+    needs: [publish]
+    # After a successful publish (release), or standalone via manual dispatch.
+    if: ${{ !cancelled() && (needs.publish.result == 'success' || github.event_name == 'workflow_dispatch') }}
+    runs-on: ubuntu-24.04
+    env:
+      SCW_ACCESS_KEY: ${{ secrets.SCW_ACCESS_KEY }}
+      SCW_SECRET_KEY: ${{ secrets.SCW_SECRET_KEY }}
+      SCW_DEFAULT_PROJECT_ID: ${{ secrets.SCW_DEFAULT_PROJECT_ID }}
+      SCW_DEFAULT_ORGANIZATION_ID: ${{ secrets.SCW_DEFAULT_ORGANIZATION_ID }}
+      SCW_DEFAULT_REGION: ${{ vars.SCW_REGION }}
+      REGISTRY: rg.${{ vars.SCW_REGION }}.scw.cloud/${{ vars.SCW_REGISTRY_NAMESPACE }}
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Resolve version to deploy
+        id: ver
+        env:
+          EVENT: ${{ github.event_name }}
+          REF_NAME: ${{ github.ref_name }}
+          INPUT_VERSION: ${{ inputs.version }}
+        run: |
+          if [ "$EVENT" = "release" ]; then V="${REF_NAME#v}"; else V="$INPUT_VERSION"; fi
+          echo "$V" | grep -qE '^[0-9A-Za-z.+_-]+$' || { echo "::error::invalid version '$V'"; exit 1; }
+          echo "version=$V" >> "$GITHUB_OUTPUT"
+          echo "Deploying ose-knowledge-mcp==$V"
+
+      - name: Install Scaleway CLI
+        run: |
+          curl -fsSL https://github.com/scaleway/scaleway-cli/releases/download/v2.56.1/scaleway-cli_2.56.1_linux_amd64 \
+            -o /usr/local/bin/scw
+          chmod +x /usr/local/bin/scw
+          scw version
+
+      - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3.12.0
+
+      - name: Log in to Scaleway Container Registry
+        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3.7.0
+        with:
+          registry: rg.${{ vars.SCW_REGION }}.scw.cloud
+          username: nologin
+          password: ${{ secrets.SCW_SECRET_KEY }}
+
+      - name: Build and push image (installs the published package — no index rebuild)
+        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6.19.2
+        with:
+          context: .
+          file: .opencrane/Dockerfile
+          push: true
+          build-args: |
+            PKG_VERSION=${{ steps.ver.outputs.version }}
+          tags: |
+            ${{ env.REGISTRY }}/ose-mcp:latest
+            ${{ env.REGISTRY }}/ose-mcp:${{ steps.ver.outputs.version }}
+
+      - name: Deploy new image to the serverless container
+        env:
+          CONTAINER_ID: ${{ vars.SCW_CONTAINER_ID }}
+          IMAGE: ${{ env.REGISTRY }}/ose-mcp:${{ steps.ver.outputs.version }}
+        run: |
+          # `update image=… --wait` sets the new image, redeploys, and waits for ready.
+          scw container container update "$CONTAINER_ID" image="$IMAGE" --wait
