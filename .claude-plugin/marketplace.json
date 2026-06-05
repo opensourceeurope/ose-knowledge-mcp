@@ -1,0 +1,14 @@
+{
+  "name": "ai",
+  "owner": {
+    "name": "Open Source Europe",
+    "url": "https://github.com/opensourceeurope/ose-knowledge-rag"
+  },
+  "plugins": [
+    {
+      "name": "ose-knowledge",
+      "source": "./plugins/ose-knowledge",
+      "description": "Open Source Europe documentation: an ose-researcher agent backed by the public OSE docs MCP server."
+    }
+  ]
+}

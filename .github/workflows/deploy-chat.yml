@@ -1,0 +1,56 @@
+name: Deploy chat website (Scaleway Object Storage)
+
+on:
+  workflow_dispatch:
+
+# Reuses the Scaleway credentials already configured for the MCP deploy.
+# Required repo VARIABLES (Settings > Variables):
+#   CHAT_FUNCTION_URL - deployed chat function URL (becomes config.js FUNCTION_URL)
+#   CHAT_S3_BUCKET    - Object Storage bucket name (static website enabled)
+#   SCW_REGION        - e.g. pl-waw
+# Required repo SECRETS (Settings > Secrets):
+#   SCW_ACCESS_KEY, SCW_SECRET_KEY  (Scaleway S3 auth = the API keys)
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-chat
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
+
+      - name: Render chat/config.js from repo variables
+        env:
+          FUNCTION_URL: ${{ vars.CHAT_FUNCTION_URL }}
+        run: |
+          [ -n "$FUNCTION_URL" ] || { echo "::error::repo variable CHAT_FUNCTION_URL is not set"; exit 1; }
+          chmod +x chat/render-config.sh
+          ./chat/render-config.sh
+          echo "--- rendered chat/config.js ---"; cat chat/config.js
+
+      - name: Upload chat/ to Scaleway Object Storage
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.SCW_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.SCW_SECRET_KEY }}
+          AWS_DEFAULT_REGION: ${{ vars.SCW_REGION }}
+          BUCKET: ${{ vars.CHAT_S3_BUCKET }}
+        run: |
+          [ -n "$AWS_ACCESS_KEY_ID" ] || { echo "::error::secret SCW_ACCESS_KEY is not set"; exit 1; }
+          [ -n "$AWS_SECRET_ACCESS_KEY" ] || { echo "::error::secret SCW_SECRET_KEY is not set"; exit 1; }
+          [ -n "$BUCKET" ] || { echo "::error::repo variable CHAT_S3_BUCKET is not set"; exit 1; }
+          REGION="${AWS_DEFAULT_REGION:-pl-waw}"
+          # aws CLI is preinstalled on ubuntu runners. Sync the static assets, drop the
+          # build tooling, and prune removed files (the bucket is dedicated to this site).
+          aws s3 sync chat/ "s3://$BUCKET/" \
+            --endpoint-url "https://s3.$REGION.scw.cloud" \
+            --delete \
+            --exclude "render-config.sh" \
+            --exclude "config.template.js"
+          echo "Deployed to https://$BUCKET.s3-website.$REGION.scw.cloud"

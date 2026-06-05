@@ -1,0 +1,58 @@
+# Open Source Europe
+
+## Open Source Europe
+
+- [Welcome to Open Source Europe](https://docs.opencollective.com/open-source-europe/master.md): Open Source Europe is a Belgian Association (ASBL/vzw) with a tech platform that enables over 400 open source groups to raise and spend more than 1 million euros annually, all in full transparency.
+- [About Open Source Europe](https://docs.opencollective.com/open-source-europe/about-open-source-europe.md): Open Source Europe is a Belgian Association that fiscally hosts over 400 initiatives and partners with philanthropic institutions to support global regranting.
+- [What We Offer](https://docs.opencollective.com/open-source-europe/what-we-offer.md): Open Source Europe provides the legal and financial infrastructure that open source projects need to thrive. Our services are designed to let you focus on your code, not on paperwork.
+- [Umbrella organisation](https://docs.opencollective.com/open-source-europe/what-we-offer/umbrella-organisation.md): Open Source Europe (OSE) provides a shared legal and financial framework for open source projects, developer networks, and software communities.
+- [The Open Collective Platform](https://docs.opencollective.com/open-source-europe/what-we-offer/the-open-collective-platform.md): A shared tool for managing contributions, expenses, and grants with full transparency.
+- [Equivalency Determination Certificate](https://docs.opencollective.com/open-source-europe/what-we-offer/equivalency-determination-certificate.md)
+- [Tax-Deductible Giving for U.S. Donors](https://docs.opencollective.com/open-source-europe/what-we-offer/tax-deductible-giving-for-u.s.-donors.md)
+- [Terms of Service](https://docs.opencollective.com/open-source-europe/terms-of-service.md)
+- [How to apply](https://docs.opencollective.com/open-source-europe/getting-started/how-to-apply.md)
+- [Eligibility](https://docs.opencollective.com/open-source-europe/getting-started/how-to-apply/eligibility.md)
+- [Application Questions](https://docs.opencollective.com/open-source-europe/getting-started/how-to-apply/application-questions.md)
+- [Basics](https://docs.opencollective.com/open-source-europe/how-it-works/basics.md)
+- [Expenses](https://docs.opencollective.com/open-source-europe/how-it-works/expenses.md)
+- [Invoices or Reimbursements?](https://docs.opencollective.com/open-source-europe/how-it-works/expenses/invoices-or-reimbursements.md)
+- [Request a Grant (for Nonprofits Only)](https://docs.opencollective.com/open-source-europe/how-it-works/expenses/request-a-grant-for-nonprofits-only.md): In addition to submitting an expense or invoice, the Open Collective platform also includes the option to “Request a Grant.”
+- [Expenses & Getting Paid – FAQs](https://docs.opencollective.com/open-source-europe/how-it-works/expenses/expenses-and-getting-paid-faqs.md)
+- [The Partnership](https://docs.opencollective.com/open-source-europe/how-it-works/expenses/the-partnership.md)
+- [VAT in Europe and How It Works in OCE](https://docs.opencollective.com/open-source-europe/how-it-works/expenses/the-partnership/vat-in-europe-and-how-it-works-in-oce.md)
+- [Financial Contributions – How to Donate](https://docs.opencollective.com/open-source-europe/how-it-works/financial-contributions-how-to-donate.md): Helpful guides for Donors and Financial Contributors
+- [Wire Transfer Instructions via Open Collective Platform](https://docs.opencollective.com/open-source-europe/how-it-works/financial-contributions-how-to-donate/wire-transfer-instructions-via-open-collective-platform.md): Please note that all funds have this option available.‌
+- [Applying for Grants](https://docs.opencollective.com/open-source-europe/how-it-works/financial-contributions-how-to-donate/applying-for-grants.md)
+- [Fundraising Tools & Resources](https://docs.opencollective.com/open-source-europe/how-it-works/financial-contributions-how-to-donate/fundraising-tools-and-resources.md): More ways to raise funds
+- [Setting up GitHub Sponsors](https://docs.opencollective.com/open-source-europe/how-it-works/financial-contributions-how-to-donate/setting-up-github-sponsors.md): Guide to connecting GitHub Sponsors for Organizations to your Collective
+- [Contributions in cryptocurrencies](https://docs.opencollective.com/open-source-europe/how-it-works/financial-contributions-how-to-donate/contributions-in-cryptocurrencies.md)
+- [Refunds](https://docs.opencollective.com/open-source-europe/how-it-works/financial-contributions-how-to-donate/refunds.md): Can I refund a donation or get a refund for one I have made?
+- [Mission, Vision & Impact areas](https://docs.opencollective.com/open-source-europe/about/mission-vision-and-impact-areas.md): It all comes back to resilience
+- [Risk and Compliance aspects](https://docs.opencollective.com/open-source-europe/about/risk-and-compliance-aspects.md): Open Collective Europe: Grant Eligibility and Risk Assessment Policy
+- [Safeguarding Policy](https://docs.opencollective.com/open-source-europe/about/safeguarding-policy.md)
+- [Community guidelines](https://docs.opencollective.com/open-source-europe/about/community-guidelines.md): These community guidelines reflects the values and commitments of Open Source Europe and aims to create a positive and productive community for all involved.
+- [Terminology](https://docs.opencollective.com/open-source-europe/about/terminology.md): We have developed some terminology to describe processes within the Open Collective ecosystem. Please use these terms when creating issues or support requests, instead of user —everyone is a user!
+- [Contact Us](https://docs.opencollective.com/open-source-europe/about/contact-us.md)
+- [General FAQs](https://docs.opencollective.com/open-source-europe/faq/general-faqs.md)
+- [Fiscal Hosting FAQs](https://docs.opencollective.com/open-source-europe/faq/fiscal-hosting-faqs.md)
+- [Expense FAQs](https://docs.opencollective.com/open-source-europe/faq/expense-faqs.md)
+- [Contributions FAQ](https://docs.opencollective.com/open-source-europe/faq/contributions-faq.md): Questions about contributing to our hosted collectives
+- [Deciding on How to Use Your Money](https://docs.opencollective.com/open-source-europe/guides/deciding-on-how-to-use-your-money.md): How to use funds for your initiative on OCE
+
+
+---
+
+# Agent Instructions: Querying This Documentation
+
+If you need additional information, you can query the documentation dynamically by asking a question.
+
+Perform an HTTP GET request on a page URL with the `ask` query parameter:
+
+```
+GET https://docs.opencollective.com/open-source-europe/master.md?ask=<question>
+```
+
+The question should be specific, self-contained, and written in natural language.
+The response will contain a direct answer to the question and relevant excerpts and sources from the documentation.
+
+Use this mechanism when the answer is not explicitly present in the current page, you need clarification or additional context, or you want to retrieve related documentation sections.

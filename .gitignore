@@ -1,0 +1,38 @@
+# OpenCrane artifact strategy
+# Committed (small build INPUTS): .opencrane/config.yaml, .opencrane/llmstxt/**, .opencrane/chunks.json
+# Ignored (large/derived, regenerated at docker build via `opencrane embed && opencrane index`):
+
+# Embeddings (62MB) -- regenerated from chunks.json at image build (see .opencrane/Dockerfile stage 3)
+.opencrane/embeddings.json
+.opencrane/**/embeddings*.json
+
+# Milvus Lite database (baked into the image at docker build)
+*.milvus.db
+milvus.db
+.opencrane/**/*.db
+*.db.lock
+.opencrane/**/*.db.lock
+
+# opencrane pack output (built + published in CI, never committed)
+.opencrane/pack/
+
+# Runtime logs
+.opencrane/fetch_docs.log
+*.log
+
+# model / HF caches
+.cache/
+**/.huggingface/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+
+# node (chat function deps / build output, at any depth)
+node_modules/
+**/dist/
+
+# Local planning docs (superpowers plans/specs) -- never commit
+docs/superpowers/
+.superpowers/

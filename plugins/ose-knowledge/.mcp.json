@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "ose-knowledge": {
+      "type": "http",
+      "url": "https://ose-mcp.PLACEHOLDER.scw.cloud/http"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // empty' | { read -r f; case \"$f\" in */agent/ose-researcher.md) ./scripts/sync-agent.sh >/dev/null && echo '{\"systemMessage\":\"sync-agent: plugin copy regenerated from agent/ose-researcher.md\"}' ;; */plugins/ose-knowledge/agents/ose-researcher.md) ./scripts/sync-agent.sh >/dev/null && echo '{\"systemMessage\":\"sync-agent: the plugin copy is GENERATED — direct edits are overwritten from agent/ose-researcher.md\"}' ;; esac; }",
+            "timeout": 30,
+            "statusMessage": "Syncing ose-researcher persona"
+          }
+        ]
+      }
+    ]
+  }
+}

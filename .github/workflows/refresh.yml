@@ -1,0 +1,60 @@
+name: Weekly knowledge refresh
+
+on:
+  schedule:
+    - cron: "0 3 * * 6"   # Saturdays 03:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86 # v5
+        with:
+          version: "0.8.19"
+
+      - name: Re-fetch sources and regenerate committed inputs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}   # opencrane fetch needs a non-empty token
+        run: |
+          uvx opencrane fetch
+          uvx opencrane llms
+          uvx opencrane chunk
+
+      - name: Refresh llms.txt page indexes (per-page citation links in chat)
+        # opencrane only fetches llms-full.txt; the per-page index that
+        # function/scripts/bundle-pagemap.mjs needs is fetched here.
+        # Add a line when adding a source to .opencrane/config.yaml.
+        run: |
+          curl -sf https://docs.opencollective.com/open-source-europe/llms.txt \
+            -o .opencrane/llmstxt/open-source-europe/llms.txt
+          curl -sf https://docs.opencollective.com/oc-europe-internal-doc/llms.txt \
+            -o .opencrane/llmstxt/oc-europe-internal-doc/llms.txt
+
+      - name: Commit refreshed inputs if changed
+        id: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # Only the committed INPUTS (llmstxt snapshots + chunks.json). Derived artifacts are git-ignored.
+          git add .opencrane/llmstxt .opencrane/chunks.json
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No source changes this week."
+          else
+            git commit -m "chore(refresh): update OSE knowledge sources ($(date -u +%Y-%m-%d))"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+# Shipping is release-gated: creating a GitHub release triggers both the MCP
+# container deploy (deploy-mcp.yml) and the PyPI publish (publish-pypi.yml).

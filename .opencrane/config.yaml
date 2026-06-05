@@ -1,0 +1,15 @@
+ignore_patterns:
+- devel
+sources:
+  open-source-europe:
+    url: https://docs.opencollective.com/open-source-europe/llms-full.txt
+    docs_path: ''
+    manual: true
+    type: llmstxt
+    docs_url: https://docs.opencollective.com/open-source-europe
+  oc-europe-internal-doc:
+    url: https://docs.opencollective.com/oc-europe-internal-doc/llms-full.txt
+    docs_path: ''
+    manual: true
+    type: llmstxt
+    docs_url: https://docs.opencollective.com/oc-europe-internal-doc

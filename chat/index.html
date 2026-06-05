@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ask Open Source Europe</title>
+  <meta name="description" content="Ask anything about Open Source Europe and get cited answers from the public OSE documentation. A sovereign, EU-hosted assistant." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Atmosphere: warm orange + teal glows, mirroring opensourceeurope.org's hero -->
+  <div class="atmosphere" aria-hidden="true"></div>
+
+  <header class="site-header reveal" data-reveal="1">
+    <div class="wrap header-inner">
+      <a class="logo" href="https://opensourceeurope.org" target="_blank" rel="noopener"
+         aria-label="Open Source Europe (opens the main site in a new tab)">
+        <img src="ose-logo.svg" alt="Open Source Europe" width="95" height="40" />
+      </a>
+      <nav class="header-nav">
+        <button class="ring" type="button" id="toolsToggle" aria-expanded="false" aria-controls="toolsPanel">
+          <span class="ring__inner"><span class="label-full">Use it in your own tools or locally</span><span class="label-short">Tools &amp; local use</span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap main">
+    <section class="hero reveal" data-reveal="2">
+      <p class="hero__eyebrow">Cited answers · EU-hosted · sovereign</p>
+      <h1 class="hero__title">Ask Open Source Europe</h1>
+      <p class="hero__lede">
+        A public assistant that searches the official OSE documentation and answers
+        with sources you can verify. Fiscal hosting, onboarding, policies, processes —
+        ask in your own words.
+      </p>
+    </section>
+
+    <!-- "Use it in your own tools or locally" collapsible panel -->
+    <section id="toolsPanel" class="tools-panel reveal" data-reveal="2" hidden>
+      <div class="tools-panel__head">
+        <h2 class="tools-panel__title">Use it in your own tools — or run it locally</h2>
+        <p class="tools-panel__sub">The OSE knowledge base speaks MCP. Wire it into your editor, install the Claude Code plugin, or clone the repo and run this whole chat on your machine.</p>
+      </div>
+      <div class="tools-grid">
+        <div class="snippet">
+          <div class="snippet__bar">
+            <span class="snippet__label">Any MCP client — .mcp.json</span>
+            <button class="btn btn--copy" type="button" data-copy="mcpJson">Copy</button>
+          </div>
+          <pre class="snippet__code"><code id="mcpJson">{
+  "mcpServers": {
+    "ose-knowledge": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["ose-knowledge-mcp"]
+    }
+  }
+}</code></pre>
+          <p class="snippet__hint">One package, zero install — the whole knowledge base runs on your machine.</p>
+        </div>
+        <div class="snippet">
+          <div class="snippet__bar">
+            <span class="snippet__label">Claude Code plugin</span>
+            <button class="btn btn--copy" type="button" data-copy="pluginCmds">Copy</button>
+          </div>
+          <pre class="snippet__code"><code id="pluginCmds">/plugin marketplace add opensourceeurope/ose-knowledge-rag
+/plugin install ose-knowledge@ai</code></pre>
+        </div>
+        <div class="snippet snippet--wide">
+          <div class="snippet__bar">
+            <span class="snippet__label">Run this chat locally — fully offline via Ollama</span>
+            <button class="btn btn--copy" type="button" data-copy="localRun">Copy</button>
+          </div>
+          <pre class="snippet__code"><code id="localRun">git clone https://github.com/opensourceeurope/ose-knowledge-rag.git
+cd ose-knowledge-rag
+./scripts/run-local.sh</code></pre>
+          <p class="snippet__hint">Needs <code>uvx</code>, <code>npm</code>, <code>python3</code> and a running <a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a>. Starts the MCP server, the agent function and this chat UI on localhost — no API keys, nothing leaves your machine.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="chat reveal" data-reveal="3">
+      <div class="transcript" id="transcript" role="log" aria-live="polite" aria-label="Conversation">
+        <div class="empty-state" id="emptyState">
+          <div class="empty-state__dot" aria-hidden="true"></div>
+          <p>Try: <button class="chip chip--suggest" type="button" data-suggest="What is Open Source Europe?">What is Open Source Europe?</button>
+          <button class="chip chip--suggest" type="button" data-suggest="How does fiscal hosting work at OSE?">How does fiscal hosting work?</button>
+          <button class="chip chip--suggest" type="button" data-suggest="How do I submit an expense and get paid?">How do I submit an expense and get paid?</button></p>
+        </div>
+      </div>
+
+      <form class="composer" id="composer" autocomplete="off">
+        <div class="composer__row">
+          <div class="composer__field">
+            <textarea
+              id="input"
+              class="composer__input"
+              rows="1"
+              placeholder="Ask about Open Source Europe…"
+              aria-label="Your question"
+            ></textarea>
+          </div>
+          <button class="ring ring--send" type="submit" id="send" aria-label="Send question">
+            <span class="ring__inner">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true">
+                <path d="M4 12l15-7-5 7 5 7-15-7z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+              </svg>
+            </span>
+          </button>
+        </div>
+        <label class="optin">
+          <input type="checkbox" id="analyticsOptIn" class="optin__box" />
+          <span class="optin__custom" aria-hidden="true"></span>
+          <span class="optin__text">
+            Help us improve — share my anonymous question so we can fill gaps in the docs.
+            <span class="optin__muted">(off by default, no personal data)</span>
+          </span>
+        </label>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Sovereign by design — web hosting, domain management, server-side code and the AI model all run in Europe. Conversations are never persisted by us unless you explicitly allow it.</p>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="markdown.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

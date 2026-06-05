@@ -1,0 +1,54 @@
+name: Publish ose-knowledge-mcp to PyPI
+
+# Builds the knowledge base into a standalone MCP package (opencrane pack)
+# and publishes it via PyPI trusted publishing (OIDC) — no token secrets.
+# One-time setup on pypi.org: add a trusted publisher for project
+# "ose-knowledge-mcp" → repo opensourceeurope/ose-knowledge-rag, workflow
+# publish-pypi.yml (no GitHub environment).
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86 # v5
+        with:
+          version: "0.8.19"
+
+      - name: Rebuild the vector index from the committed chunks
+        # chunks.json + config.yaml are committed inputs; embeddings and
+        # milvus.db are derived (same strategy as the Docker image build).
+        run: |
+          uvx opencrane embed
+          uvx opencrane index
+
+      # The version comes from the GitHub release tag, as-is with a leading
+      # "v" stripped (e.g. a release tagged "v2026.6.7" publishes 2026.6.7).
+      - name: Pack the MCP package
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          echo "Packing ose-knowledge-mcp version $VERSION"
+          uvx opencrane pack --name ose-knowledge-mcp --version "$VERSION" --output .opencrane/pack
+
+      - name: Build wheel + sdist
+        # opencrane pack scaffolds the source tree; `build` produces the
+        # dist/ artefacts that pypi-publish consumes.
+        run: |
+          uv pip install --system build
+          python -m build .opencrane/pack --outdir .opencrane/pack/dist
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@ed0c53931b1dc9bd32cbe73a98c7f6766f8a527e # v1.13.0
+        with:
+          packages-dir: .opencrane/pack/dist

@@ -1,0 +1,18 @@
+# Heavy derived artifacts — regenerated inside the image (Dockerfile stage 3)
+.opencrane/embeddings.json
+.opencrane/**/*.db
+**/*.log
+
+# Caches / VCS / docs not needed in the image
+.git
+.github
+docs
+chat
+function
+.claude-plugin
+agent
+**/__pycache__
+**/.venv
+**/.cache
+**/.huggingface
+node_modules

@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request: {}
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - name: Check the plugin agent is in sync with the canonical persona
+        run: ./scripts/sync-agent.sh --check
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: "20"
+
+      - name: Build + test the chat function
+        working-directory: function
+        run: |
+          npm ci
+          npm run build
+          npm test
+
+      # Workflow linting/auditing lives in security-audit.yml (zizmor, auto-discovers
+      # all workflows) — no hand-maintained file list here.
