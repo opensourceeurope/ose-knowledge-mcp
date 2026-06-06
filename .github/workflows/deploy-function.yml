@@ -102,8 +102,7 @@ jobs:
             environment-variables.OSE_MCP_URL="$OSE_MCP_URL" \
             environment-variables.ALLOWED_ORIGINS="$ALLOWED" \
             environment-variables.MISTRAL_MODEL="$MODEL" \
-            secret-environment-variables.0.key=MISTRAL_API_KEY \
-            secret-environment-variables.0.value="$MISTRAL_API_KEY" \
+            secret-environment-variables.MISTRAL_API_KEY="$MISTRAL_API_KEY" \
             --wait
 
       - name: Container not created yet (first run)

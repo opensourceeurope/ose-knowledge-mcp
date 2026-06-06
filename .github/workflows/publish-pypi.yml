@@ -50,9 +50,14 @@ jobs:
 
       - name: Rebuild the vector index from the committed chunks
         # chunks.json + config.yaml are committed inputs; embeddings + milvus.db are
-        # derived here and baked into the package by `opencrane pack`.
+        # derived here and baked into the package by `opencrane pack`. The embed step
+        # downloads the model from HuggingFace, which can hit anonymous 429s on shared
+        # runners — retry a few times. (Set an HF_TOKEN to remove this flakiness entirely.)
         run: |
-          uvx opencrane embed
+          for i in 1 2 3 4 5; do
+            uvx opencrane embed && break
+            echo "embed failed (HuggingFace rate-limit?), retry $i/5 after 25s..."; sleep 25
+          done
           uvx opencrane index
 
       # The version comes from the GitHub release tag, "v" stripped (v0.0.4 -> 0.0.4).
