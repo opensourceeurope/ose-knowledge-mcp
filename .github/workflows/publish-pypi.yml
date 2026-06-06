@@ -136,3 +136,14 @@ jobs:
         run: |
           # `update image=… --wait` sets the new image, redeploys, and waits for ready.
           scw container container update "$CONTAINER_ID" image="$IMAGE" --wait
+
+  # The chat function is independent of the PyPI package, but it bundles the persona +
+  # pagemap (derived from the chunks), so redeploy it on every release to pick up refreshed
+  # citation links. Reusable workflow (also runnable on its own for function-only fixes).
+  deploy-function:
+    uses: ./.github/workflows/deploy-function.yml
+    secrets:
+      SCW_ACCESS_KEY: ${{ secrets.SCW_ACCESS_KEY }}
+      SCW_SECRET_KEY: ${{ secrets.SCW_SECRET_KEY }}
+      SCW_DEFAULT_PROJECT_ID: ${{ secrets.SCW_DEFAULT_PROJECT_ID }}
+      SCW_DEFAULT_ORGANIZATION_ID: ${{ secrets.SCW_DEFAULT_ORGANIZATION_ID }}
