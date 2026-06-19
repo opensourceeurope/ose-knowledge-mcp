@@ -107,9 +107,15 @@ jobs:
           echo "Deploying ose-knowledge-mcp==$V"
 
       - name: Install Scaleway CLI
+        # GitHub's release CDN intermittently 504s on this download — retry a few times
+        # so a transient gateway error doesn't fail the whole deploy.
         run: |
-          curl -fsSL https://github.com/scaleway/scaleway-cli/releases/download/v2.56.1/scaleway-cli_2.56.1_linux_amd64 \
-            -o /usr/local/bin/scw
+          for i in 1 2 3 4 5; do
+            curl -fsSL --retry 3 --retry-all-errors --retry-delay 5 \
+              https://github.com/scaleway/scaleway-cli/releases/download/v2.56.1/scaleway-cli_2.56.1_linux_amd64 \
+              -o /usr/local/bin/scw && break
+            echo "scw download failed (CDN 5xx?), retry $i/5 after 15s..."; sleep 15
+          done
           chmod +x /usr/local/bin/scw
           scw version
 
