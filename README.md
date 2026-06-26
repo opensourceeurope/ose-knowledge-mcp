@@ -89,7 +89,7 @@ or in any MCP client's config:
 Use the OSE knowledge base from Claude Code via the `ose-knowledge` plugin (an
 `ose-researcher` agent + the public MCP server).
 
-    /plugin marketplace add opensourceeurope/ose-knowledge-rag
+    /plugin marketplace add opensourceeurope/ose-knowledge-mcp
     /plugin install ose-knowledge@ai
 
 The plugin registers the `ose-knowledge` MCP server (the `search_docs` tool over the

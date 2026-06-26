@@ -1,4 +1,4 @@
-# ose-knowledge-rag — Agent Instructions
+# ose-knowledge-mcp — Agent Instructions
 
 AI-powered documentation search for Open Source Europe, built with OpenCrane. An OpenCrane pipeline indexes the OSE docs into a Milvus DB served as a public MCP server (Scaleway container), plus a Claude plugin (`plugins/ose-knowledge`), a chat website (`chat/`), and a serverless chat function (`function/`). Licensed under MIT.
 

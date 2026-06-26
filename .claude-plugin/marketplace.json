@@ -2,7 +2,7 @@
   "name": "ai",
   "owner": {
     "name": "Open Source Europe",
-    "url": "https://github.com/opensourceeurope/ose-knowledge-rag"
+    "url": "https://github.com/opensourceeurope/ose-knowledge-mcp"
   },
   "plugins": [
     {
