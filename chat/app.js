@@ -100,14 +100,26 @@
     if (emptyState && emptyState.parentNode) emptyState.parentNode.removeChild(emptyState);
   }
 
-  function renderMessage(role, content) {
+  // Index citations by their footnote number so the renderer can turn inline
+  // [n] markers into superscript links: { "1": {url, title, ...}, ... }.
+  function citesByNumber(citations) {
+    var map = {};
+    if (Array.isArray(citations)) {
+      citations.forEach(function (c) {
+        if (c && c.n != null) map[String(c.n)] = c;
+      });
+    }
+    return map;
+  }
+
+  function renderMessage(role, content, cites) {
     var wrap = el("div", "msg msg--" + role);
     wrap.appendChild(el("span", "msg__role", role === "user" ? "You" : "OSE"));
     var bubble;
     if (role === "assistant" && window.OSE_MD) {
       // Answers are markdown; OSE_MD.render escapes all HTML before formatting.
       bubble = el("div", "msg__bubble msg__bubble--md");
-      bubble.innerHTML = window.OSE_MD.render(content);
+      bubble.innerHTML = window.OSE_MD.render(content, cites);
     } else {
       bubble = el("div", "msg__bubble", content);
     }
@@ -122,9 +134,13 @@
     var box = el("div", "citations");
     box.appendChild(el("span", "citations__label", "Sources"));
     var row = el("div", "citations__row");
-    citations.forEach(function (c) {
+    citations.forEach(function (c, i) {
       if (!c || !c.url) return;
-      var chip = el("a", "citation-chip", c.title || c.source_name || c.url);
+      // Footnote number ties this entry to the inline [n] markers in the prose.
+      var num = c.n != null ? c.n : i + 1;
+      var chip = el("a", "citation-chip");
+      chip.appendChild(el("span", "citation-chip__n", String(num)));
+      chip.appendChild(el("span", "citation-chip__label", c.title || c.source_name || c.url));
       if (c.title && c.source_name) chip.title = c.source_name; // hover shows which source
       chip.href = c.url;
       chip.target = "_blank";
@@ -215,7 +231,7 @@
 
       if (!answer) throw new Error("empty_answer");
 
-      var bubble = renderMessage("assistant", answer);
+      var bubble = renderMessage("assistant", answer, citesByNumber(citations));
       renderCitations(bubble, citations);
       conversation.push({ role: "assistant", content: answer });
     } catch (err) {

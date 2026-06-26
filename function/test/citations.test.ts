@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { parseCitations, type PageMap } from "../src/mcp.js";
+import { parseCitations, annotateAndNumber, newRegistry, type PageMap } from "../src/mcp.js";
 
 const MCP_TEXT = `Found 2 results:
 
@@ -60,5 +60,39 @@ describe("parseCitations", () => {
       "https://docs.opencollective.com/open-source-europe",
       "https://docs.opencollective.com/oc-europe-internal-doc",
     ]);
+  });
+});
+
+describe("annotateAndNumber", () => {
+  it("assigns sequential numbers and tags each result block with its marker", () => {
+    const reg = newRegistry();
+    const { text, citations } = annotateAndNumber(MCP_TEXT, PAGE_MAP, reg);
+    expect(text).toContain("Result 1: [cite this source inline as [1]]");
+    expect(text).toContain("Result 2: [cite this source inline as [2]]");
+    expect(citations.map((c) => c.n)).toEqual([1, 2]);
+    expect(citations[0]).toMatchObject({ n: 1, title: "Terms of Service" });
+  });
+
+  it("keeps a URL's number stable across rounds and never re-numbers it", () => {
+    const reg = newRegistry();
+    annotateAndNumber(MCP_TEXT, PAGE_MAP, reg); // round 1: assigns [1], [2]
+    // round 2: a fresh source plus the same internal-doc URL seen in round 1
+    const round2 = MCP_TEXT
+      .replace("Result 1:", "Result 1:")
+      .replace("https://docs.opencollective.com/open-source-europe\nSource Name: open-source-europe\nType: list_item\nChunk ID: aaa111", "https://docs.opencollective.com/open-source-europe\nSource Name: open-source-europe\nType: section\nChunk ID: ccc333");
+    const { text, citations } = annotateAndNumber(round2, PAGE_MAP, reg);
+    // the repeated internal-doc URL keeps [2]; the new chunk gets [3]
+    expect(text).toContain("[cite this source inline as [3]]");
+    expect(text).toContain("[cite this source inline as [2]]");
+    expect(citations.map((c) => c.n)).toEqual([1, 2, 3]);
+    expect(citations.filter((c) => c.url === "https://docs.opencollective.com/oc-europe-internal-doc")).toHaveLength(1);
+  });
+
+  it("leaves malformed blocks untouched (no marker, no number)", () => {
+    const reg = newRegistry();
+    const malformed = "Found 1 results:\n\nResult 1:\nType: section\nContent:\nNo source here.\n";
+    const { text, citations } = annotateAndNumber(malformed, PAGE_MAP, reg);
+    expect(text).not.toContain("cite this source inline");
+    expect(citations).toHaveLength(0);
   });
 });

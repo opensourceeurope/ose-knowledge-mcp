@@ -1,8 +1,28 @@
 import { Mistral } from "@mistralai/mistralai";
 import { runAgent, type ChatMessage } from "./agent.js";
-import { searchDocs } from "./mcp.js";
+import { searchDocs, annotateAndNumber, newRegistry } from "./mcp.js";
 import { PERSONA } from "./persona.generated.js";
 import { PAGE_MAP } from "./pagemap.generated.js";
+
+// Chat-only addendum to the shared persona. The web UI renders the numbered
+// source list separately below the answer, so the model must cite with bracket
+// markers instead of writing its own "Source:" lines (which would duplicate the
+// UI and break formatting). The canonical persona is left untouched for the
+// terminal plugin agent, which has no such UI and cites sources inline.
+const CHAT_CITATION_DIRECTIVE = `
+
+## Answering in the chat UI
+
+Your answer is shown in a web interface that renders the numbered list of sources
+on its own, directly below your message. Follow these rules so nothing is duplicated:
+
+- Do NOT write "Source:" lines, raw URLs, or a "Sources"/"References" list in your
+  answer. The interface adds them.
+- Each search result is tagged "[cite this source inline as [N]]". When a statement
+  relies on a result, append its marker — e.g. "Open Collective Europe pays out within
+  7 days [1]." Use the exact number you were given.
+- Combine markers when several sources back one statement: "...within 7 days [1][3]."
+- Write clean prose and markdown only. No trailing separators such as "--".`;
 
 export interface ChatRequest { messages: ChatMessage[]; analyticsOptIn?: boolean; }
 export interface Env { MISTRAL_API_KEY: string; MISTRAL_MODEL?: string; MISTRAL_BASE_URL?: string; OSE_MCP_URL: string; MAX_TOOL_ROUNDS?: string; }
@@ -57,11 +77,17 @@ export async function handleChat(body: ChatRequest, env: Env) {
     };
   };
 
+  // One registry per turn: footnote numbers stay stable across every search round.
+  const registry = newRegistry();
+
   const result = await runAgent({
-    persona: PERSONA,
+    persona: PERSONA + CHAT_CITATION_DIRECTIVE,
     userMessages,
     mistralChat,
-    search: (q) => searchDocs(q, env.OSE_MCP_URL, PAGE_MAP),
+    search: async (q) => {
+      const { text } = await searchDocs(q, env.OSE_MCP_URL, PAGE_MAP);
+      return annotateAndNumber(text, PAGE_MAP, registry);
+    },
     maxRounds: env.MAX_TOOL_ROUNDS ? parseInt(env.MAX_TOOL_ROUNDS, 10) : 4,
   });
 

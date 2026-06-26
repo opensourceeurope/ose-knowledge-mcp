@@ -19,6 +19,25 @@
     return '<a href="' + url + '" target="_blank" rel="noopener noreferrer">' + label + "</a>";
   }
 
+  // Footnote map for the current render() call: { "1": {url,...}, ... }.
+  // Single-threaded JS, so a module-scoped handle set per render is safe.
+  var currentCites = null;
+
+  // Turn inline [1] / [2] markers into superscript links to their source.
+  // Runs only on plain-text segments (never inside code spans).
+  function footnotes(s) {
+    if (!currentCites) return s;
+    return s.replace(/\[(\d+)\]/g, function (m, n) {
+      var c = currentCites[n];
+      if (!c || !c.url) return m;
+      return (
+        '<sup class="fn"><a href="' + c.url +
+        '" target="_blank" rel="noopener noreferrer" title="' + escapeHtml(c.title || c.source_name || c.url) +
+        '">' + n + "</a></sup>"
+      );
+    });
+  }
+
   // Inline transforms on an already-escaped line.
   function inline(s) {
     var parts = s.split(/(`[^`]+`)/);
@@ -36,12 +55,14 @@
         });
         p = p.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
         p = p.replace(/(^|[\s(])\*([^*\s][^*]*)\*/g, "$1<em>$2</em>");
+        p = footnotes(p);
         return p;
       })
       .join("");
   }
 
-  function render(md) {
+  function render(md, cites) {
+    currentCites = cites || null;
     var html = [];
     var para = [];
     var list = null; // { type: "ul"|"ol", items: [] }
@@ -88,6 +109,7 @@
       }
     });
     flushPara(); flushList();
+    currentCites = null;
     return html.join("");
   }
 

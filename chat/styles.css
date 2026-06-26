@@ -457,18 +457,42 @@ a { color: inherit; }
   transition: background 0.2s ease, border-color 0.2s ease;
 }
 .citation-chip:hover { background: var(--raised-2); border-color: var(--border); }
-.citation-chip::before {
-  content: "";
-  width: 5px; height: 5px;
-  border-radius: 50%;
+.citation-chip__n {
+  /* footnote number — matches the inline [n] superscript in the prose */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 17px; height: 17px;
+  padding: 0 4px;
+  border-radius: var(--ose-radius-pill);
   background: var(--ose-gradient);
+  color: #0a1417;
+  font-size: 11px;
+  font-weight: 700;
   flex: 0 0 auto;
 }
+.citation-chip__label { line-height: 1.2; }
 .citation-chip::after {
   content: "\2197"; /* ↗ — signals the chip opens the doc page */
   font-size: 11px;
   opacity: 0.75;
 }
+
+/* Inline footnote markers in the answer prose: [1] -> superscript link */
+.msg__bubble--md sup.fn {
+  font-size: 0.7em;
+  line-height: 0;
+  margin-left: 1px;
+}
+.msg__bubble--md sup.fn a {
+  text-decoration: none;
+  padding: 0 3px;
+  border-radius: 5px;
+  background: var(--raised-2);
+  color: var(--ose-cyan);
+  font-weight: 700;
+}
+.msg__bubble--md sup.fn a:hover { background: var(--raised); }
 
 /* Staged loader */
 .loader { display: flex; flex-direction: column; align-self: flex-start; max-width: 86%; }
