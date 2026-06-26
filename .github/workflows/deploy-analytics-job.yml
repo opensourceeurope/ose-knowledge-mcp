@@ -107,7 +107,7 @@ jobs:
           if [ -z "$ID" ]; then
             echo "Creating job definition $NAME"
             scw jobs definition create region="$REGION" \
-              name="$NAME" cpu-limit=70 memory-limit=128 job-timeout=300s \
+              name="$NAME" cpu-limit=70 memory-limit=128 local-storage-capacity=1000 job-timeout=300s \
               image-uri="$IMAGE" \
               cron-schedule.schedule="0 4 */3 * *" cron-schedule.timezone="Europe/Warsaw" \
               environment-variables.LOKI_URL="$LOKI_URL" \
