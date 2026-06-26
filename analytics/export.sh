@@ -23,8 +23,8 @@
 # Optional:
 #   LOOKBACK_DAYS     how far back to query (default 6 — 2x the 3-day cadence,
 #                     so a single missed run self-heals on the next run)
-#   LOG_SELECTOR      LogQL stream selector (default '{resource_type=~".+"}' —
-#                     any serverless stream; the |= ANALYTICS filter narrows it)
+#   LOG_SELECTOR      LogQL stream selector
+#                     (default '{resource_type="serverless_container"}')
 
 set -euo pipefail
 
@@ -41,7 +41,7 @@ LOOKBACK_DAYS="${LOOKBACK_DAYS:-6}"
 # Override via the LOG_SELECTOR env var. NOTE: assign with an if, not `${VAR:-{...}}`
 # — brace-nesting in a default value mis-parses and appends a stray `}`.
 if [ -z "${LOG_SELECTOR:-}" ]; then
-  LOG_SELECTOR='{resource_type=~".+"}'
+  LOG_SELECTOR='{resource_type="serverless_container"}'
 fi
 
 # Loki wants nanosecond epochs. Pure arithmetic — no GNU `date -d` (busybox-safe).
@@ -53,8 +53,10 @@ RUN_DATE="$(date -u +%F)"
 JSONL_FILE="analytics-${RUN_DATE}.jsonl"
 CSV_FILE="analytics-${RUN_DATE}.csv"
 
-# Keep only ANALYTICS lines from the function's stream.
-QUERY="${LOG_SELECTOR} |= \`ANALYTICS\`"
+# Scaleway wraps each container log line in JSON; the real text is the `message`
+# field. So: prefilter raw lines to ANALYTICS, parse the JSON, then reformat the
+# output line to just the message — leaving `ANALYTICS {...}` for the parser below.
+QUERY="${LOG_SELECTOR} |= \`ANALYTICS\` | json | line_format \`{{.message}}\`"
 
 echo "Querying Cockpit logs: ${LOOKBACK_DAYS}d back, selector ${LOG_SELECTOR} |= ANALYTICS"
 
@@ -84,6 +86,21 @@ count="$(wc -l < "$JSONL_FILE" | tr -d ' ')"
 echo "Collected ${count} analytics record(s) into ${JSONL_FILE}"
 if [ "$count" -ge 5000 ]; then
   echo "WARNING: hit the 5000-line query limit — some records may be missing. Shorten the cadence or lower LOOKBACK_DAYS."
+fi
+
+# Self-diagnosis: if we got nothing, the selector label is probably wrong (or the
+# data source is). Dump the label schema from this exact endpoint+token so we can
+# see which label key carries the function name, without guessing.
+if [ "$count" -eq 0 ]; then
+  echo "::DIAG:: 0 records — listing available Loki labels and their values"
+  labels="$(curl -fsSG "${LOKI_URL}/loki/api/v1/labels" -H "X-Token: ${COCKPIT_TOKEN}" \
+    --data-urlencode "start=${START_NS}" --data-urlencode "end=${END_NS}" 2>/dev/null || echo '{}')"
+  echo "::DIAG:: label keys: $(echo "$labels" | jq -rc '.data // []')"
+  for k in $(echo "$labels" | jq -r '.data[]? // empty'); do
+    vals="$(curl -fsSG "${LOKI_URL}/loki/api/v1/label/${k}/values" -H "X-Token: ${COCKPIT_TOKEN}" \
+      --data-urlencode "start=${START_NS}" --data-urlencode "end=${END_NS}" 2>/dev/null || echo '{}')"
+    echo "::DIAG:: ${k} = $(echo "$vals" | jq -rc '.data // []')"
+  done
 fi
 
 # CSV for quick human review. @csv handles quoting commas/quotes inside questions.
