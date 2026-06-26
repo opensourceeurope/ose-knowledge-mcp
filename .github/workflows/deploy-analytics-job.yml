@@ -12,7 +12,7 @@ name: Deploy analytics export job to Scaleway
 # NOT set COCKPIT_TOKEN — that is added once by hand in the console, so the log
 # path stays EU-only and the token never enters GitHub.
 #
-# One-time setup by the maintainer (see analytics/README.md for full commands):
+# One-time setup by the maintainer:
 #   1. Create a PRIVATE bucket, e.g. ose-knowledge-analytics (region pl-waw).
 #   2. Create a Cockpit token with logs read access; note its secret + the Loki URL.
 #   3. Set repo variables:  ANALYTICS_BUCKET=<bucket>,  OSE_ANALYTICS_LOKI_URL=<url>.
@@ -107,7 +107,7 @@ jobs:
           if [ -z "$ID" ]; then
             echo "Creating job definition $NAME"
             scw jobs definition create region="$REGION" \
-              name="$NAME" cpu-limit=70 memory-limit=128 job-timeout=300 \
+              name="$NAME" cpu-limit=70 memory-limit=128 job-timeout=300s \
               image-uri="$IMAGE" \
               cron-schedule.schedule="0 4 */3 * *" cron-schedule.timezone="Europe/Warsaw" \
               environment-variables.LOKI_URL="$LOKI_URL" \
