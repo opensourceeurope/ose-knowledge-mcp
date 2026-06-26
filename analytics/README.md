@@ -95,43 +95,46 @@ jq -r 'select(.rounds >= 4) | .q' all-analytics.json | sort -u
 ## One-time setup (maintainer)
 
 The deploy workflow ([deploy-analytics-job.yml](../.github/workflows/deploy-analytics-job.yml))
-only builds + pushes the image and rolls it forward. The job definition, its cron,
-and its secrets are created once by hand.
+builds the image **and creates the job definition** (cron + env + the Scaleway S3
+keys) on its first run. It deliberately does NOT set `COCKPIT_TOKEN` — that is
+added by hand so the token never enters GitHub and the log path stays EU-only. On
+later runs the workflow only rolls the image forward, so it never clobbers the
+hand-added token.
 
 1. **Private bucket** (must NOT be public — unlike the website bucket):
    ```bash
    aws s3 mb s3://ose-knowledge-analytics --endpoint-url https://s3.pl-waw.scw.cloud
    ```
-   Leave its visibility/ACL private and do not attach a public-read bucket policy.
+   Leave it private; do not attach a public-read bucket policy. If the job's upload
+   later fails with `AccessDenied`, attach a **private** writer-only bucket policy
+   (project principal, no public statement) — see the chat-bucket policy for shape,
+   minus the public-read statement.
 
-2. **Cockpit token + Loki URL** — in the Scaleway console, Cockpit → Tokens, create
-   a token with **logs read**; copy its secret. The Loki URL is the Cockpit "Logs"
-   data source URL, shaped like
-   `https://<data-source-id>.logs.cockpit.pl-waw.scw.cloud`.
+2. **Cockpit token + Loki URL** — Scaleway console → Cockpit (region **pl-waw**) →
+   Tokens, create a token with **logs read**; copy its secret. The Loki URL is the
+   Cockpit "Logs" data source URL: `https://<data-source-id>.logs.cockpit.pl-waw.scw.cloud`.
 
-3. **Create the Serverless Job** referencing the pushed image, with a cron and the
-   env/secrets the script needs. Confirm exact flag names with
-   `scw jobs definition create --help` (CLI surface evolves), but it looks like:
+3. **Set repo variables** (non-secret config the workflow reads):
    ```bash
-   scw jobs definition create \
-     name=ose-analytics-export \
-     image-uri=rg.pl-waw.scw.cloud/opensourceeurope/ose-analytics-job:latest \
-     cpu-limit=70 memory-limit=128 \
-     cron.schedule="0 4 */3 * *" cron.timezone="Europe/Warsaw" \
-     environment-variables.LOKI_URL="https://<data-source-id>.logs.cockpit.pl-waw.scw.cloud" \
-     environment-variables.ANALYTICS_BUCKET="ose-knowledge-analytics" \
-     environment-variables.SCW_REGION="pl-waw"
+   gh variable set ANALYTICS_BUCKET       --body "ose-knowledge-analytics"
+   gh variable set OSE_ANALYTICS_LOKI_URL --body "https://<data-source-id>.logs.cockpit.pl-waw.scw.cloud"
    ```
-   Then add the **secrets** `COCKPIT_TOKEN`, `SCW_ACCESS_KEY`, `SCW_SECRET_KEY` to
-   the job (Scaleway Secret Manager / the job's secret env vars in the console).
 
-4. **Set repo variable** `SCW_ANALYTICS_JOB_DEF_ID` to the new definition's ID.
-   From then on, pushes to `analytics/**` rebuild the image and update the job.
+4. **Let the workflow run** (any push under `analytics/**`, or run it manually).
+   It creates the `ose-analytics-export` job definition.
 
-### Trigger a run manually (to test)
+5. **Add the token + start a run.** In the console → Serverless Jobs →
+   `ose-analytics-export` → add an env var `COCKPIT_TOKEN` (the secret from step 2),
+   then start a run:
+   ```bash
+   scw jobs definition start <job-definition-id> region=pl-waw
+   ```
+   The first run *before* the token is added will fail (no `COCKPIT_TOKEN`) — that's
+   expected; add it and re-run. Then check the bucket ("Quick start" above) for the
+   dated files, and the run's logs in Cockpit.
 
-```bash
-scw jobs run create job-definition-id=<SCW_ANALYTICS_JOB_DEF_ID> region=pl-waw
-```
-Then check the bucket (step 2 of "Quick start") for the new dated files, and the
-job's logs in Cockpit.
+> **Security note:** the workflow sets `SCW_ACCESS_KEY`/`SCW_SECRET_KEY` as plain
+> env vars on the job (needed for the bucket upload), so they're visible in the job
+> config to anyone with project access. To harden, move them (and `COCKPIT_TOKEN`)
+> into Scaleway Secret Manager and reference them via `scw jobs secret create`
+> instead of plain env vars.
