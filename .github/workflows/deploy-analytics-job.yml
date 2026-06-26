@@ -1,0 +1,98 @@
+name: Deploy analytics export job to Scaleway
+
+# Builds the analytics/ image and pushes it to the Scaleway registry, then (if the
+# job definition already exists) points that job definition at the new image. The
+# job itself runs ON SCALEWAY, in the EU region, on a cron — it pulls opt-in chat
+# analytics from Cockpit and writes them to a private bucket. Building the image in
+# GitHub (US runners) is fine: the image carries no analytics data; only the job,
+# running in the EU, ever touches the logs.
+#
+# One-time setup by the maintainer (see analytics/README.md for full commands):
+#   1. Create a PRIVATE bucket, e.g. ose-knowledge-analytics (region pl-waw).
+#   2. Create a Cockpit token with logs read access; note its secret + the Loki URL.
+#   3. Create the Serverless Job definition referencing this image, with a cron
+#      schedule (e.g. "0 4 */3 * *") and these env/secrets:
+#        env:    LOKI_URL, ANALYTICS_BUCKET, SCW_REGION
+#        secret: COCKPIT_TOKEN, SCW_ACCESS_KEY, SCW_SECRET_KEY
+#      Capture the job definition ID.
+#   4. Set repo variable SCW_ANALYTICS_JOB_DEF_ID to that ID. Re-run this workflow
+#      to roll out image updates thereafter.
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths:
+      - analytics/**
+      - .github/workflows/deploy-analytics-job.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-analytics-job
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    env:
+      SCW_ACCESS_KEY: ${{ secrets.SCW_ACCESS_KEY }}
+      SCW_SECRET_KEY: ${{ secrets.SCW_SECRET_KEY }}
+      SCW_DEFAULT_PROJECT_ID: ${{ secrets.SCW_DEFAULT_PROJECT_ID }}
+      SCW_DEFAULT_ORGANIZATION_ID: ${{ secrets.SCW_DEFAULT_ORGANIZATION_ID }}
+      SCW_DEFAULT_REGION: ${{ vars.SCW_REGION }}
+      REGISTRY: rg.${{ vars.SCW_REGION }}.scw.cloud/${{ vars.SCW_REGISTRY_NAMESPACE }}
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Install Scaleway CLI
+        # Pinned to v2.56.1. GitHub's release CDN intermittently 504s — retry.
+        run: |
+          for i in 1 2 3 4 5; do
+            curl -fsSL --retry 3 --retry-all-errors --retry-delay 5 \
+              https://github.com/scaleway/scaleway-cli/releases/download/v2.56.1/scaleway-cli_2.56.1_linux_amd64 \
+              -o /usr/local/bin/scw && break
+            echo "scw download failed (CDN 5xx?), retry $i/5 after 15s..."; sleep 15
+          done
+          chmod +x /usr/local/bin/scw
+          scw version
+
+      - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3.12.0
+
+      - name: Log in to Scaleway Container Registry
+        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3.7.0
+        with:
+          registry: rg.${{ vars.SCW_REGION }}.scw.cloud
+          username: nologin
+          password: ${{ secrets.SCW_SECRET_KEY }}
+
+      - name: Build and push image
+        uses: docker/build-push-action@10e90e3645eae34f1e60eeb005ba3a3d33f178e8 # v6.19.2
+        with:
+          context: analytics
+          file: analytics/Dockerfile
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/ose-analytics-job:latest
+            ${{ env.REGISTRY }}/ose-analytics-job:${{ github.sha }}
+
+      - name: Point the job definition at the new image
+        if: ${{ vars.SCW_ANALYTICS_JOB_DEF_ID != '' }}
+        env:
+          JOB_DEF_ID: ${{ vars.SCW_ANALYTICS_JOB_DEF_ID }}
+          IMAGE: ${{ env.REGISTRY }}/ose-analytics-job:${{ github.sha }}
+          REGION: ${{ vars.SCW_REGION }}
+        run: |
+          # Env vars, secrets, and the cron schedule are configured once at creation
+          # (see analytics/README.md). Here we only roll the image forward.
+          scw jobs definition update "$JOB_DEF_ID" region="$REGION" image-uri="$IMAGE"
+
+      - name: Job definition not created yet (first run)
+        if: ${{ vars.SCW_ANALYTICS_JOB_DEF_ID == '' }}
+        run: |
+          echo "::notice::Image pushed to the registry. SCW_ANALYTICS_JOB_DEF_ID is not set yet —"
+          echo "::notice::create the Serverless Job definition (see analytics/README.md), set the"
+          echo "::notice::SCW_ANALYTICS_JOB_DEF_ID variable, then re-run this workflow."
