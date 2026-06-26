@@ -23,8 +23,8 @@
 # Optional:
 #   LOOKBACK_DAYS     how far back to query (default 6 — 2x the 3-day cadence,
 #                     so a single missed run self-heals on the next run)
-#   LOG_SELECTOR      LogQL stream selector
-#                     (default '{resource_name="ose-chat-function"}')
+#   LOG_SELECTOR      LogQL stream selector (default '{resource_type=~".+"}' —
+#                     any serverless stream; the |= ANALYTICS filter narrows it)
 
 set -euo pipefail
 
@@ -36,7 +36,13 @@ set -euo pipefail
 : "${SCW_SECRET_KEY:?SCW_SECRET_KEY is required}"
 
 LOOKBACK_DAYS="${LOOKBACK_DAYS:-6}"
-LOG_SELECTOR="${LOG_SELECTOR:-{resource_name=\"ose-chat-function\"}}"
+# Default matches any Scaleway serverless log stream; the `|= ANALYTICS` line filter
+# below does the real narrowing (only the chat function emits ANALYTICS lines).
+# Override via the LOG_SELECTOR env var. NOTE: assign with an if, not `${VAR:-{...}}`
+# — brace-nesting in a default value mis-parses and appends a stray `}`.
+if [ -z "${LOG_SELECTOR:-}" ]; then
+  LOG_SELECTOR='{resource_type=~".+"}'
+fi
 
 # Loki wants nanosecond epochs. Pure arithmetic — no GNU `date -d` (busybox-safe).
 NOW_S="$(date -u +%s)"
