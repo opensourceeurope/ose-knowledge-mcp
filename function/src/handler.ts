@@ -7,6 +7,31 @@ import { PAGE_MAP } from "./pagemap.generated.js";
 export interface ChatRequest { messages: ChatMessage[]; analyticsOptIn?: boolean; }
 export interface Env { MISTRAL_API_KEY: string; MISTRAL_MODEL?: string; MISTRAL_BASE_URL?: string; OSE_MCP_URL: string; MAX_TOOL_ROUNDS?: string; }
 
+// Translate the agent's neutral message shape into the camelCase form the Mistral
+// SDK request schema expects. The SDK validates request messages with Zod and
+// silently strips unknown keys, so a snake_case `tool_calls` / `tool_call_id`
+// would be dropped — sending the assistant tool-call turn with no tool calls and
+// triggering a 400 ("Assistant message must have either content or tool_calls").
+export function toMistralMessages(messages: any[]): any[] {
+  return messages.map((m) => {
+    if (m.role === "assistant" && Array.isArray(m.tool_calls) && m.tool_calls.length > 0) {
+      return {
+        role: "assistant",
+        content: m.content ?? "",
+        toolCalls: m.tool_calls.map((tc: any) => ({
+          id: tc.id,
+          type: "function",
+          function: { name: tc.function.name, arguments: tc.function.arguments },
+        })),
+      };
+    }
+    if (m.role === "tool") {
+      return { role: "tool", name: m.name, toolCallId: m.tool_call_id, content: m.content };
+    }
+    return m;
+  });
+}
+
 export async function handleChat(body: ChatRequest, env: Env) {
   if (!body || !Array.isArray(body.messages) || body.messages.length === 0) {
     return { status: 400, json: { error: "messages[] required" } };
@@ -24,7 +49,7 @@ export async function handleChat(body: ChatRequest, env: Env) {
   const model = env.MISTRAL_MODEL || "mistral-small-latest";
 
   const mistralChat = async (messages: any[], tools: any[]) => {
-    const r = await client.chat.complete({ model, messages, tools, toolChoice: "auto", temperature: 0.2 });
+    const r = await client.chat.complete({ model, messages: toMistralMessages(messages), tools, toolChoice: "auto", temperature: 0.2 });
     const choice = r.choices?.[0]?.message;
     return {
       content: (choice?.content as string) ?? null,
