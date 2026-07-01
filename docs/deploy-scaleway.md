@@ -5,10 +5,12 @@ The container image is built from `.opencrane/Dockerfile` (build context = repo 
 MCP Streamable HTTP on port `8000`. The canonical MCP path is `<endpoint>/http` (`<endpoint>/mcp`
 works too as a legacy alias), with a health probe at `<endpoint>/health`.
 
-Deployment is automated by the [`deploy-mcp.yml`](../.github/workflows/deploy-mcp.yml) GitHub Actions
-workflow: it builds the image, pushes it to the Scaleway Container Registry, and rolls it out to an
-already-created serverless container. The one-time infrastructure below is created manually by a
-maintainer using the `scw` CLI; the workflow only updates the running container with new images.
+Deployment is automated by the `deploy` job in [`release.yml`](../.github/workflows/release.yml):
+on every release it builds the image, pushes it to the Scaleway Container Registry, and rolls it out to an
+already-created serverless container. The same job is runnable on its own via `workflow_dispatch` (pass an
+already-published `version`) to redeploy without cutting a release. The one-time infrastructure below is
+created manually by a maintainer using the `scw` CLI; the workflow only updates the running container with
+new images.
 
 ## One-time setup
 
@@ -85,9 +87,11 @@ Scaleway-documented way to authenticate Docker against the Container Registry.
 
 ## Running a deploy
 
-The normal shipping path is publishing a **GitHub release** — that triggers this workflow
-automatically (`release: types: [published]`), alongside the PyPI publish of the
-`ose-knowledge-mcp` package. `workflow_dispatch` is available for ad-hoc redeploys without
+The normal shipping path is **merging the release-please release PR** — that creates the
+GitHub Release, which triggers this workflow automatically (`release: types: [published]`),
+alongside the PyPI publish of the `ose-knowledge-mcp` package. You don't tag or publish a
+release by hand; release-please does it from conventional commits on `main` (see the
+`dev-workflow` skill). `workflow_dispatch` is still available for ad-hoc redeploys without
 a release. To deploy manually from the GitHub UI:
 
 1. Go to the **Actions** tab.

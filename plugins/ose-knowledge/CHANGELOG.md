@@ -1,5 +1,3 @@
 # Changelog
 
-## 0.1.0
-
-- Initial release: `ose-researcher` agent + `ose-knowledge` MCP server registration.
+The changelog now lives at the repo root: [CHANGELOG.md](../../CHANGELOG.md). It is maintained by release-please — do not hand-edit.

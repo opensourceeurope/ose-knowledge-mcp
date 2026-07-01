@@ -1,23 +1,32 @@
-name: Release — publish to PyPI + deploy MCP
+name: Release
 
-# On a GitHub release: build the ose-knowledge-mcp package (with the baked Milvus index)
-# and publish it to PyPI via trusted publishing (OIDC, no token), THEN deploy the MCP
-# container — which simply installs that just-published package and serves its bundled
-# index. The deploy job reuses the index the publish job already built; it does NOT
-# rebuild fetch/chunk/embed/index. The single source of truth for the index is this
-# publish job.
+# Conventional commits on main drive releases end-to-end in ONE workflow.
+# release-please maintains a rolling "release PR" that bumps the version,
+# regenerates CHANGELOG.md + plugin.json's version, and syncs the mcp pin.
+# Merging that PR makes release-please tag vX.Y.Z + cut a GitHub Release; in the
+# SAME run its `releases_created` output gates the publish + deploy jobs below
+# (build + PyPI publish + container/function/chat deploy). There is no separate
+# `release: published` handoff anymore — everything happens in this run.
+#
+# RELEASE_TOKEN (repo secret — fine-grained PAT or GitHub App token with
+# "Contents: read/write" + "Pull requests: read/write" on this repo): used for the
+# release-please checkout so (a) the mcp-sync step can push back onto the release-PR
+# branch and (b) the release PR gets CI runs (commits made by the default
+# GITHUB_TOKEN do not trigger other workflows). ONE-TIME MAINTAINER SETUP: create
+# this secret or the release PR won't get CI and the sync push will fail.
 #
 # PyPI trusted publisher (one-time, pypi.org): project "ose-knowledge-mcp" → repo
-# opensourceeurope/ose-knowledge-mcp, workflow publish-pypi.yml (no GitHub environment).
-# NOTE: keep this file named publish-pypi.yml — the OIDC workflow_ref must match.
+# opensourceeurope/ose-knowledge-mcp, workflow release.yml (no GitHub
+# environment). NOTE: the OIDC workflow_ref must match THIS file's name
+# (release.yml). If you rename this file, update the PyPI trusted publisher.
 #
 # Deploy needs (added by the maintainer):
 #   secrets: SCW_ACCESS_KEY, SCW_SECRET_KEY, SCW_DEFAULT_PROJECT_ID, SCW_DEFAULT_ORGANIZATION_ID
 #   variables: SCW_REGION, SCW_REGISTRY_NAMESPACE, SCW_CONTAINER_ID
 
 on:
-  release:
-    types: [published]
+  push:
+    branches: [main]
   workflow_dispatch:
     inputs:
       version:
@@ -25,15 +34,71 @@ on:
         required: true
 
 permissions:
-  contents: read
+  contents: write
+  pull-requests: write
 
 concurrency:
   group: release
   cancel-in-progress: false
 
 jobs:
+  release-please:
+    if: ${{ github.event_name == 'push' }}
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      pull-requests: write
+    outputs:
+      released: ${{ steps.release.outputs.releases_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+    steps:
+      # Checked out with RELEASE_TOKEN so the sync step below can push back onto
+      # the release-PR branch. fetch-depth 0 makes any release-PR branch fetchable.
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          token: ${{ secrets.RELEASE_TOKEN }}
+          fetch-depth: 0
+
+      - id: release
+        uses: googleapis/release-please-action@5c625bfb5d1ff62eadeeb3772007f7f66fdcf071 # v4.4.1
+        with:
+          token: ${{ secrets.RELEASE_TOKEN }}
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+      # Sync the mcp package pin (.mcp.json + chat/index.html) onto the open release PR.
+      # release-please can't cleanly rewrite `ose-knowledge-mcp==X.Y.Z` itself (see
+      # scripts/sync-mcp-version.sh). Runs whenever a release PR exists; idempotent, so
+      # re-running as the PR is recreated is safe. Uses RELEASE_TOKEN for the
+      # checkout so the follow-up commit can be pushed back onto the PR branch.
+      - name: Sync mcp version onto the release PR
+        if: ${{ steps.release.outputs.pr }}
+        env:
+          GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          PR_JSON: ${{ steps.release.outputs.pr }}
+        run: |
+          BRANCH="$(printf '%s' "$PR_JSON" | python3 -c 'import json,sys; print(json.load(sys.stdin)["headBranchName"])')"
+          echo "Release PR branch: $BRANCH"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin "$BRANCH"
+          git checkout "$BRANCH"
+          # The manifest on the PR branch already carries the bumped version.
+          ./scripts/sync-mcp-version.sh
+          if git diff --quiet; then
+            echo "No pin changes to commit."
+          else
+            git add plugins/ose-knowledge/.mcp.json chat/index.html
+            git commit -m "chore: sync ose-knowledge-mcp pin to release version"
+            git push origin "HEAD:$BRANCH"
+          fi
+
+  # Fires only in the same run that release-please actually cut a release (the run
+  # where the release PR was merged). Builds the package with the baked Milvus index
+  # and publishes to PyPI via trusted publishing (OIDC, no token).
   publish:
-    if: ${{ github.event_name == 'release' }}
+    needs: release-please
+    if: ${{ needs.release-please.outputs.released == 'true' }}
     runs-on: ubuntu-24.04
     permissions:
       contents: read
@@ -60,10 +125,12 @@ jobs:
           done
           uvx opencrane index
 
-      # The version comes from the GitHub release tag, "v" stripped (v0.0.4 -> 0.0.4).
+      # The version comes from the release tag release-please just created, "v" stripped.
       - name: Pack the MCP package
+        env:
+          TAG_NAME: ${{ needs.release-please.outputs.tag_name }}
         run: |
-          VERSION="${GITHUB_REF_NAME#v}"
+          VERSION="${TAG_NAME#v}"
           echo "Packing ose-knowledge-mcp version $VERSION"
           uvx opencrane pack --name ose-knowledge-mcp --version "$VERSION" --output .opencrane/pack
 
@@ -78,10 +145,12 @@ jobs:
           packages-dir: .opencrane/pack/dist
 
   deploy:
-    needs: [publish]
-    # After a successful publish (release), or standalone via manual dispatch.
+    needs: [release-please, publish]
+    # After a successful publish (release run), or standalone via manual dispatch.
     if: ${{ !cancelled() && (needs.publish.result == 'success' || github.event_name == 'workflow_dispatch') }}
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
     env:
       SCW_ACCESS_KEY: ${{ secrets.SCW_ACCESS_KEY }}
       SCW_SECRET_KEY: ${{ secrets.SCW_SECRET_KEY }}
@@ -98,10 +167,10 @@ jobs:
         id: ver
         env:
           EVENT: ${{ github.event_name }}
-          REF_NAME: ${{ github.ref_name }}
+          TAG_NAME: ${{ needs.release-please.outputs.tag_name }}
           INPUT_VERSION: ${{ inputs.version }}
         run: |
-          if [ "$EVENT" = "release" ]; then V="${REF_NAME#v}"; else V="$INPUT_VERSION"; fi
+          if [ "$EVENT" = "workflow_dispatch" ]; then V="$INPUT_VERSION"; else V="${TAG_NAME#v}"; fi
           echo "$V" | grep -qE '^[0-9A-Za-z.+_-]+$' || { echo "::error::invalid version '$V'"; exit 1; }
           echo "version=$V" >> "$GITHUB_OUTPUT"
           echo "Deploying ose-knowledge-mcp==$V"
@@ -150,8 +219,10 @@ jobs:
 
   # The chat function is independent of the PyPI package, but it bundles the persona +
   # pagemap (derived from the chunks), so redeploy it on every release to pick up refreshed
-  # citation links. Reusable workflow (also runnable on its own for function-only fixes).
+  # citation links. Runs on a release run or a manual dispatch, independent of publish.
   deploy-function:
+    needs: [release-please]
+    if: ${{ !cancelled() && (needs.release-please.outputs.released == 'true' || github.event_name == 'workflow_dispatch') }}
     uses: ./.github/workflows/deploy-function.yml
     secrets:
       SCW_ACCESS_KEY: ${{ secrets.SCW_ACCESS_KEY }}
@@ -164,6 +235,7 @@ jobs:
   # the CHAT_FUNCTION_URL variable). Completes the chat end-to-end on every release.
   deploy-chat:
     needs: deploy-function
+    if: ${{ !cancelled() && needs.deploy-function.result == 'success' }}
     uses: ./.github/workflows/deploy-chat.yml
     secrets:
       SCW_ACCESS_KEY: ${{ secrets.SCW_ACCESS_KEY }}

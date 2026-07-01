@@ -157,6 +157,19 @@ a { color: inherit; }
 
 .header-nav { display: flex; align-items: center; gap: 18px; }
 
+/* Icon-only link (GitHub / source) */
+.icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--text-muted);
+  transition: color 0.2s ease, background 0.2s ease;
+}
+.icon-link:hover { color: var(--text); background: var(--raised); }
+
 /* ============================================================
    Buttons
    ============================================================ */
@@ -314,6 +327,18 @@ a { color: inherit; }
   font-size: 0.95em;
 }
 .snippet__hint a { color: var(--text-soft); }
+
+/* Prose body inside a snippet box (Sovereignty panel — no code, no copy button) */
+.snippet__hint--body {
+  padding: 16px;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--text-soft);
+}
+.snippet__hint--body code {
+  color: var(--ose-cyan);
+  font-size: 0.9em;
+}
 
 /* ============================================================
    Chat
@@ -541,22 +566,28 @@ a { color: inherit; }
 }
 .composer__row {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   gap: 12px;
 }
 .composer__field {
   flex: 1;
   display: flex;
   align-items: flex-end;
-  background: var(--ose-ink);
-  border: 1px solid var(--border);
-  border-radius: var(--ose-radius-pill);
-  padding: 6px 20px;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  /* Signature gradient border (padding-box ink core + border-box gradient) so the
+     primary input reads as THE thing to interact with, matching the .ring buttons. */
+  border: 2px solid transparent;
+  background:
+    linear-gradient(var(--ose-ink), var(--ose-ink)) padding-box,
+    var(--ose-gradient) border-box;
+  /* Rounded-rect, not a full pill: a single line still reads as a rounded input,
+     but multi-line no longer balloons into a giant stadium shape. */
+  border-radius: var(--ose-radius-card);
+  padding: 8px 22px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+  transition: box-shadow 0.2s ease;
 }
 .composer__field:focus-within {
-  border-color: rgba(255, 255, 255, 0.4);
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 3px rgba(159, 231, 245, 0.18), 0 8px 28px rgba(0, 0, 0, 0.34);
 }
 .composer__input {
   flex: 1;
@@ -573,6 +604,27 @@ a { color: inherit; }
   outline: none;
 }
 .composer__input::placeholder { color: var(--text-muted); }
+
+/* Demo disclaimer under the composer */
+.chat-footnote {
+  margin: 0;
+  padding: 14px 22px 20px;
+  border-top: 1px solid var(--border-soft);
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  font-weight: 300;
+  text-align: center;
+}
+.chat-footnote strong { color: var(--text-soft); font-weight: 600; }
+.chat-footnote__link {
+  color: var(--text-soft);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.chat-footnote__link:hover { color: var(--ose-cyan); }
 
 /* Opt-in analytics toggle */
 .optin {
@@ -624,20 +676,6 @@ a { color: inherit; }
 .optin__muted { color: var(--text-muted); }
 
 /* ============================================================
-   Footer
-   ============================================================ */
-.site-footer {
-  padding: 28px 0 40px;
-  text-align: center;
-}
-.site-footer p {
-  margin: 0;
-  font-size: 13px;
-  color: var(--text-muted);
-  font-weight: 300;
-}
-
-/* ============================================================
    Reduced motion — disable all entrance animation
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
@@ -660,7 +698,8 @@ a { color: inherit; }
   /* keep the vw-driven title from the base rule so line two never wraps */
   .hero__eyebrow { letter-spacing: 0.1em; }
 
-  .header-inner { height: 60px; gap: 10px; }
+  .header-inner { height: 60px; gap: 8px; }
+  .header-nav { gap: 8px; }
   .logo img { width: 76px; height: 32px; }
   .ring__inner { padding: 8px 12px; font-size: 12.5px; }
   /* swap the long header label for the short one */
@@ -678,6 +717,4 @@ a { color: inherit; }
   .msg__bubble { font-size: 14.5px; padding: 11px 13px; }
 
   .citation-chip { max-width: 100%; }
-
-  .site-footer { padding: 20px 0 28px; }
 }

@@ -87,5 +87,8 @@ hosted endpoint works the same way.
 - **The chat function is thin and optional.** It exists only because a *public, static* website
   cannot hold an API key or run the agent loop itself. Drop `chat/` + `function/` and the product
   is still complete: MCP + plugin + PyPI package.
-- **Release tracks are independent:** `publish-pypi.yml` ships the local package, `deploy-mcp.yml`
-  ships the hosted MCP, and `deploy-chat.yml` ships only the website.
+- **One release run ships all tracks:** merging the release PR runs `release.yml`, which in the
+  same run publishes the `ose-knowledge-mcp` PyPI package, deploys the hosted MCP container, and
+  redeploys the chat function + page — each as a downstream job gated on release-please's
+  `releases_created` output. `deploy-chat.yml` / `deploy-function.yml` remain reusable workflows that
+  can also be run on their own.

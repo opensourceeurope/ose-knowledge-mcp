@@ -19,9 +19,15 @@
         <img src="ose-logo.svg" alt="Open Source Europe" width="95" height="40" />
       </a>
       <nav class="header-nav">
-        <button class="ring" type="button" id="toolsToggle" aria-expanded="false" aria-controls="toolsPanel">
-          <span class="ring__inner"><span class="label-full">Use it in your own tools or locally</span><span class="label-short">Tools &amp; local use</span></span>
+        <button class="ring" type="button" id="sovToggle" aria-expanded="false" aria-controls="sovPanel">
+          <span class="ring__inner">Sovereignty</span>
         </button>
+        <button class="ring" type="button" id="toolsToggle" aria-expanded="false" aria-controls="toolsPanel">
+          <span class="ring__inner"><span class="label-full">Local-first</span><span class="label-short">Local-first</span></span>
+        </button>
+        <a class="icon-link" href="https://github.com/opensourceeurope/ose-knowledge-mcp" target="_blank" rel="noopener" aria-label="Source code on GitHub (opens in a new tab)">
+          <svg viewBox="0 0 16 16" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+        </a>
       </nav>
     </div>
   </header>
@@ -41,12 +47,12 @@
     <section id="toolsPanel" class="tools-panel reveal" data-reveal="2" hidden>
       <div class="tools-panel__head">
         <h2 class="tools-panel__title">Use it in your own tools — or run it locally</h2>
-        <p class="tools-panel__sub">The OSE knowledge base speaks MCP. Wire it into your editor, install the Claude Code plugin, or clone the repo and run this whole chat on your machine.</p>
+        <p class="tools-panel__sub">The OSE knowledge RAG speaks MCP. Wire it into your editor, install the Claude Code plugin, or clone the repo and run this whole chat on your machine.</p>
       </div>
       <div class="tools-grid">
         <div class="snippet">
           <div class="snippet__bar">
-            <span class="snippet__label">Any MCP client — .mcp.json</span>
+            <span class="snippet__label">Any agentic tool — MCP config</span>
             <button class="btn btn--copy" type="button" data-copy="mcpJson">Copy</button>
           </div>
           <pre class="snippet__code"><code id="mcpJson">{
@@ -54,11 +60,11 @@
     "ose-knowledge": {
       "type": "stdio",
       "command": "uvx",
-      "args": ["ose-knowledge-mcp"]
+      "args": ["ose-knowledge-mcp==0.1.0"]
     }
   }
 }</code></pre>
-          <p class="snippet__hint">One package, zero install — the whole knowledge base runs on your machine.</p>
+          <p class="snippet__hint">One package, zero install — the whole knowledge RAG runs on your machine.</p>
         </div>
         <div class="snippet">
           <div class="snippet__bar">
@@ -67,6 +73,7 @@
           </div>
           <pre class="snippet__code"><code id="pluginCmds">/plugin marketplace add opensourceeurope/ose-knowledge-mcp
 /plugin install ose-knowledge@ai</code></pre>
+          <p class="snippet__hint">More than the MCP server — the plugin also ships an <code>ose-researcher</code> subagent tuned to query the knowledge RAG efficiently and return concise, cited answers.</p>
         </div>
         <div class="snippet snippet--wide">
           <div class="snippet__bar">
@@ -75,8 +82,31 @@
           </div>
           <pre class="snippet__code"><code id="localRun">git clone https://github.com/opensourceeurope/ose-knowledge-mcp.git
 cd ose-knowledge-mcp
+ollama pull mistral-small3.2   # the default local model
 ./scripts/run-local.sh</code></pre>
-          <p class="snippet__hint">Needs <code>uvx</code>, <code>npm</code>, <code>python3</code> and a running <a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a>. Starts the MCP server, the agent function and this chat UI on localhost — no API keys, nothing leaves your machine.</p>
+          <p class="snippet__hint">Needs <code>uvx</code>, <code>npm</code>, <code>python3</code> and a running <a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a>. Starts the MCP server, the agent function and this chat UI on localhost — no API keys, nothing leaves your machine. It uses <code>mistral-small3.2</code> by default; pull it first (the script won't download it for you). Already have another model? Point it at that instead — e.g. <code>OLLAMA_MODEL=llama3.1:8b ./scripts/run-local.sh</code>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- "Sovereign by design" collapsible panel -->
+    <section id="sovPanel" class="tools-panel reveal" data-reveal="2" hidden>
+      <div class="tools-panel__head">
+        <h2 class="tools-panel__title">Sovereign by design</h2>
+        <p class="tools-panel__sub">The entire request path runs on European infrastructure — from the moment you ask a question to the model that answers it. Nothing leaves the EU.</p>
+      </div>
+      <div class="tools-grid">
+        <div class="snippet">
+          <div class="snippet__bar"><span class="snippet__label">The AI model</span></div>
+          <p class="snippet__hint snippet__hint--body">Answers are generated by Mistral&nbsp;Small (<code>mistral-small-latest</code>) — a model built by the European provider <a href="https://mistral.ai" target="_blank" rel="noopener">Mistral</a> and run on its EU platform.</p>
+        </div>
+        <div class="snippet">
+          <div class="snippet__bar"><span class="snippet__label">Hosting</span></div>
+          <p class="snippet__hint snippet__hint--body">The static page, the serverless function and the MCP knowledge server all run on <a href="https://www.scaleway.com" target="_blank" rel="noopener">Scaleway</a> (EU).</p>
+        </div>
+        <div class="snippet snippet--wide">
+          <div class="snippet__bar"><span class="snippet__label">Your data</span></div>
+          <p class="snippet__hint snippet__hint--body">Your conversation lives only in your browser's memory. Ticking the analytics box simply turns on logging of the text you type — we drop it into a standard storage bucket hosted in the EU, where we can read and analyse it to spot gaps in the docs. Nothing else is stored.</p>
         </div>
       </div>
     </section>
@@ -119,14 +149,16 @@ cd ose-knowledge-mcp
           </span>
         </label>
       </form>
+      <p class="chat-footnote">
+        This chat is a public <strong>demo</strong> of the OSE knowledge RAG, running a small
+        default model. For the best answers — and as the recommended setup for day-to-day work
+        with Open Source Europe — connect the knowledge RAG to your own agent and LLM, almost
+        certainly more capable than the model here. See
+        <a href="#toolsPanel" id="demoToolsLink" class="chat-footnote__link">Local-first</a>
+        to integrate it.
+      </p>
     </section>
   </main>
-
-  <footer class="site-footer">
-    <div class="wrap">
-      <p>Sovereign by design — web hosting, domain management, server-side code and the AI model all run in Europe. Conversations are never persisted by us unless you explicitly allow it.</p>
-    </div>
-  </footer>
 
   <script src="config.js"></script>
   <script src="markdown.js"></script>

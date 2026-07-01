@@ -1,0 +1,63 @@
+name: Commit Lint
+
+# Lint PR commits against the Conventional Commits spec so release-please's version
+# calculation stays reliable (fix->patch, feat->minor, feat!/BREAKING CHANGE->major).
+# The result is posted as a sticky PR comment — pass or fail, you read it on the PR
+# instead of digging through the Actions logs.
+
+on:
+  pull_request: {}
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  commitlint:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Lint PR commits against the conventional-commit spec
+        id: commitlint
+        uses: wagoid/commitlint-github-action@b948419dd99f3fd78a6548d48f94e3df7f6bf3ed # v6.2.1
+        with:
+          configFile: .commitlintrc.json
+          failOnErrors: true
+
+      # Render the lint outcome to a markdown file. Runs even when the lint step failed
+      # (that's the case we most want to surface), using its `results` JSON output.
+      - name: Build the sticky-comment body
+        if: ${{ always() && steps.commitlint.outcome != 'skipped' }}
+        env:
+          RESULTS: ${{ steps.commitlint.outputs.results }}
+        run: |
+          printf '%s' "$RESULTS" > results.json
+          total=$(jq 'length' results.json)
+          invalid=$(jq '[.[] | select(.valid == false)] | length' results.json)
+          {
+            echo "## Commit Lint"
+            echo
+            if [ "${invalid:-0}" -eq 0 ]; then
+              echo "✅ All ${total:-0} commit(s) follow the [Conventional Commits](https://www.conventionalcommits.org) spec."
+            else
+              echo "❌ ${invalid} of ${total} commit(s) don't follow [Conventional Commits](https://www.conventionalcommits.org):"
+              echo
+              jq -r '.[] | select(.valid == false)
+                | "- **" + ((.message | split("\n")[0])) + "**\n"
+                  + ([.errors[]? | "    - " + (.message // (. | tostring))] | join("\n"))' results.json
+              echo
+              echo "Reword the offending commit(s). Types: \`feat\` (minor), \`fix\` (patch), \`feat!\`/\`BREAKING CHANGE\` (major), plus \`docs\` \`chore\` \`ci\` \`refactor\` \`test\` \`perf\`."
+            fi
+          } > comment.md
+          cat comment.md
+
+      - name: Post/update the sticky PR comment
+        if: ${{ always() && steps.commitlint.outcome != 'skipped' }}
+        uses: marocchino/sticky-pull-request-comment@0ea0beb66eb9baf113663a64ec522f60e49231c0 # v3.0.4
+        with:
+          header: commitlint
+          path: comment.md

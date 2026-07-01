@@ -14,7 +14,7 @@ name: Deploy chat function to Scaleway
 # Its public URL becomes the CHAT_FUNCTION_URL variable used by deploy-chat.yml.
 
 on:
-  workflow_call:         # invoked by the release pipeline (publish-pypi.yml)
+  workflow_call:         # invoked by the release pipeline (release.yml)
     secrets:
       SCW_ACCESS_KEY: { required: true }
       SCW_SECRET_KEY: { required: true }

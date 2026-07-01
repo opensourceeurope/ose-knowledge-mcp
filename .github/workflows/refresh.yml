@@ -55,7 +55,8 @@ jobs:
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No source changes this week."
           else
-            git commit -m "chore(refresh): update OSE knowledge sources ($(date -u +%Y-%m-%d))"
+            # `fix:` (not `chore:`) so release-please rolls this into the release PR — see below.
+            git commit -m "fix(knowledge): refresh OSE knowledge sources ($(date -u +%Y-%m-%d))"
             # checkout ran with persist-credentials:false, so push with a step-scoped token.
             # GH_TOKEN / GITHUB_REPOSITORY are plain shell env vars here.
             remote="https://x-access-token:$GH_TOKEN@github.com/$GITHUB_REPOSITORY.git"
@@ -63,5 +64,8 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
-# Shipping is release-gated: creating a GitHub release triggers both the MCP
-# container deploy (deploy-mcp.yml) and the PyPI publish (publish-pypi.yml).
+# Shipping: the refresh commit is a `fix:`, so release-please rolls it into the rolling
+# release PR (a patch bump). Merging that release PR cuts vX.Y.Z and, in the same run,
+# release.yml publishes ose-knowledge-mcp to PyPI and deploys the MCP container +
+# chat function + chat page with the refreshed knowledge baked in. (Fully hands-off weekly
+# shipping would additionally require auto-merging the release PR — not enabled here.)

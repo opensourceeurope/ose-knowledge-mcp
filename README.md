@@ -146,10 +146,21 @@ exact `scw` / `aws s3 sync` commands and the cost/sovereignty posture — is in
 - **Chat deploy** (`.github/workflows/deploy-chat.yml`): manual `workflow_dispatch`; renders
   `chat/config.js` from repo variables and uploads the static page to Scaleway Object Storage
   via `aws s3 sync` — see [`docs/deploy-chat.md`](docs/deploy-chat.md).
-- **Release = ship**: publishing a GitHub release triggers both
-  - **Deploy** (`.github/workflows/deploy-mcp.yml`): builds + pushes the image and updates the
-    Scaleway serverless container (see `docs/deploy-scaleway.md`); also runnable manually.
-  - **PyPI publish** (`.github/workflows/publish-pypi.yml`): packs the knowledge base into
-    the `ose-knowledge-mcp` package (`opencrane pack` + `python -m build`) and publishes it via
-    PyPI trusted publishing. The version comes from the release tag (tag `v2026.6.7` →
-    version `2026.6.7`).
+- **Release automation** (`.github/workflows/release.yml`): you never cut a release by
+  hand. Conventional commits on `main` (`fix:`→patch, `feat:`→minor, `feat!:`/`BREAKING CHANGE`→major)
+  drive [release-please](https://github.com/googleapis/release-please), which maintains a rolling
+  **release PR** that bumps the version, regenerates `CHANGELOG.md`, and updates the
+  `ose-knowledge-mcp` version everywhere (`plugin.json`, `.mcp.json`, and the `chat/` snippet).
+  Merging that PR tags `vX.Y.Z` + creates the GitHub Release. `commitlint.yml` enforces the commit
+  format. Needs the `RELEASE_TOKEN` secret so the release PR gets CI and the mcp-pin sync can push
+  back onto it. See the `dev-workflow` skill for the full flow.
+- **Release = ship**: publish + deploy live in the *same* `release.yml` run — the release-PR
+  merge that cuts `vX.Y.Z` triggers them via release-please's `releases_created` output (no separate
+  release-event workflow):
+  - **PyPI publish**: packs the knowledge base into the `ose-knowledge-mcp` package
+    (`opencrane pack` + `uv build`) and publishes it via PyPI trusted publishing. The version comes
+    from the release tag (tag `v0.2.0` → version `0.2.0`).
+  - **Deploy**: builds + pushes the image and updates the Scaleway serverless container (see
+    `docs/deploy-scaleway.md`); also runnable on its own via `workflow_dispatch` to redeploy an
+    already-published version.
+  - **Chat function + page**: redeployed on every release so refreshed citation links ship too.

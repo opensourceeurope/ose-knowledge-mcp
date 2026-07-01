@@ -1,8 +1,9 @@
 {
   "mcpServers": {
     "ose-knowledge": {
-      "type": "http",
-      "url": "https://ose-mcp.PLACEHOLDER.scw.cloud/http"
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["ose-knowledge-mcp==0.1.0"]
     }
   }
 }

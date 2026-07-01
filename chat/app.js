@@ -18,20 +18,47 @@
   var sendBtn = document.getElementById("send");
   var optIn = document.getElementById("analyticsOptIn");
 
-  /* ---------- "Use it in your own tools" panel ---------- */
+  /* ---------- Header disclosure panels (accordion) ---------- */
   var toolsToggle = document.getElementById("toolsToggle");
   var toolsPanel = document.getElementById("toolsPanel");
+  var sovToggle = document.getElementById("sovToggle");
+  var sovPanel = document.getElementById("sovPanel");
 
-  toolsToggle.addEventListener("click", function () {
-    var open = toolsPanel.hasAttribute("hidden");
-    if (open) {
-      toolsPanel.removeAttribute("hidden");
-    } else {
-      toolsPanel.setAttribute("hidden", "");
-    }
-    toolsToggle.setAttribute("aria-expanded", String(open));
-    if (open) toolsPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  // The two full-width panels share the same spot, so opening one closes the other.
+  var panels = [
+    { toggle: toolsToggle, panel: toolsPanel },
+    { toggle: sovToggle, panel: sovPanel },
+  ];
+
+  function setPanel(entry, open) {
+    if (open) entry.panel.removeAttribute("hidden");
+    else entry.panel.setAttribute("hidden", "");
+    entry.toggle.setAttribute("aria-expanded", String(open));
+  }
+
+  function openPanel(entry) {
+    var open = entry.panel.hasAttribute("hidden");
+    panels.forEach(function (other) {
+      setPanel(other, other === entry ? open : false);
+    });
+    if (open) entry.panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  panels.forEach(function (entry) {
+    entry.toggle.addEventListener("click", function () { openPanel(entry); });
   });
+
+  // In-page link that opens a panel: demo footnote "Local-first" -> toolsPanel.
+  function wirePanelLink(id, entry) {
+    var link = document.getElementById(id);
+    if (!link) return;
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (entry.panel.hasAttribute("hidden")) openPanel(entry);
+      else entry.panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  }
+  wirePanelLink("demoToolsLink", panels[0]);
 
   // Copy-to-clipboard buttons.
   document.querySelectorAll(".btn--copy").forEach(function (btn) {
