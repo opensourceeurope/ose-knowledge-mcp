@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.1.0...v0.1.1) (2026-07-01)
+
+
+### Bug Fixes
+
+* **release:** resolve zizmor excessive-permissions and artipacked findings ([#2](https://github.com/opensourceeurope/ose-knowledge-mcp/issues/2)) ([b98d2d8](https://github.com/opensourceeurope/ose-knowledge-mcp/commit/b98d2d87efda1761212166507e5b2bf957c6c759))
+
 ## [0.1.0](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.0.13...v0.1.0) (2026-07-01)
 
 
