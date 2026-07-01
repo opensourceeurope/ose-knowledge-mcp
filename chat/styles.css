@@ -237,11 +237,18 @@ a { color: inherit; }
 .hero__title {
   margin: 0 0 16px;
   font-weight: 600; /* site headings are semibold, not extrabold */
-  font-size: clamp(2.5rem, 6.4vw, 4rem);
-  line-height: 1.0;
+  /* vw drives the size so "Open Source Europe" always fits on one line;
+     it shrinks on tiny screens rather than wrapping. Capped at 4rem. */
+  font-size: clamp(1.5rem, 8.5vw, 4rem);
+  line-height: 1.05;
   letter-spacing: -0.01em;
   color: var(--text);
 }
+/* "Ask" on line one, "Open Source Europe" on line two — the second line
+   must never break, so scale the font (above) instead of wrapping it. */
+.hero__title-lead,
+.hero__title-main { display: block; }
+.hero__title-main { white-space: nowrap; }
 .hero__lede {
   margin: 0;
   font-size: clamp(1rem, 2.2vw, 1.15rem);
@@ -650,7 +657,7 @@ a { color: inherit; }
   .main { padding: 28px 0 24px; }
 
   .hero { margin-bottom: 26px; }
-  .hero__title { font-size: clamp(2rem, 9vw, 2.5rem); }
+  /* keep the vw-driven title from the base rule so line two never wraps */
   .hero__eyebrow { letter-spacing: 0.1em; }
 
   .header-inner { height: 60px; gap: 10px; }

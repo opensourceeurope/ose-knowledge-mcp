@@ -118,6 +118,15 @@ wait_http() { # url name timeout_s — any HTTP response counts as up
   return 1
 }
 
+# The embedding model runs locally, but sentence-transformers revalidates its
+# HuggingFace cache over the network on every startup (~40 HEAD requests, several
+# seconds). Once the model is cached, go offline so it loads straight from disk.
+# Skipped on a cold cache so the first run can still download the model.
+HF_CACHE="${HF_HOME:-$HOME/.cache/huggingface}/hub"
+if [ -d "$HF_CACHE/models--nomic-ai--nomic-embed-text-v1.5" ]; then
+  export HF_HUB_OFFLINE=1
+fi
+
 echo "==> Starting MCP server on :$MCP_PORT (log: $LOG_DIR/mcp.log)"
 MILVUS_DB_PATH=.opencrane/milvus.db MCP_HTTP_PORT="$MCP_PORT" uvx opencrane serve --transport http >"$LOG_DIR/mcp.log" 2>&1 &
 wait_http "http://localhost:$MCP_PORT/mcp" "MCP server" 120
