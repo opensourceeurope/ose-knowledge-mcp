@@ -33,9 +33,11 @@ on:
         description: "Already-published version to (re)deploy to Scaleway, e.g. 0.0.4"
         required: true
 
+# Least-privilege default for the whole workflow. The only job that needs write
+# (release-please) grants itself contents/pull-requests write at the job level;
+# every other job — and the reusable deploy-* workflows — only reads.
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
 
 concurrency:
   group: release
@@ -52,12 +54,13 @@ jobs:
       released: ${{ steps.release.outputs.releases_created }}
       tag_name: ${{ steps.release.outputs.tag_name }}
     steps:
-      # Checked out with RELEASE_TOKEN so the sync step below can push back onto
-      # the release-PR branch. fetch-depth 0 makes any release-PR branch fetchable.
+      # fetch-depth 0 makes any release-PR branch fetchable. persist-credentials:
+      # false keeps the token out of .git/config; the sync step below injects
+      # RELEASE_TOKEN into the origin URL only for its own fetch/push.
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
-          token: ${{ secrets.RELEASE_TOKEN }}
           fetch-depth: 0
+          persist-credentials: false
 
       - id: release
         uses: googleapis/release-please-action@5c625bfb5d1ff62eadeeb3772007f7f66fdcf071 # v4.4.1
@@ -69,8 +72,9 @@ jobs:
       # Sync the mcp package pin (.mcp.json + chat/index.html) onto the open release PR.
       # release-please can't cleanly rewrite `ose-knowledge-mcp==X.Y.Z` itself (see
       # scripts/sync-mcp-version.sh). Runs whenever a release PR exists; idempotent, so
-      # re-running as the PR is recreated is safe. Uses RELEASE_TOKEN for the
-      # checkout so the follow-up commit can be pushed back onto the PR branch.
+      # re-running as the PR is recreated is safe. The checkout above ran with
+      # persist-credentials: false, so this step injects RELEASE_TOKEN into the origin
+      # URL to authenticate its own fetch + push back onto the release-PR branch.
       - name: Sync mcp version onto the release PR
         if: ${{ steps.release.outputs.pr }}
         env:
@@ -79,6 +83,7 @@ jobs:
         run: |
           BRANCH="$(printf '%s' "$PR_JSON" | python3 -c 'import json,sys; print(json.load(sys.stdin)["headBranchName"])')"
           echo "Release PR branch: $BRANCH"
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git fetch origin "$BRANCH"
