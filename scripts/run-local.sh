@@ -15,12 +15,22 @@
 #        OLLAMA_MODEL=llama3.1:8b ./scripts/run-local.sh       # different local model
 #        ./scripts/run-local.sh --hosted                       # real Mistral API
 #                                                              # (needs MISTRAL_API_KEY)
+#        ./scripts/run-local.sh --fresh                         # re-embed from scratch
+#                                                              # (drop the cached index first)
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
 
 OLLAMA_URL="${OLLAMA_URL:-http://localhost:11434}"
 OLLAMA_MODEL="${OLLAMA_MODEL:-mistral-small3.2}"
-MODE="${1:-offline}"
+MODE="offline"
+FRESH=0
+for arg in "$@"; do
+  case "$arg" in
+    --hosted) MODE="--hosted" ;;
+    --fresh)  FRESH=1 ;;
+    *) echo "ERROR: unknown argument '$arg' (expected --hosted and/or --fresh)." >&2; exit 1 ;;
+  esac
+done
 LOG_DIR="${TMPDIR:-/tmp}/ose-local-logs"
 mkdir -p "$LOG_DIR"
 
@@ -79,6 +89,12 @@ else
 fi
 
 # --- index inputs (fresh clone: embeddings are git-ignored, regenerate) -----
+# --fresh drops the cached index so changed build inputs (chunks.json/llmstxt/)
+# get re-embedded; the presence check below then triggers a rebuild.
+if [ "$FRESH" = 1 ]; then
+  echo "==> --fresh: removing cached index (.opencrane/milvus.db, .opencrane/embeddings.json)"
+  rm -f .opencrane/milvus.db .opencrane/embeddings.json
+fi
 if [ ! -f .opencrane/milvus.db ] && [ ! -f .opencrane/embeddings.json ]; then
   echo "==> No local index found; generating embeddings (one-time, takes a while)..."
   uvx opencrane embed

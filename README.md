@@ -19,6 +19,10 @@ instead of Mistral, so **no API key is needed** and nothing leaves your machine.
 Then run `./scripts/run-local.sh`. It serves the UI at http://localhost:8090 (ports auto-bump
 if busy) and, on first run, generates the embeddings index once (a few minutes).
 
+> **Note:** the index is regenerated only when it's missing. If you change the build inputs
+> (`chunks.json` / `llmstxt/`), run `./scripts/run-local.sh --fresh` to drop the cached index
+> and re-embed; otherwise the stale index is reused.
+
 Use the **hosted** Mistral API instead of Ollama:
 
     MISTRAL_API_KEY=... ./scripts/run-local.sh --hosted
