@@ -35,8 +35,7 @@ Prefer the hosted Mistral API, a different local model, or want the full config?
 A public, EU-hosted chat where anyone can ask about Open Source Europe and get cited answers —
 zero setup, just open it:
 
-<!-- Public chat URL — swap for the friendly domain (e.g. ask.opensourceeurope.org) once it's live. -->
-**→ https://ose-knowledge-chat.s3-website.pl-waw.scw.cloud**
+**→ https://ask.opensourceeurope.org**
 
 The entire request path is sovereign (Mistral EU for inference, everything hosted on Scaleway
 EU) and nothing is persisted in your browser. See [`docs/architecture.md`](docs/architecture.md)
