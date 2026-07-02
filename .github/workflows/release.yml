@@ -69,7 +69,7 @@ jobs:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
-      # Sync the mcp package pin (.mcp.json + chat/index.html) onto the open release PR.
+      # Sync the mcp package pin (.mcp.json + chat/index.html + README.md) onto the release PR.
       # release-please can't cleanly rewrite `ose-knowledge-mcp==X.Y.Z` itself (see
       # scripts/sync-mcp-version.sh). Runs whenever a release PR exists; idempotent, so
       # re-running as the PR is recreated is safe. The checkout above ran with
@@ -93,7 +93,7 @@ jobs:
           if git diff --quiet; then
             echo "No pin changes to commit."
           else
-            git add plugins/ose-knowledge/.mcp.json chat/index.html
+            git add plugins/ose-knowledge/.mcp.json chat/index.html README.md
             git commit -m "chore: sync ose-knowledge-mcp pin to release version"
             git push origin "HEAD:$BRANCH"
           fi

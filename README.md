@@ -70,7 +70,7 @@ search the OSE docs.
 **Any MCP client** (Claude Code, Cursor, Claude Desktop, …):
 
 ```bash
-claude mcp add ose-knowledge -- uvx ose-knowledge-mcp
+claude mcp add ose-knowledge -- uvx ose-knowledge-mcp==0.1.1
 ```
 
 or in the client's config:
@@ -78,10 +78,14 @@ or in the client's config:
 ```json
 {
   "mcpServers": {
-    "ose-knowledge": { "type": "stdio", "command": "uvx", "args": ["ose-knowledge-mcp"] }
+    "ose-knowledge": { "type": "stdio", "command": "uvx", "args": ["ose-knowledge-mcp==0.1.1"] }
   }
 }
 ```
+
+> The version is **pinned** on purpose (rather than floating on latest) so you always
+> get a known, reviewed build. These snippets are kept up to date automatically on each
+> release — see [`docs/automation.md`](docs/automation.md).
 
 ## How it works & more docs
 
