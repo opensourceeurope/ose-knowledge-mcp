@@ -97,8 +97,8 @@ commit feat:/fix:/feat!: to main
       - regenerates root CHANGELOG.md
       - writes the version into plugins/ose-knowledge/.claude-plugin/plugin.json ($.version)
       - a follow-up step runs scripts/sync-mcp-version.sh to rewrite the
-        `ose-knowledge-mcp==X.Y.Z` pin in .mcp.json + chat/index.html, committed
-        onto the PR branch
+        `ose-knowledge-mcp==X.Y.Z` pin in .mcp.json + chat/index.html + README.md,
+        committed onto the PR branch
   → merge the release PR → tag vX.Y.Z + GitHub Release, and IN THE SAME RUN
       release.yml's downstream jobs (gated on `releases_created`):
       build ose-knowledge-mcp==X.Y.Z, publish to PyPI, deploy container + function + chat.
@@ -128,6 +128,7 @@ the version across files):
 - `plugins/ose-knowledge/.claude-plugin/plugin.json` `version` — release-please `json` updater.
 - `plugins/ose-knowledge/.mcp.json` `ose-knowledge-mcp==` pin — the sync step.
 - `chat/index.html` local-first snippet `ose-knowledge-mcp==` pin — the sync step.
+- `README.md` quick-start `ose-knowledge-mcp==` pin (uvx + JSON config) — the sync step.
 - `.release-please-manifest.json` — release-please's version STATE file. This is not a design choice: the release-please v4 action is manifest-only and REQUIRES this file (the same machinery powers monorepo versioning). It is auto-managed, plain JSON (no comments possible) — never hand-edit it. We do NOT use a `pyproject.toml` as the source of truth: the package has no persistent Python project file (`opencrane pack --version` generates the package at build time from the git tag), so this manifest is just release-please's bookkeeping. The version you actually read/reason about is the git tag (and `plugin.json`).
 - git tags `vX.Y.Z` + GitHub Releases — created on release-PR merge.
 
