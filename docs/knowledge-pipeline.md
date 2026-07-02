@@ -1,6 +1,7 @@
 # Knowledge pipeline (OpenCrane)
 
-The knowledge base is built by an OpenCrane pipeline that fetches the OSE docs, chunks and
+The knowledge base is built by an [OpenCrane](https://github.com/derberg/OpenCrane) pipeline
+that fetches the OSE docs, chunks and
 embeds them, and indexes them into Milvus Lite for the `search_docs` MCP tool.
 
 ## Sources

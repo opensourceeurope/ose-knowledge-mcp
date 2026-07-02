@@ -1,6 +1,7 @@
 # OSE Knowledge RAG
 
-AI-powered documentation search for **Open Source Europe**, built with OpenCrane. It indexes
+AI-powered documentation search for **Open Source Europe**, built with
+[OpenCrane](https://github.com/derberg/OpenCrane). It indexes
 the OSE handbook + internal operations docs into a retrieval MCP server (the `search_docs`
 tool) and lets you use it three ways: run the whole chat locally, use the public hosted
 chat, or plug the knowledge base into your own AI tools.
@@ -19,13 +20,15 @@ browser. It runs **fully offline**: the agent talks to a local [Ollama](https://
 so no API key is needed and nothing leaves your machine.
 
 ```bash
+brew install ollama            # macOS · Linux: curl -fsSL https://ollama.com/install.sh | sh
+ollama serve &                 # start Ollama (or open the Ollama app)
 ollama pull mistral-small3.2   # one-time: the default local model
 ./scripts/run-local.sh         # serves the UI at http://localhost:8090
 ```
 
-**Prerequisites:** [`uv`](https://docs.astral.sh/uv/), Node 20+, and [Ollama](https://ollama.com)
-(running). The first run generates the embeddings index once (a few minutes); pass `--fresh`
-to rebuild it after changing the build inputs.
+**Prerequisites:** [`uv`](https://docs.astral.sh/uv/) and Node 20+ (plus
+[Ollama](https://ollama.com), installed above). The first run generates the embeddings index
+once (a few minutes); pass `--fresh` to rebuild it after changing the build inputs.
 
 Prefer the hosted Mistral API, a different local model, or want the full config? See
 [`function/README.md`](function/README.md).
