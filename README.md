@@ -50,6 +50,11 @@ The entire request path is sovereign (Mistral EU for inference, everything hoste
 EU) and nothing is persisted in your browser. See [`docs/architecture.md`](docs/architecture.md)
 for how it works.
 
+> **Note on answer quality:** the hosted chat runs on a small, cheap model (`mistral-small`),
+> so its answers won't match what you'd get from a larger model. For the best results, plug the
+> knowledge base into your own agent and use whatever model you already run — see
+> [Use it as an MCP server / Claude plugin](#use-it-as-an-mcp-server--claude-plugin) below.
+
 ## Use it as an MCP server / Claude plugin
 
 The knowledge base is published to PyPI as a standalone MCP package, so any MCP client can
