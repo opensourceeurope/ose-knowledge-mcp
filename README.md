@@ -20,15 +20,21 @@ browser. It runs **fully offline**: the agent talks to a local [Ollama](https://
 so no API key is needed and nothing leaves your machine.
 
 ```bash
-brew install ollama            # macOS · Linux: curl -fsSL https://ollama.com/install.sh | sh
+brew install uv ollama         # macOS (Linux install one-liners below)
 ollama serve &                 # start Ollama (or open the Ollama app)
 ollama pull mistral-small3.2   # one-time: the default local model
 ./scripts/run-local.sh         # serves the UI at http://localhost:8090
 ```
 
-**Prerequisites:** [`uv`](https://docs.astral.sh/uv/) and Node 20+ (plus
-[Ollama](https://ollama.com), installed above). The first run generates the embeddings index
-once (a few minutes); pass `--fresh` to rebuild it after changing the build inputs.
+On Linux, install [`uv`](https://docs.astral.sh/uv/) and [Ollama](https://ollama.com) with:
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh      # uv
+curl -fsSL https://ollama.com/install.sh | sh        # Ollama
+```
+
+**Also needed:** Node 20+. The first run generates the embeddings index once (a few minutes);
+pass `--fresh` to rebuild it after changing the build inputs.
 
 Prefer the hosted Mistral API, a different local model, or want the full config? See
 [`function/README.md`](function/README.md).
