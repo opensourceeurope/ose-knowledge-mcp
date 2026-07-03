@@ -67,5 +67,6 @@ jobs:
 # Shipping: the refresh commit is a `fix:`, so release-please rolls it into the rolling
 # release PR (a patch bump). Merging that release PR cuts vX.Y.Z and, in the same run,
 # release.yml publishes ose-knowledge-mcp to PyPI and deploys the MCP container +
-# chat function + chat page with the refreshed knowledge baked in. (Fully hands-off weekly
-# shipping would additionally require auto-merging the release PR — not enabled here.)
+# chat function + chat page with the refreshed knowledge baked in. Shipping is now fully
+# hands-off: release.yml arms GitHub auto-merge on the release PR, so once its CI is green
+# the PR merges itself and the publish + deploy chain runs — no manual merge needed.
