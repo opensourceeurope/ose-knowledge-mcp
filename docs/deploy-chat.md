@@ -55,6 +55,9 @@ There is **no custom rate-limiting** in the function itself. The spend controls 
 - **Request bodies are capped at 128 KiB** and chat history is trimmed to the last 12
   turns, bounding per-request token volume.
 
+For the measured token/€ cost per question and per session, see
+[`chat-cost.md`](chat-cost.md) (short version: ~€1.60 per 1,000 sessions).
+
 If you later need hard limits, add rate-limiting in front of the function (e.g. at the
 gateway/CDN) rather than in this code.
 
