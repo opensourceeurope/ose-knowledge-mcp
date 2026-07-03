@@ -20,13 +20,18 @@ continuously; **shipping is release-gated** — deploys happen only when a relea
   the README quick-start — via `scripts/sync-mcp-version.sh`, so the docs never promote a
   floating `latest`).
   `commitlint.yml` enforces the commit format. Needs the `RELEASE_TOKEN` secret so the release
-  PR gets CI and the mcp-pin sync can push back onto it.
+  PR gets CI and the mcp-pin sync can push back onto it. **The release PR auto-merges**:
+  `release.yml` arms GitHub native auto-merge on it, so once its CI (`validate` + `commitlint`)
+  is green it merges itself — no manual review. This needs "Allow auto-merge" on the repo and
+  branch protection on `main` requiring those two checks (the required check is what makes
+  auto-merge hold for green instead of merging instantly; "require a pull request" stays off so
+  the weekly refresh can keep pushing straight to `main`).
 
 ## Release = ship
 
 Publish + deploy run in the *same* `release.yml` run — merging the release PR that cuts
-`vX.Y.Z` triggers them via release-please's `releases_created` output (no separate
-release-event workflow):
+`vX.Y.Z` (auto-merged once green, see above) triggers them via release-please's
+`releases_created` output (no separate release-event workflow):
 
 - **PyPI publish**: packs the knowledge base into the `ose-knowledge-mcp` package
   (`opencrane pack` + `uv build`) and publishes it via PyPI trusted publishing. The version
