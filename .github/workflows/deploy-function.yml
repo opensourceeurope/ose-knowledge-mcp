@@ -95,12 +95,18 @@ jobs:
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
           MISTRAL_MODEL: ${{ vars.MISTRAL_MODEL }}
           MISTRAL_BASE_URL: ${{ vars.MISTRAL_BASE_URL }}
+          EXTRA_ORIGINS: ${{ vars.CHAT_EXTRA_ORIGINS }}
           IMAGE: ${{ env.REGISTRY }}/ose-chat-function:${{ github.sha }}
         run: |
           # Function runtime env: OSE_MCP_URL from a repo var (stable MCP endpoint),
-          # ALLOWED_ORIGINS derived from the static-site bucket's website URL.
+          # ALLOWED_ORIGINS = the static-site bucket website URL plus any extra public
+          # origins (CHAT_EXTRA_ORIGINS repo var — e.g. a custom domain / CDN in front
+          # of the site, comma-separated, no trailing slash). Scaleway sets the runtime
+          # env wholesale on each deploy, so the custom domain MUST be baked in here — a
+          # value added by hand on the container gets wiped on the next redeploy.
           [ -n "$OSE_MCP_URL" ] || { echo "::error::repo variable OSE_MCP_URL is not set"; exit 1; }
           ALLOWED="https://$BUCKET.s3-website.$REGION.scw.cloud"
+          [ -n "$EXTRA_ORIGINS" ] && ALLOWED="$ALLOWED,$EXTRA_ORIGINS"
           MODEL="${MISTRAL_MODEL:-mistral-small-latest}"
           # Scaleway replaces the runtime env set wholesale on each deploy, so every var
           # the function needs must be listed here. MISTRAL_BASE_URL points inference at an

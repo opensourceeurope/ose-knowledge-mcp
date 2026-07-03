@@ -66,7 +66,7 @@ gateway/CDN) rather than in this code.
 | `MISTRAL_MODEL` | no | `mistral-small-latest` | Model id. Set to `mistral-small-3.2-24b-instruct-2506` for Scaleway. Spend control (see above). |
 | `MISTRAL_BASE_URL` | no | — | OpenAI-compatible endpoint. `https://api.scaleway.ai` for Scaleway Generative APIs (EU); a local Ollama URL for offline; unset = Mistral's own API. The SDK appends `/v1/chat/completions`, so do **not** include `/v1`. |
 | `OSE_MCP_URL` | yes | — | Deployed MCP endpoint, e.g. `https://<endpoint>/http`. |
-| `ALLOWED_ORIGINS` | no | `*` | **Enforced server-side** (403 when Origin is missing/not listed). Set to the **static site origin** in prod, e.g. `https://chat.example.org`. Comma-separated for multiple. `*` disables the check — never leave it in prod. |
+| `ALLOWED_ORIGINS` | no | `*` | **Enforced server-side** (403 when Origin is missing/not listed). Set to the **static site origin** in prod, e.g. `https://chat.example.org`. Comma-separated for multiple. `*` disables the check — never leave it in prod. In the automated deploy this is built for you: the bucket website URL plus the `CHAT_EXTRA_ORIGINS` repo variable (see below) — set that to your custom domain. |
 | `MAX_TOOL_ROUNDS` | no | `4` | Spend control (see above). |
 | `PORT` | no | `8080` | Injected by the platform on Scaleway/containers. |
 
@@ -184,7 +184,9 @@ aws s3 sync chat/ s3://ose-chat/ \
 ```
 
 The site is served at `https://ose-chat.s3-website.pl-waw.scw.cloud/` (put it behind a
-custom domain / CDN if you want a clean origin for `ALLOWED_ORIGINS`).
+custom domain / CDN if you want a clean origin). When you do, add that domain to the
+function's allowlist via the `CHAT_EXTRA_ORIGINS` repo variable (see below) — otherwise
+the browser calls from the custom domain are CORS-blocked.
 
 > `aws s3 sync` works against Scaleway's S3-compatible endpoint when `aws configure` is
 > set with your `SCW_ACCESS_KEY` / `SCW_SECRET_KEY`. The native `scw object` commands
@@ -225,11 +227,14 @@ Variables (Settings → Secrets and variables → Actions → Variables):
 | `CHAT_FUNCTION_URL` | Deployed function URL → `config.js` `FUNCTION_URL`. | set after the function is deployed |
 | `CHAT_S3_BUCKET` | Object Storage bucket name. | `ose-knowledge-chat` |
 | `SCW_REGION` | Region. | `pl-waw` |
+| `CHAT_EXTRA_ORIGINS` | Consumed by `deploy-function.yml`: extra origin(s) appended to the function's `ALLOWED_ORIGINS` on top of the bucket website URL. Comma-separated, no trailing slash. Set this to your custom domain. | `https://ask.opensourceeurope.org` |
 
 Secrets: reuses `SCW_ACCESS_KEY` / `SCW_SECRET_KEY` (already set for the MCP deploy) — no new secrets.
 
-After the first deploy, set the function's `ALLOWED_ORIGINS` to
-`https://ose-knowledge-chat.s3-website.pl-waw.scw.cloud` so the browser calls aren't CORS-blocked.
+The function's `ALLOWED_ORIGINS` is set automatically by `deploy-function.yml` on each
+deploy — the bucket website URL plus anything in `CHAT_EXTRA_ORIGINS`. Because Scaleway
+replaces the runtime env wholesale per deploy, a custom domain **must** live in
+`CHAT_EXTRA_ORIGINS`; a value added by hand on the container is wiped on the next redeploy.
 
 The workflow fails fast with a clear message if a required value is missing. The SFTP
 upload does **not** delete remote files (a shared web root may hold unrelated content);
