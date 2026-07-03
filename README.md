@@ -71,7 +71,7 @@ search the OSE docs.
 **Any MCP client** (Claude Code, Cursor, Claude Desktop, …):
 
 ```bash
-claude mcp add ose-knowledge -- uvx ose-knowledge-mcp==0.1.2
+claude mcp add ose-knowledge -- uvx ose-knowledge-mcp==0.2.0
 ```
 
 or in the client's config:
@@ -79,7 +79,7 @@ or in the client's config:
 ```json
 {
   "mcpServers": {
-    "ose-knowledge": { "type": "stdio", "command": "uvx", "args": ["ose-knowledge-mcp==0.1.2"] }
+    "ose-knowledge": { "type": "stdio", "command": "uvx", "args": ["ose-knowledge-mcp==0.2.0"] }
   }
 }
 ```
