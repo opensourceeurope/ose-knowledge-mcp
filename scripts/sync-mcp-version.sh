@@ -1,14 +1,25 @@
 #!/usr/bin/env bash
-# Propagate the release version into the two files that pin the mcp package.
-# release-please owns the version (in .release-please-manifest.json, key "."), but it
+# Propagate the release version into the files that pin the mcp package spec.
+# release-please owns the version (.release-please-manifest.json, key "."), but it
 # cannot cleanly rewrite `ose-knowledge-mcp==X.Y.Z` — its json updater writes a bare
-# value (clobbering the `pkg==` prefix) and .mcp.json can't carry the inline comment
-# its generic updater needs. So this script does that one bit, anchored on the
-# `ose-knowledge-mcp==` token so it only touches the intended pins.
+# value (clobbering the `pkg==` prefix) and these files can't carry the inline comment
+# its generic updater needs. So this script does that one bit.
+#
+# It pins ONLY genuine package specs, via two narrow anchors:
+#   1. after `uvx ` (a CLI install arg)         e.g.  uvx ose-knowledge-mcp
+#   2. inside a double-quoted string with NO     e.g.  "ose-knowledge-mcp"
+#      slash in it (a JSON args entry)                 ["ose-knowledge-mcp==0.1.1"]
+# The no-slash guard is deliberate — it leaves repo references untouched
+# (opensourceeurope/ose-knowledge-mcp, github.com/.../ose-knowledge-mcp.git, and any
+# href="https://github.com/.../ose-knowledge-mcp"), and the uvx/quote anchors leave a
+# bare `cd ose-knowledge-mcp` dir name alone. An earlier, broader "any quoted string
+# containing the token" regex corrupted the GitHub source link in chat/index.html by
+# pinning the URL (…/ose-knowledge-mcp==0.1.1) — hence these tighter anchors.
 #
 # Rewrites:
-#   - plugins/ose-knowledge/.mcp.json          (the uvx arg pin)
-#   - chat/index.html                          (the local-first "MCP config" snippet pin)
+#   - plugins/ose-knowledge/.mcp.json   (the uvx arg pin)
+#   - chat/index.html                   (the "MCP config" snippet pin)
+#   - README.md                         (the quick-start uvx + JSON config pins)
 #
 # Usage: ./scripts/sync-mcp-version.sh              (reads version from the manifest)
 #        ./scripts/sync-mcp-version.sh 0.2.0        (override — handy for manual runs/tests)
@@ -27,21 +38,19 @@ if ! printf '%s' "$VERSION" | grep -qE '^[0-9A-Za-z.+_-]+$'; then
   exit 1
 fi
 
-MCP_JSON="plugins/ose-knowledge/.mcp.json"
-INDEX_HTML="chat/index.html"
-
 changed=0
 
-# Replace any existing `ose-knowledge-mcp` pin (or unpinned bare name) with the
-# pinned `ose-knowledge-mcp==$VERSION`. Anchored on the package token so nothing
-# else (clone URLs, /plugin commands) is touched.
+# Pin only real package specs. Two anchored substitutions (see header):
+#   1. `uvx ose-knowledge-mcp[==x]`               -> `uvx ose-knowledge-mcp==$VERSION`
+#   2. `"…ose-knowledge-mcp[==x]…"` with no slash  -> pinned; the no-slash guard skips
+#      inside the quotes                              URLs and repo paths.
 sync_file() {
   file="$1"
   sum_before="$(shasum "$file" | awk '{print $1}')"
-  # ose-knowledge-mcp optionally followed by ==<any pin> -> ose-knowledge-mcp==$VERSION,
-  # but only inside a quoted arg string ("...ose-knowledge-mcp..."), so repo clone
-  # URLs and slash-command lines are left alone. In-place so trailing newlines are kept.
-  VERSION="$VERSION" perl -i -pe 's/("[^"]*\bose-knowledge-mcp)(==[0-9A-Za-z.+_-]+)?([^"]*")/"$1==$ENV{VERSION}$3"/ge' "$file"
+  VERSION="$VERSION" perl -i -pe '
+    s/(\buvx\s+ose-knowledge-mcp)(==[0-9A-Za-z.+_-]+)?/"$1==$ENV{VERSION}"/ge;
+    s/("[^"\/]*\bose-knowledge-mcp)(==[0-9A-Za-z.+_-]+)?([^"\/]*")/"$1==$ENV{VERSION}$3"/ge;
+  ' "$file"
   sum_after="$(shasum "$file" | awk '{print $1}')"
   if [ "$sum_before" != "$sum_after" ]; then
     echo "updated $file -> ose-knowledge-mcp==$VERSION"
@@ -51,8 +60,9 @@ sync_file() {
   fi
 }
 
-sync_file "$MCP_JSON"
-sync_file "$INDEX_HTML"
+sync_file "plugins/ose-knowledge/.mcp.json"
+sync_file "chat/index.html"
+sync_file "README.md"
 
 if [ "$changed" -eq 0 ]; then
   echo "sync-mcp-version: nothing to change (version $VERSION)"
