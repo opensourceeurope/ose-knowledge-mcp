@@ -10,21 +10,21 @@ whatever LLM the consumer brings. The chat website is just one such consumer tha
 |---|---|---|
 | **OpenCrane MCP server** | `.opencrane/` | The RAG. Indexes the OSE docs into Milvus Lite and exposes the `search_docs` tool over MCP. Shipped two ways: a public Scaleway container, **and** the `ose-knowledge-mcp` PyPI package (runs locally via `uvx`). |
 | **Claude plugin** | `plugins/ose-knowledge/` | Registers the MCP + an `ose-researcher` agent for Claude Code. |
-| **Chat website** *(optional)* | `chat/` + `function/` | A static page (Scaleway Object Storage) + a stateless function (Scaleway Serverless) that runs the agent loop with EU-hosted Mistral. **The only part that uses Mistral or holds a key.** |
+| **Chat website** *(optional)* | `chat/` + `function/` | A static page (Scaleway Object Storage) + a stateless function (Scaleway Serverless) that runs the agent loop with EU-hosted inference (Mistral Small on Scaleway Generative APIs). **The only part that calls an LLM or holds a key.** |
 
 Two ways to consume the knowledge base, below.
 
 ## Flow 1 — Public chat website
 
-We provide the model (Mistral, EU) and the orchestration, so a visitor needs **zero setup**.
+We provide the model (Mistral Small on Scaleway, EU) and the orchestration, so a visitor needs **zero setup**.
 Everything in the request path is EU-hosted (sovereign).
 
 ```mermaid
 sequenceDiagram
     actor User
     participant UI as Static chat UI<br/>Scaleway Object Storage
-    participant Fn as Chat function<br/>Scaleway Serverless, holds Mistral key
-    participant LLM as Mistral API · EU
+    participant Fn as Chat function<br/>Scaleway Serverless, holds inference key
+    participant LLM as Scaleway Generative APIs · EU<br/>mistral-small-3.2
     participant MCP as OSE MCP<br/>Scaleway container
     participant DB as Milvus Lite index
 
@@ -43,13 +43,13 @@ sequenceDiagram
 ```
 
 The loop (tool call → MCP → results → continue) can repeat up to `MAX_TOOL_ROUNDS`. The function
-holds the Mistral key, enforces the origin allowlist, and maps each cited chunk to its page URL.
+holds the inference key, enforces the origin allowlist, and maps each cited chunk to its page URL.
 Nothing is persisted; opt-in analytics logs only the anonymized question to Scaleway Cockpit.
 
 ## Flow 2 — Your own agent (local or any MCP client)
 
 You bring your own model and client; you consume **only** the `search_docs` retrieval tool.
-**No Mistral, no chat function, no website involved.**
+**No hosted model, no chat function, no website involved.**
 
 ```mermaid
 flowchart LR

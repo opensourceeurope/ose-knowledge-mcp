@@ -3,9 +3,10 @@
 The public chat is two decoupled pieces, both EU-hosted:
 
 - **`function/`** — a stateless Node 20 / TypeScript serverless function. It holds the
-  Mistral key, runs the agentic loop (Mistral `mistral-small-latest` tool-calling ->
-  the OSE MCP `search_docs` -> a final cited answer), and returns JSON
-  `{ answer, citations }`. Entry point is `dist/server.js`, which listens on `$PORT`.
+  inference API key, runs the agentic loop (`mistral-small-3.2-24b-instruct-2506`
+  tool-calling on Scaleway Generative APIs -> the OSE MCP `search_docs` -> a final cited
+  answer), and returns JSON `{ answer, citations }`. Entry point is `dist/server.js`,
+  which listens on `$PORT`.
 - **`chat/`** — a 100% static page (HTML/CSS/vanilla JS, self-hosted Manrope). It POSTs
   `{ messages, analyticsOptIn }` to the function and renders the answer plus citation
   chips. The operator points it at the function by editing `chat/config.js`.
@@ -22,7 +23,8 @@ deploy) and reuses the same `scw` conventions. Everything runs on **Scaleway**.
 
 The entire request path runs on European infrastructure:
 
-- **Inference** — Mistral La Plateforme (EU).
+- **Inference** — Scaleway Generative APIs (EU), `mistral-small-3.2-24b-instruct-2506`
+  (Mistral Small, Apache 2.0, built in France).
 - **Function + static page** — Scaleway (EU).
 - **MCP** — the OSE MCP server on Scaleway (EU), per [`deploy-scaleway.md`](deploy-scaleway.md).
 
@@ -31,8 +33,8 @@ served from European infrastructure too.
 
 ## Access control & cost posture
 
-The function holds the Mistral key server-side (it is never sent to the browser or
-embedded in the static page), but every accepted request spends Mistral credits, so
+The function holds the inference API key server-side (it is never sent to the browser or
+embedded in the static page), but every accepted request spends Scaleway credits, so
 who may call it matters:
 
 - **`ALLOWED_ORIGINS` is enforced server-side.** With it set (always do this in prod),
@@ -41,15 +43,15 @@ who may call it matters:
   all browser-based cross-site abuse and casual scripted calls.
 - **Honest limitation:** the `Origin` header can be forged by a non-browser client, so
   a determined attacker can still call the endpoint directly. The hard backstop is
-  platform-level: Mistral free-tier/account limits bound total spend, and you can add
+  platform-level: Scaleway free-tier/account limits bound total spend, and you can add
   rate-limiting in front of the function (gateway/CDN/WAF) if abuse appears.
 
 There is **no custom rate-limiting** in the function itself. The spend controls you have:
 
 - **`MAX_TOOL_ROUNDS`** (default `4`) caps how many tool-call rounds a single request can
-  run, bounding the Mistral calls per question. Lower it to tighten the ceiling.
-- **`MISTRAL_MODEL`** — downgrade (e.g. keep `mistral-small-latest` rather than a larger
-  model) to reduce per-call cost.
+  run, bounding the inference calls per question. Lower it to tighten the ceiling.
+- **`MISTRAL_MODEL`** — keep the small model (`mistral-small-3.2-24b-instruct-2506`)
+  rather than switching to a larger, pricier one on Scaleway, to reduce per-call cost.
 - **Request bodies are capped at 128 KiB** and chat history is trimmed to the last 12
   turns, bounding per-request token volume.
 
@@ -60,9 +62,9 @@ gateway/CDN) rather than in this code.
 
 | Var | Required | Default | Notes |
 | --- | --- | --- | --- |
-| `MISTRAL_API_KEY` | yes | — | Mistral key; store as a **secret**, never as a plain env value. |
-| `MISTRAL_MODEL` | no | `mistral-small-latest` | Spend control (see above). |
-| `MISTRAL_BASE_URL` | no | — | Override the Mistral API base URL (e.g. an OpenAI-compatible endpoint like a local Ollama). |
+| `MISTRAL_API_KEY` | yes | — | Inference API key (your Scaleway key for the hosted deployment); store as a **secret**, never as a plain env value. |
+| `MISTRAL_MODEL` | no | `mistral-small-latest` | Model id. Set to `mistral-small-3.2-24b-instruct-2506` for Scaleway. Spend control (see above). |
+| `MISTRAL_BASE_URL` | no | — | OpenAI-compatible endpoint. `https://api.scaleway.ai` for Scaleway Generative APIs (EU); a local Ollama URL for offline; unset = Mistral's own API. The SDK appends `/v1/chat/completions`, so do **not** include `/v1`. |
 | `OSE_MCP_URL` | yes | — | Deployed MCP endpoint, e.g. `https://<endpoint>/http`. |
 | `ALLOWED_ORIGINS` | no | `*` | **Enforced server-side** (403 when Origin is missing/not listed). Set to the **static site origin** in prod, e.g. `https://chat.example.org`. Comma-separated for multiple. `*` disables the check — never leave it in prod. |
 | `MAX_TOOL_ROUNDS` | no | `4` | Spend control (see above). |
@@ -111,12 +113,13 @@ scw function function deploy <function-id> zip-file=../ose-chat-function.zip
 
 # Set env vars and the secret (replace <function-id>).
 scw function function update <function-id> \
-  environment-variables.MISTRAL_MODEL=mistral-small-latest \
+  environment-variables.MISTRAL_BASE_URL=https://api.scaleway.ai \
+  environment-variables.MISTRAL_MODEL=mistral-small-3.2-24b-instruct-2506 \
   environment-variables.OSE_MCP_URL=https://<mcp-endpoint>/http \
   environment-variables.ALLOWED_ORIGINS=https://chat.example.org \
   environment-variables.MAX_TOOL_ROUNDS=4 \
   secret-environment-variables.0.key=MISTRAL_API_KEY \
-  secret-environment-variables.0.value=<your-mistral-key>
+  secret-environment-variables.0.value=<your-scaleway-key>
 ```
 
 > Flag names can drift between `scw` versions; run `scw function function create --help`

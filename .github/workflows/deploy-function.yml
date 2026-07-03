@@ -10,6 +10,10 @@ name: Deploy chat function to Scaleway
 #   - set its runtime env ON that container: MISTRAL_API_KEY (secret), OSE_MCP_URL
 #     (https://<mcp-endpoint>/mcp), ALLOWED_ORIGINS (the chat site origin), optionally
 #     MISTRAL_MODEL / MAX_TOOL_ROUNDS.
+# Inference runs on Scaleway Generative APIs (EU): set the repo variables
+#   MISTRAL_BASE_URL=https://api.scaleway.ai and
+#   MISTRAL_MODEL=mistral-small-3.2-24b-instruct-2506, with MISTRAL_API_KEY (secret) as
+#   your Scaleway API key. Leaving MISTRAL_BASE_URL unset falls back to Mistral's own API.
 # Extra repo variable: SCW_FUNCTION_CONTAINER_ID (that container's ID).
 # Its public URL becomes the CHAT_FUNCTION_URL variable used by deploy-chat.yml.
 
@@ -90,6 +94,7 @@ jobs:
           OSE_MCP_URL: ${{ vars.OSE_MCP_URL }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
           MISTRAL_MODEL: ${{ vars.MISTRAL_MODEL }}
+          MISTRAL_BASE_URL: ${{ vars.MISTRAL_BASE_URL }}
           IMAGE: ${{ env.REGISTRY }}/ose-chat-function:${{ github.sha }}
         run: |
           # Function runtime env: OSE_MCP_URL from a repo var (stable MCP endpoint),
@@ -97,11 +102,19 @@ jobs:
           [ -n "$OSE_MCP_URL" ] || { echo "::error::repo variable OSE_MCP_URL is not set"; exit 1; }
           ALLOWED="https://$BUCKET.s3-website.$REGION.scw.cloud"
           MODEL="${MISTRAL_MODEL:-mistral-small-latest}"
+          # Scaleway replaces the runtime env set wholesale on each deploy, so every var
+          # the function needs must be listed here. MISTRAL_BASE_URL points inference at an
+          # OpenAI-compatible endpoint (Scaleway Generative APIs, EU); leaving it unset
+          # falls back to Mistral's own API (the SDK default).
+          ENV_ARGS=(
+            environment-variables.OSE_MCP_URL="$OSE_MCP_URL"
+            environment-variables.ALLOWED_ORIGINS="$ALLOWED"
+            environment-variables.MISTRAL_MODEL="$MODEL"
+          )
+          [ -n "$MISTRAL_BASE_URL" ] && ENV_ARGS+=(environment-variables.MISTRAL_BASE_URL="$MISTRAL_BASE_URL")
           # Set image + env + secret, then redeploy and wait for ready.
           scw container container update "$CONTAINER_ID" region="$REGION" image="$IMAGE" \
-            environment-variables.OSE_MCP_URL="$OSE_MCP_URL" \
-            environment-variables.ALLOWED_ORIGINS="$ALLOWED" \
-            environment-variables.MISTRAL_MODEL="$MODEL" \
+            "${ENV_ARGS[@]}" \
             secret-environment-variables.MISTRAL_API_KEY="$MISTRAL_API_KEY" \
             --wait
 
