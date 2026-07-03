@@ -1,8 +1,11 @@
 # OSE chat function
 
-Stateless agent: Mistral (`mistral-small-latest`) tool-calling over the OSE MCP `search_docs`.
+Stateless agent: Mistral Small tool-calling over the OSE MCP `search_docs`. The hosted
+deployment runs `mistral-small-3.2-24b-instruct-2506` on Scaleway Generative APIs (EU);
+the provider is just an OpenAI-compatible endpoint, so it also runs against Mistral's own
+API or a local Ollama unchanged.
 
-It holds the Mistral key, runs the agentic loop (Mistral tool-calling -> MCP
+It holds the inference API key, runs the agentic loop (tool-calling -> MCP
 `search_docs` -> final cited answer), and returns JSON `{ answer, citations }`.
 Node 20 + TypeScript; the system prompt is the canonical `agent/ose-researcher.md`,
 bundled at build time so the chat always follows the same persona as the plugin.
@@ -55,9 +58,9 @@ All configuration is via environment variables (see `.env.example`):
 
 | Var | Required | Default | Notes |
 | --- | --- | --- | --- |
-| `MISTRAL_API_KEY` | yes | — | Mistral La Plateforme (EU) key; keep secret. |
-| `MISTRAL_MODEL` | no | `mistral-small-latest` | Downgrade to control spend. |
-| `MISTRAL_BASE_URL` | no | `https://api.mistral.ai` | Point at any OpenAI-compatible endpoint (e.g. local Ollama, see below). The SDK appends `/v1/chat/completions`. |
+| `MISTRAL_API_KEY` | yes | — | Inference API key (Scaleway key for the hosted deployment; Mistral La Plateforme or Ollama otherwise); keep secret. |
+| `MISTRAL_MODEL` | no | `mistral-small-latest` | Model id — `mistral-small-3.2-24b-instruct-2506` on Scaleway. Keep the small model to control spend. |
+| `MISTRAL_BASE_URL` | no | `https://api.mistral.ai` | Point at any OpenAI-compatible endpoint: `https://api.scaleway.ai` (Scaleway, EU), a local Ollama (see below), or unset for Mistral's own API. The SDK appends `/v1/chat/completions`. |
 | `OSE_MCP_URL` | yes | — | MCP Streamable HTTP endpoint. `http://localhost:8000/mcp` local; `https://<endpoint>/http` deployed. |
 | `ALLOWED_ORIGINS` | no | `*` | Comma-separated origin allowlist, **enforced server-side** (403 when Origin is missing or not listed) in addition to CORS headers. `*` disables the check — local dev only; always set the static site origin in prod. |
 | `MAX_TOOL_ROUNDS` | no | `4` | Caps agent loop iterations (spend control). |
@@ -65,7 +68,7 @@ All configuration is via environment variables (see `.env.example`):
 
 ## Security model
 
-- **The Mistral key never leaves the server.** It is read from the
+- **The inference API key never leaves the server.** It is read from the
   `MISTRAL_API_KEY` env var, passed only to the Mistral SDK constructor, and is
   never logged, echoed in responses, or bundled into the static site.
 - **Origin allowlist is enforced, not just advertised.** With `ALLOWED_ORIGINS`

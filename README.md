@@ -36,8 +36,8 @@ curl -fsSL https://ollama.com/install.sh | sh        # Ollama
 **Also needed:** Node 20+. The first run generates the embeddings index once (a few minutes);
 pass `--fresh` to rebuild it after changing the build inputs.
 
-Prefer the hosted Mistral API, a different local model, or want the full config? See
-[`function/README.md`](function/README.md).
+Prefer a hosted API (Scaleway or Mistral), a different local model, or want the full config?
+See [`function/README.md`](function/README.md).
 
 ## Use the public chat
 
@@ -46,12 +46,13 @@ zero setup, just open it:
 
 **→ https://ask.opensourceeurope.org**
 
-The entire request path is sovereign (Mistral EU for inference, everything hosted on Scaleway
-EU) and nothing is persisted in your browser. See [`docs/architecture.md`](docs/architecture.md)
-for how it works.
+The entire request path is sovereign (inference on Scaleway Generative APIs, EU, with Mistral
+Small; everything else hosted on Scaleway EU too) and nothing is persisted in your browser.
+See [`docs/architecture.md`](docs/architecture.md) for how it works.
 
-> **Note on answer quality:** the hosted chat runs on a small, cheap model (`mistral-small-latest`),
-> so its answers won't match what you'd get from a larger model. For the best results, plug the
+> **Note on answer quality:** the hosted chat runs on a small, cheap model
+> (`mistral-small-3.2-24b-instruct-2506`), so its answers won't match what you'd get from a
+> larger model. For the best results, plug the
 > knowledge base into your own agent and use whatever model you already run — see
 > [Use it as an MCP server / Claude plugin](#use-it-as-an-mcp-server--claude-plugin) below.
 
@@ -95,4 +96,4 @@ or in the client's config:
 - [`docs/deploy-chat.md`](docs/deploy-chat.md) — deploying the chat function + static page.
 - [`docs/chat-ui.md`](docs/chat-ui.md) — the chat UI design system.
 - [`docs/automation.md`](docs/automation.md) — CI, the weekly refresh, and the release → publish → deploy chain.
-- [`function/README.md`](function/README.md) — the chat function (config, security, local run, hosted Mistral).
+- [`function/README.md`](function/README.md) — the chat function (config, security, local run, hosted inference).

@@ -90,7 +90,7 @@ components.
 - Plain, concise, honest. Short sentences. Em-dashes for asides.
 - **Write for a pan-European, non-native-English audience** — avoid US-native idioms and
   unexplained jargon. Prefer a clear heading ("The AI model") over insider terms
-  ("Inference"). Name concrete things (e.g. the actual model, `mistral-small-latest`).
+  ("Inference"). Name concrete things (e.g. the actual model, `mistral-small-3.2-24b-instruct-2506`).
 - Be honest about limitations rather than overclaiming (mirrors `deploy-chat.md`'s tone).
 - Don't let two sections contradict each other (e.g. "nothing is kept" vs. an opt-in
   logging box).
