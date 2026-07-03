@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.1.1...v0.1.2) (2026-07-03)
+
+
+### Bug Fixes
+
+* slim README to quick-start, move detail into docs/ ([#4](https://github.com/opensourceeurope/ose-knowledge-mcp/issues/4)) ([3d135b9](https://github.com/opensourceeurope/ose-knowledge-mcp/commit/3d135b9e6ade86496c65abde6e02f996274cd99d))
+
 ## [0.1.1](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.1.0...v0.1.1) (2026-07-01)
 
 
