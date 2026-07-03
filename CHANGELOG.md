@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.2.0...v0.2.1) (2026-07-03)
+
+
+### Bug Fixes
+
+* autofocus the chat input on page load ([#9](https://github.com/opensourceeurope/ose-knowledge-mcp/issues/9)) ([0490bc2](https://github.com/opensourceeurope/ose-knowledge-mcp/commit/0490bc2574e22014e463f577a8023935899283db))
+
 ## [0.2.0](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.1.2...v0.2.0) (2026-07-03)
 
 
