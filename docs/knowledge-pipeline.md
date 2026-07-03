@@ -13,20 +13,27 @@ Both are public `llms-full.txt`:
 
 ## Rebuild the index locally
 
+opencrane is **version-locked** in [`.opencrane/opencrane-version`](../.opencrane/opencrane-version)
+(currently `0.18.9`) — CI and `scripts/ensure-index.sh` invoke exactly that version via `uvx`,
+never the latest PyPI release, so the index is reproducible. To move to a new opencrane, edit
+that one file and regenerate the index (`./scripts/ensure-index.sh`) in the same PR. Pin your
+local commands to the same version so they match CI:
+
 `fetch` needs a non-empty `GITHUB_TOKEN` even for llmstxt-only sources:
 
 ```bash
-GITHUB_TOKEN=x uvx opencrane fetch
-uvx opencrane llms
-uvx opencrane chunk
-uvx opencrane embed
-uvx opencrane index
+OC="opencrane@$(cat .opencrane/opencrane-version)"
+GITHUB_TOKEN=x uvx "$OC" fetch
+uvx "$OC" llms
+uvx "$OC" chunk
+uvx "$OC" embed
+uvx "$OC" index
 ```
 
 Or run the whole pipeline at once:
 
 ```bash
-GITHUB_TOKEN=x uvx opencrane build
+GITHUB_TOKEN=x uvx "opencrane@$(cat .opencrane/opencrane-version)" build
 ```
 
 **Artifact strategy:** `chunks.json` + `llmstxt/` are committed build inputs, and

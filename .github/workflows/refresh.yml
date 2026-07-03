@@ -24,13 +24,18 @@ jobs:
         with:
           version: "0.8.19"
 
+      # opencrane is version-locked in .opencrane/opencrane-version (never floats to the
+      # latest PyPI release); every uvx call below pins to it.
+      - name: Resolve the pinned opencrane version
+        run: echo "OPENCRANE_VERSION=$(tr -d '[:space:]' < .opencrane/opencrane-version)" >> "$GITHUB_ENV"
+
       - name: Re-fetch sources and regenerate committed inputs
         env:
           GITHUB_TOKEN: ${{ github.token }}   # opencrane fetch needs a non-empty token
         run: |
-          uvx opencrane fetch
-          uvx opencrane llms
-          uvx opencrane chunk
+          uvx "opencrane@${OPENCRANE_VERSION}" fetch
+          uvx "opencrane@${OPENCRANE_VERSION}" llms
+          uvx "opencrane@${OPENCRANE_VERSION}" chunk
 
       - name: Refresh llms.txt page indexes (per-page citation links in chat)
         # opencrane only fetches llms-full.txt; the per-page index that
@@ -47,8 +52,7 @@ jobs:
       # artifacts) when the sources didn't change. This is where the weekly re-embed
       # happens — the release path just packs the result.
       - name: Rebuild the vector index if chunks changed
-        env:
-          OPENCRANE: "uvx opencrane"
+        # ensure-index.sh reads the same pinned version from .opencrane/opencrane-version.
         run: ./scripts/ensure-index.sh
 
       - name: Commit refreshed inputs if changed

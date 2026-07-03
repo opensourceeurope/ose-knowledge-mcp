@@ -18,8 +18,13 @@
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
 
-# `uvx opencrane` in CI, plain `opencrane` locally. Word-splitting is intentional.
-OC="${OPENCRANE:-opencrane}"
+# opencrane is version-locked in .opencrane/opencrane-version (single source of truth,
+# bumped by hand — never floats to the latest PyPI release). We invoke it through uvx at
+# that exact version, so local runs and CI use the same opencrane. Override with the
+# OPENCRANE env var (e.g. OPENCRANE="uvx opencrane@0.19.0" ./scripts/ensure-index.sh) to
+# trial a new version before committing the bump. Word-splitting of $OC is intentional.
+OPENCRANE_VERSION="$(tr -d '[:space:]' < .opencrane/opencrane-version)"
+OC="${OPENCRANE:-uvx opencrane@${OPENCRANE_VERSION}}"
 
 CHUNKS=".opencrane/chunks.json"
 EMBEDDINGS=".opencrane/embeddings.json"

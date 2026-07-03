@@ -139,16 +139,19 @@ jobs:
           version: "0.8.19"
           enable-cache: false
 
+      # opencrane is version-locked in .opencrane/opencrane-version (never floats to the
+      # latest PyPI release); the pack step and ensure-index.sh both pin to it.
+      - name: Resolve the pinned opencrane version
+        run: echo "OPENCRANE_VERSION=$(tr -d '[:space:]' < .opencrane/opencrane-version)" >> "$GITHUB_ENV"
+
       - name: Ensure the committed vector index is current
         # embeddings.json + milvus.db are committed artifacts (regenerated when chunks
         # change — by the weekly refresh, or by a PR that touched chunks/config, gated by
         # ci.yml's index-sync check). Normally this is a no-op that reuses them straight
         # from the repo, so most releases (chat-UI changes) do NO embedding at all. It
         # only falls back to re-embedding here if the committed index somehow drifted from
-        # chunks.json — a safety net, not the common path. `opencrane pack` then bakes
-        # milvus.db + chunks.json into the wheel.
-        env:
-          OPENCRANE: "uvx opencrane"
+        # chunks.json — a safety net, not the common path. ensure-index.sh reads the same
+        # pinned version. `opencrane pack` then bakes milvus.db + chunks.json into the wheel.
         run: ./scripts/ensure-index.sh
 
       # The version comes from the release tag release-please just created, "v" stripped.
@@ -158,7 +161,7 @@ jobs:
         run: |
           VERSION="${TAG_NAME#v}"
           echo "Packing ose-knowledge-mcp version $VERSION"
-          uvx opencrane pack --name ose-knowledge-mcp --version "$VERSION" --output .opencrane/pack
+          uvx "opencrane@${OPENCRANE_VERSION}" pack --name ose-knowledge-mcp --version "$VERSION" --output .opencrane/pack
 
       - name: Build wheel + sdist
         # `uv build` (not `uv pip install --system build` — the runner's system Python is
