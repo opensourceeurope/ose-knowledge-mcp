@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.1.2...v0.2.0) (2026-07-03)
+
+
+### Features
+
+* run chat inference on Scaleway Generative APIs (mistral-small-3.2) ([#6](https://github.com/opensourceeurope/ose-knowledge-mcp/issues/6)) ([7693c42](https://github.com/opensourceeurope/ose-knowledge-mcp/commit/7693c4276abdb0a7cc550c01d8ffe05b023966d7))
+
 ## [0.1.2](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.1.1...v0.1.2) (2026-07-03)
 
 
