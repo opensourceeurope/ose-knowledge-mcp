@@ -58,6 +58,8 @@ git push -u origin feat/<short-name>  # 2. push the branch
 # 3. open a PR
 # 4. CI must pass:
 #      - ci.yml: agent-sync check (scripts/sync-agent.sh --check),
+#        index-sync check (scripts/ensure-index.sh --check — fails if chunks.json
+#          changed without regenerating the committed embeddings.json + milvus.db),
 #        function build + test (npm ci / build / test in function/),
 #        workflow lint (zizmor via security-audit.yml)
 #      - commitlint.yml: every commit + the PR title must be a conventional commit

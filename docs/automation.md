@@ -5,10 +5,14 @@ continuously; **shipping is release-gated** — deploys happen only when a relea
 
 - **Weekly refresh** (`refresh.yml`): every Saturday 03:00 UTC, OpenCrane re-fetches the two
   `llms-full.txt` sources and the per-page `llms.txt` indexes (used for citation links),
-  regenerates `chunks.json`, and commits any changes as a `fix:` so release-please rolls the
-  refreshed content into the release PR. Run it manually any time from the Actions tab.
+  regenerates `chunks.json`, rebuilds the committed vector index (`embeddings.json` +
+  `milvus.db`, via `scripts/ensure-index.sh` — only when the chunks changed), and commits any
+  changes as a `fix:` so release-please rolls the refreshed content into the release PR. Run it
+  manually any time from the Actions tab.
 - **CI** (`ci.yml`): on every push/PR — checks the plugin agent is in sync with
-  `agent/ose-researcher.md`, builds and tests the chat function, and lints all workflows.
+  `agent/ose-researcher.md`, checks the committed vector index is in sync with `chunks.json`
+  (`scripts/ensure-index.sh --check`), builds and tests the chat function, and lints all
+  workflows.
 - **Chat deploy** (`deploy-chat.yml`): manual `workflow_dispatch`; renders `chat/config.js`
   from repo variables and uploads the static page to Scaleway Object Storage via `aws s3 sync`.
   See [`deploy-chat.md`](deploy-chat.md).
@@ -33,9 +37,11 @@ Publish + deploy run in the *same* `release.yml` run — merging the release PR 
 `vX.Y.Z` (auto-merged once green, see above) triggers them via release-please's
 `releases_created` output (no separate release-event workflow):
 
-- **PyPI publish**: packs the knowledge base into the `ose-knowledge-mcp` package
-  (`opencrane pack` + `uv build`) and publishes it via PyPI trusted publishing. The version
-  comes from the release tag (`v0.2.0` → `0.2.0`).
+- **PyPI publish**: packs the **committed** vector index (`milvus.db` + `chunks.json`) into the
+  `ose-knowledge-mcp` package (`opencrane pack` + `uv build`) and publishes it via PyPI trusted
+  publishing — no re-embedding on release; that only happens when the chunks change (see
+  [`knowledge-pipeline.md`](knowledge-pipeline.md)). The version comes from the release tag
+  (`v0.2.0` → `0.2.0`).
 - **Deploy**: builds + pushes the image and updates the Scaleway serverless container (see
   [`deploy-scaleway.md`](deploy-scaleway.md)); also runnable on its own via `workflow_dispatch`
   to redeploy an already-published version.
