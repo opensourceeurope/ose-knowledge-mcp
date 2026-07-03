@@ -98,6 +98,27 @@ jobs:
             git push origin "HEAD:$BRANCH"
           fi
 
+      # Arm GitHub's native auto-merge on the release PR so it merges itself once
+      # CI is green — the release PR is only the bump + changelog + pins, so there's
+      # nothing to review. Enabled AFTER the sync push above, so auto-merge waits on
+      # CI of the FINAL commit, not a stale one. What makes it hold-for-green (rather
+      # than merge instantly) is the branch protection on main requiring the
+      # `validate` + `commitlint` checks; without a required check GitHub refuses to
+      # enable auto-merge at all. RELEASE_TOKEN carries the pull-requests:write needed
+      # to enable it. Idempotent — re-arming an already-armed PR is a no-op. Squash is
+      # the repo's only enabled merge method (release-please detects the squash merge
+      # and cuts the tag). ONE-TIME MAINTAINER SETUP: enable "Allow auto-merge" on the
+      # repo and protect main with those two required checks, or this step errors.
+      - name: Enable auto-merge on the release PR
+        if: ${{ steps.release.outputs.pr }}
+        env:
+          GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          PR_JSON: ${{ steps.release.outputs.pr }}
+        run: |
+          PR_NUMBER="$(printf '%s' "$PR_JSON" | python3 -c 'import json,sys; print(json.load(sys.stdin)["number"])')"
+          echo "Enabling auto-merge on release PR #$PR_NUMBER"
+          gh pr merge "$PR_NUMBER" --auto --squash --repo "$GITHUB_REPOSITORY"
+
   # Fires only in the same run that release-please actually cut a release (the run
   # where the release PR was merged). Builds the package with the baked Milvus index
   # and publishes to PyPI via trusted publishing (OIDC, no token).

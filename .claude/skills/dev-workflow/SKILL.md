@@ -63,17 +63,19 @@ git push -u origin feat/<short-name>  # 2. push the branch
 #      - commitlint.yml: every commit + the PR title must be a conventional commit
 # 5. merge the PR to main
 # 6. release-please opens/updates a rolling release PR (version + changelog + pins)
-# 7. merge the release PR → tag vX.Y.Z + GitHub Release, and the SAME release.yml
-#      run then publishes ose-knowledge-mcp to PyPI and deploys container + function + chat
-#      (downstream jobs gated on release-please's `releases_created` output)
+# 7. that release PR AUTO-MERGES once its CI is green (release.yml arms GitHub
+#      auto-merge on it — no manual merge) → tag vX.Y.Z + GitHub Release, and the
+#      SAME release.yml run then publishes ose-knowledge-mcp to PyPI and deploys
+#      container + function + chat (downstream jobs gated on `releases_created`)
 ```
 
 **There is NO per-PR preview environment in this repo.** You review on the diff
 and CI, not on a deployed preview URL. Deploys happen only on release.
 
 Releases here are automated by **release-please**. You write conventional
-commits; release-please does all the version/changelog/tag work. Your job is to
-commit correctly and merge the release PR — never to hand-bump anything.
+commits; release-please does all the version/changelog/tag work, and the release
+PR auto-merges itself once its CI is green. Your job is just to commit correctly —
+never to hand-bump anything, and (normally) not even to merge the release PR.
 
 ## Conventional commits (required)
 
@@ -99,7 +101,8 @@ commit feat:/fix:/feat!: to main
       - a follow-up step runs scripts/sync-mcp-version.sh to rewrite the
         `ose-knowledge-mcp==X.Y.Z` pin in .mcp.json + chat/index.html + README.md,
         committed onto the PR branch
-  → merge the release PR → tag vX.Y.Z + GitHub Release, and IN THE SAME RUN
+      - arms GitHub auto-merge on the release PR (gh pr merge --auto --squash)
+  → release PR auto-merges once CI is green → tag vX.Y.Z + GitHub Release, and IN THE SAME RUN
       release.yml's downstream jobs (gated on `releases_created`):
       build ose-knowledge-mcp==X.Y.Z, publish to PyPI, deploy container + function + chat.
 ```
@@ -109,8 +112,10 @@ Publish + deploy are jobs in `release.yml` itself — there is no separate
 also runnable on its own via `release.yml`'s `workflow_dispatch`, passing an
 already-published `version`, to redeploy without cutting a release.)
 
-To ship: land conventional commits on `main`, then **merge the open release PR**.
-That is the only "cut a release" action — there is no hand-typed tag anymore.
+To ship: just **land conventional commits on `main`**. The release PR then
+auto-merges itself once its CI is green — that is what cuts the release (there is
+no hand-typed tag anymore). You only touch the release PR manually to *hold* a
+release (mark it draft / disable auto-merge) or if its CI is red.
 
 One-time maintainer setup: the `RELEASE_TOKEN` secret (a PAT/GitHub App token
 with Contents + PRs write) must exist. It is what gives the release PR its CI runs and
