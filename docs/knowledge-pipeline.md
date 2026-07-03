@@ -62,7 +62,7 @@ MILVUS_DB_PATH=.opencrane/milvus.db uv run --with mcp python tests/smoke_query.p
 Serve it locally over HTTP (port 8000):
 
 ```bash
-MILVUS_DB_PATH=.opencrane/milvus.db uvx opencrane serve --transport http
+MILVUS_DB_PATH=.opencrane/milvus.db uvx "opencrane@$(cat .opencrane/opencrane-version)" serve --transport http
 ```
 
 ## Build & test the MCP container
