@@ -1,10 +1,11 @@
 # syntax=docker/dockerfile:1.4
 # Slim MCP runtime image.
 #
-# It installs the PUBLISHED `ose-knowledge-mcp` package (built by publish-pypi.yml),
-# which already bundles the prebuilt Milvus index (data/milvus.db + chunks.json), and
-# serves it over HTTP. There is NO fetch/llms/chunk/embed/index here — the index is built
-# exactly once, in the PyPI publish job, and shipped inside the wheel. This image only
+# It installs the PUBLISHED `ose-knowledge-mcp` package (built by release.yml's publish
+# job), which already bundles the prebuilt Milvus index (data/milvus.db + chunks.json), and
+# serves it over HTTP. There is NO fetch/llms/chunk/embed/index here — the index is the
+# committed .opencrane/milvus.db (regenerated only when chunks change; see
+# scripts/ensure-index.sh), which the publish job packs into the wheel. This image only
 # adds the embedding model (needed at query time to embed the incoming question) and the
 # HTTP server.
 #

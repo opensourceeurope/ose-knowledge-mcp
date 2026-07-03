@@ -20,6 +20,11 @@ jobs:
       - name: Check the plugin agent is in sync with the canonical persona
         run: ./scripts/sync-agent.sh --check
 
+      # Fails the PR if chunks.json changed without regenerating the committed
+      # embeddings.json + milvus.db. Pure hash comparison — no opencrane / model download.
+      - name: Check the committed vector index is in sync with the chunks
+        run: ./scripts/ensure-index.sh --check
+
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: "20"

@@ -29,9 +29,22 @@ Or run the whole pipeline at once:
 GITHUB_TOKEN=x uvx opencrane build
 ```
 
-**Artifact strategy:** `chunks.json` + `llmstxt/` are committed (small build inputs);
-`embeddings.json` and `milvus.db` are git-ignored and regenerated at Docker build time (see
-`.opencrane/Dockerfile`).
+**Artifact strategy:** `chunks.json` + `llmstxt/` are committed build inputs, and
+`embeddings.json` + `milvus.db` are committed build **artifacts** — the release packs the
+committed `milvus.db` straight from the repo instead of re-embedding on every release. They
+are regenerated **only when the chunks change**, not at Docker build time. Rather than running
+`embed`/`index` by hand, use the wrapper, which re-embeds only if `chunks.json` actually
+changed and is a no-op otherwise:
+
+```bash
+./scripts/ensure-index.sh
+```
+
+If you change `chunks.json` (or chunking config), run it and commit
+`.opencrane/embeddings.json` + `.opencrane/milvus.db` alongside — `ci.yml` runs
+`./scripts/ensure-index.sh --check` and fails a PR whose committed index is stale vs its
+chunks. The weekly `refresh.yml` does the same regeneration + commit automatically (see
+[`automation.md`](automation.md)).
 
 ## Smoke-test the MCP search
 

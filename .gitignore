@@ -1,15 +1,9 @@
 # OpenCrane artifact strategy
-# Committed (small build INPUTS): .opencrane/config.yaml, .opencrane/llmstxt/**, .opencrane/chunks.json
-# Ignored (large/derived, regenerated at docker build via `opencrane embed && opencrane index`):
-
-# Embeddings (62MB) -- regenerated from chunks.json at image build (see .opencrane/Dockerfile stage 3)
-.opencrane/embeddings.json
-.opencrane/**/embeddings*.json
-
-# Milvus Lite database (baked into the image at docker build)
-*.milvus.db
-milvus.db
-.opencrane/**/*.db
+# Committed build INPUTS: .opencrane/config.yaml, .opencrane/llmstxt/**, .opencrane/chunks.json
+# Committed build ARTIFACTS: .opencrane/embeddings.json (~62MB) + .opencrane/milvus.db (~13MB).
+#   They are regenerated ONLY when chunks change (scripts/ensure-index.sh) and committed, so
+#   releases pack them straight from the repo instead of re-embedding every time. See AGENTS.md.
+# Only the transient Milvus lock files stay ignored:
 *.db.lock
 .opencrane/**/*.db.lock
 

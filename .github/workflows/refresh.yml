@@ -42,6 +42,15 @@ jobs:
           curl -sf https://docs.opencollective.com/oc-europe-internal-doc/llms.txt \
             -o .opencrane/llmstxt/oc-europe-internal-doc/llms.txt
 
+      # If the re-chunk changed chunks.json, rebuild embeddings.json + milvus.db so the
+      # committed index tracks the refreshed content; a no-op (reuses the committed
+      # artifacts) when the sources didn't change. This is where the weekly re-embed
+      # happens — the release path just packs the result.
+      - name: Rebuild the vector index if chunks changed
+        env:
+          OPENCRANE: "uvx opencrane"
+        run: ./scripts/ensure-index.sh
+
       - name: Commit refreshed inputs if changed
         id: commit
         env:
@@ -49,8 +58,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          # Only the committed INPUTS (llmstxt snapshots + chunks.json). Derived artifacts are git-ignored.
-          git add .opencrane/llmstxt .opencrane/chunks.json
+          # Committed INPUTS (llmstxt snapshots + chunks.json) AND the committed vector
+          # index (embeddings.json + milvus.db), so the index ships with its chunks.
+          git add .opencrane/llmstxt .opencrane/chunks.json .opencrane/embeddings.json .opencrane/milvus.db
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No source changes this week."

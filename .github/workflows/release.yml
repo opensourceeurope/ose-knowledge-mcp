@@ -139,17 +139,17 @@ jobs:
           version: "0.8.19"
           enable-cache: false
 
-      - name: Rebuild the vector index from the committed chunks
-        # chunks.json + config.yaml are committed inputs; embeddings + milvus.db are
-        # derived here and baked into the package by `opencrane pack`. The embed step
-        # downloads the model from HuggingFace, which can hit anonymous 429s on shared
-        # runners — retry a few times. (Set an HF_TOKEN to remove this flakiness entirely.)
-        run: |
-          for i in 1 2 3 4 5; do
-            uvx opencrane embed && break
-            echo "embed failed (HuggingFace rate-limit?), retry $i/5 after 25s..."; sleep 25
-          done
-          uvx opencrane index
+      - name: Ensure the committed vector index is current
+        # embeddings.json + milvus.db are committed artifacts (regenerated when chunks
+        # change — by the weekly refresh, or by a PR that touched chunks/config, gated by
+        # ci.yml's index-sync check). Normally this is a no-op that reuses them straight
+        # from the repo, so most releases (chat-UI changes) do NO embedding at all. It
+        # only falls back to re-embedding here if the committed index somehow drifted from
+        # chunks.json — a safety net, not the common path. `opencrane pack` then bakes
+        # milvus.db + chunks.json into the wheel.
+        env:
+          OPENCRANE: "uvx opencrane"
+        run: ./scripts/ensure-index.sh
 
       # The version comes from the release tag release-please just created, "v" stripped.
       - name: Pack the MCP package
