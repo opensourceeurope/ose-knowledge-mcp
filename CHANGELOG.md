@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.2.1...v0.2.2) (2026-07-06)
+
+
+### Documentation
+
+* add chat inference cost model ([#12](https://github.com/opensourceeurope/ose-knowledge-mcp/issues/12)) ([0fe32cd](https://github.com/opensourceeurope/ose-knowledge-mcp/commit/0fe32cd167bf09e85787f4270e5c973a81afd786))
+
 ## [0.2.1](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.2.0...v0.2.1) (2026-07-03)
 
 
