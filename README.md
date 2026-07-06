@@ -94,6 +94,7 @@ or in the client's config:
 - [`docs/knowledge-pipeline.md`](docs/knowledge-pipeline.md) — the OpenCrane index pipeline, smoke tests, and building/running the MCP container locally.
 - [`docs/deploy-scaleway.md`](docs/deploy-scaleway.md) — deploying the hosted MCP server.
 - [`docs/deploy-chat.md`](docs/deploy-chat.md) — deploying the chat function + static page.
+- [`docs/chat-cost.md`](docs/chat-cost.md) — what the hosted chat costs to run, measured per question/session.
 - [`docs/chat-ui.md`](docs/chat-ui.md) — the chat UI design system.
 - [`docs/automation.md`](docs/automation.md) — CI, the weekly refresh, and the release → publish → deploy chain.
 - [`function/README.md`](function/README.md) — the chat function (config, security, local run, hosted inference).
