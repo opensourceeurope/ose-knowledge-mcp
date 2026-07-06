@@ -65,7 +65,7 @@ search the OSE docs.
 
 ```
 /plugin marketplace add opensourceeurope/ose-knowledge-mcp
-/plugin install ose-knowledge@ai
+/plugin install ose-knowledge@ose-ai
 ```
 
 **Any MCP client** (Claude Code, Cursor, Claude Desktop, …):
