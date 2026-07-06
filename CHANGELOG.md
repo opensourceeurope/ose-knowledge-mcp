@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.4](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.2.3...v0.2.4) (2026-07-06)
+
+
+### Bug Fixes
+
+* rename plugin marketplace from ai to ose-ai ([#16](https://github.com/opensourceeurope/ose-knowledge-mcp/issues/16)) ([8563b0c](https://github.com/opensourceeurope/ose-knowledge-mcp/commit/8563b0cce38c2edfd9fd012fffcd95590de4e7cd))
+
 ## [0.2.3](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.2.2...v0.2.3) (2026-07-06)
 
 
