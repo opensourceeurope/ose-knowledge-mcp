@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.3](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.2.2...v0.2.3) (2026-07-06)
+
+
+### Bug Fixes
+
+* bump opencrane version-lock to 0.19.0 ([#14](https://github.com/opensourceeurope/ose-knowledge-mcp/issues/14)) ([c22edfe](https://github.com/opensourceeurope/ose-knowledge-mcp/commit/c22edfe288d69ea587bb5762f92c42b399be4073))
+
 ## [0.2.2](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.2.1...v0.2.2) (2026-07-06)
 
 
