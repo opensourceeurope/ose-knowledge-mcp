@@ -1,5 +1,5 @@
 {
   "name": "ose-knowledge",
   "description": "Open Source Europe documentation plugin — an ose-researcher agent backed by the public OSE docs MCP server (search_docs over the OSE handbook and internal operations docs).",
-  "version": "0.2.3"
+  "version": "0.2.4"
 }
