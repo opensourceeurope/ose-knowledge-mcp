@@ -14,7 +14,7 @@ Both are public `llms-full.txt`:
 ## Rebuild the index locally
 
 opencrane is **version-locked** in [`.opencrane/opencrane-version`](../.opencrane/opencrane-version)
-(currently `0.18.9`) — CI and `scripts/ensure-index.sh` invoke exactly that version via `uvx`,
+(currently `0.19.0`) — CI and `scripts/ensure-index.sh` invoke exactly that version via `uvx`,
 never the latest PyPI release, so the index is reproducible. To move to a new opencrane, edit
 that one file and regenerate the index (`./scripts/ensure-index.sh`) in the same PR. Pin your
 local commands to the same version so they match CI:
