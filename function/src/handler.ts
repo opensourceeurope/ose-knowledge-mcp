@@ -26,6 +26,31 @@ on its own, directly below your message. Follow these rules so nothing is duplic
 export interface ChatRequest { messages: ChatMessage[]; analyticsOptIn?: boolean; }
 export interface Env { MISTRAL_API_KEY: string; MISTRAL_MODEL?: string; MISTRAL_BASE_URL?: string; OSE_MCP_URL: string; MAX_TOOL_ROUNDS?: string; }
 
+// Deterministic safety net for the chat UI, which renders the numbered source
+// chips itself: strip a model-written trailing "Sources"/"References" section (and
+// any header-less trailing dump of bare-URL / markdown-link list items) from the
+// answer, so it never duplicates the chip row. CHAT_CITATION_DIRECTIVE asks the
+// model not to write one, but that is a prompt (the model sometimes obeys the base
+// persona's "cite source + URL" instead) — this makes the de-duplication certain.
+// Only a TRAILING sources block is removed: a mid-answer heading that merely reads
+// "Sources" is left alone, and a URL inside a sentence is not a list item.
+export function stripTrailingSourceList(answer: string): string {
+  const headerRe = /^\s*(?:#{1,6}\s*)?(?:\*\*|__)?\s*(?:sources|references)\s*:?\s*(?:\*\*|__)?\s*$/i;
+  const urlItemRe = /^\s*(?:[-*]|\d+[.)])?\s*<?https?:\/\/\S+>?\.?\s*$/i;
+  const lines = answer.split("\n");
+  // Cut from the earliest trailing "Sources"/"References" header line to the end.
+  let cut = lines.length;
+  for (let i = lines.length - 1; i >= 0; i--) {
+    if (headerRe.test(lines[i])) cut = i;
+  }
+  const kept = lines.slice(0, cut);
+  // Also drop trailing blank lines and header-less bare-URL / link-only list items.
+  while (kept.length && (kept[kept.length - 1].trim() === "" || urlItemRe.test(kept[kept.length - 1]))) {
+    kept.pop();
+  }
+  return kept.join("\n").replace(/\s+$/, "");
+}
+
 // Translate the agent's neutral message shape into the camelCase form the Mistral
 // SDK request schema expects. The SDK validates request messages with Zod and
 // silently strips unknown keys, so a snake_case `tool_calls` / `tool_call_id`
@@ -95,5 +120,5 @@ export async function handleChat(body: ChatRequest, env: Env) {
     console.log(`ANALYTICS ${JSON.stringify({ q: lastUser.content.slice(0, 500), rounds: result.rounds })}`);
   }
 
-  return { status: 200, json: { answer: result.answer, citations: result.citations } };
+  return { status: 200, json: { answer: stripTrailingSourceList(result.answer), citations: result.citations } };
 }
