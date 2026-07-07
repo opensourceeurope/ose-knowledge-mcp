@@ -14,15 +14,19 @@ Both are public `llms-full.txt`:
 ## Rebuild the index locally
 
 opencrane is **version-locked** in [`.opencrane/opencrane-version`](../.opencrane/opencrane-version)
-(currently `0.21.0`) — CI and `scripts/ensure-index.sh` invoke exactly that version via `uvx`,
+(currently `0.22.0`) — CI and `scripts/ensure-index.sh` invoke exactly that version via `uvx`,
 never the latest PyPI release, so the index is reproducible. To move to a new opencrane, edit
 that one file and regenerate the index (`./scripts/ensure-index.sh`) in the same PR. Pin your
 local commands to the same version so they match CI:
 
+The pipeline steps (`fetch`, `chunk`, `build`) need opencrane's optional `[pipeline]`
+extra — docling/PyGithub/tiktoken live there, kept out of the serve-only base so
+`uvx ose-knowledge-mcp` stays slim. `embed`/`index`/`serve` run on the base install.
+
 `fetch` needs a non-empty `GITHUB_TOKEN` even for llmstxt-only sources:
 
 ```bash
-OC="opencrane@$(cat .opencrane/opencrane-version)"
+OC="opencrane[pipeline]@$(cat .opencrane/opencrane-version)"
 GITHUB_TOKEN=x uvx "$OC" fetch
 uvx "$OC" llms
 uvx "$OC" chunk
@@ -33,7 +37,7 @@ uvx "$OC" index
 Or run the whole pipeline at once:
 
 ```bash
-GITHUB_TOKEN=x uvx "opencrane@$(cat .opencrane/opencrane-version)" build
+GITHUB_TOKEN=x uvx "opencrane[pipeline]@$(cat .opencrane/opencrane-version)" build
 ```
 
 **Artifact strategy:** `chunks.json` + `llmstxt/` are committed build inputs, and
