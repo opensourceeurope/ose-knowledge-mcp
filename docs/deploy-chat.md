@@ -74,7 +74,7 @@ gateway/CDN) rather than in this code.
 | `PORT` | no | `8080` | Injected by the platform on Scaleway/containers. |
 
 Build once before deploying: `cd function && npm run build` (runs `build:persona`,
-`build:pagemap`, then `tsc`, emitting `dist/`).
+then `tsc`, emitting `dist/`).
 
 ## Deploy the function
 

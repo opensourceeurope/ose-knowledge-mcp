@@ -48,8 +48,8 @@ Mistral wire format is OpenAI-compatible, so only the base URL changes:
 The agent loop depends on the model reliably emitting `search_docs` tool calls;
 models below ~12B tend to answer from memory instead of searching.
 
-`npm run dev` regenerates the bundled persona and pagemap, then runs the server with
-`tsx`. For a production-style run, `npm run build` (runs `build:persona`, `build:pagemap`,
+`npm run dev` regenerates the bundled persona, then runs the server with
+`tsx`. For a production-style run, `npm run build` (runs `build:persona`,
 then `tsc`) emits `dist/server.js`, which listens on `$PORT` (default 8080).
 
 ## Configuration
@@ -88,13 +88,11 @@ All configuration is via environment variables (see `.env.example`):
 ## Citations
 
 Citations link to the **specific documentation page**, not just the source root.
-At build time, `scripts/bundle-pagemap.mjs` generates `src/pagemap.generated.ts`
-(chunk_id → page URL + title) from three committed inputs: `.opencrane/chunks.json`,
-`.opencrane/llmstxt/<source>/llms-full.txt` (page bodies), and
-`.opencrane/llmstxt/<source>/llms.txt` (GitBook's per-page index). At runtime the
-function maps each `search_docs` result's `Chunk ID` through that map; unmapped
-chunks fall back to the source root URL. The weekly refresh workflow keeps the
-`llms.txt` snapshots up to date.
+opencrane's `search_docs` already emits that page URL on each result's `Source:`
+line (from the chunk's `metadata.source_url`), so the function reads it directly —
+no page map or generated lookup table. The citation title (shown as the chip
+label in the chat UI) is the last segment of the result's Metadata `Location:`
+breadcrumb, falling back to the source name when a result has no breadcrumb.
 
 ## Tests
 - `npm test` runs unit tests (mocked Mistral) + handler validation.
@@ -102,8 +100,8 @@ chunks fall back to the source root URL. The weekly refresh workflow keeps the
 
 ## End-to-end notes
 
-`npm run build` compiles the full module graph (handler -> agent -> mcp -> persona,
-plus the generated pagemap), which is the key-free proof that everything is
+`npm run build` compiles the full module graph (handler -> agent -> mcp -> persona),
+which is the key-free proof that everything is
 type-correct and importable. A live
 end-to-end run against Mistral needs a `MISTRAL_API_KEY` and is deferred to the
 maintainer using the **Local run** steps above.

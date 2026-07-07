@@ -246,9 +246,9 @@ jobs:
           # `update image=… --wait` sets the new image, redeploys, and waits for ready.
           scw container container update "$CONTAINER_ID" image="$IMAGE" --wait
 
-  # The chat function is independent of the PyPI package, but it bundles the persona +
-  # pagemap (derived from the chunks), so redeploy it on every release to pick up refreshed
-  # citation links. Runs on a release run or a manual dispatch, independent of publish.
+  # The chat function is independent of the PyPI package, but it bundles the persona
+  # (derived from the agent source), so redeploy it on every release to pick up persona
+  # and function code changes. Runs on a release run or a manual dispatch, independent of publish.
   deploy-function:
     needs: [release-please]
     if: ${{ !cancelled() && (needs.release-please.outputs.released == 'true' || github.event_name == 'workflow_dispatch') }}

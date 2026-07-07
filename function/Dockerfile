@@ -1,7 +1,7 @@
 # Minimal runtime image for the chat function.
 #
-# The build (bundle persona + pagemap, then tsc) runs in CI where the full repo is present,
-# because those scripts read ../../agent and ../../.opencrane. This image only ships the
+# The build (bundle persona, then tsc) runs in CI where the full repo is present,
+# because that script reads ../../agent. This image only ships the
 # already-built dist/ + production node_modules — it does NOT compile here. Build context
 # is `function/` (so the repo-root .dockerignore, which excludes function/, does not apply).
 FROM node:20-slim

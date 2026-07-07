@@ -43,7 +43,8 @@ sequenceDiagram
 ```
 
 The loop (tool call → MCP → results → continue) can repeat up to `MAX_TOOL_ROUNDS`. The function
-holds the inference key, enforces the origin allowlist, and maps each cited chunk to its page URL.
+holds the inference key, enforces the origin allowlist, and reads each cited chunk's page URL
+straight from the `search_docs` result.
 Nothing is persisted; opt-in analytics logs only the anonymized question to Scaleway Cockpit.
 
 ## Flow 2 — Your own agent (local or any MCP client)

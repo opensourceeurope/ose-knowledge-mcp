@@ -21,7 +21,7 @@ cd "$(git rev-parse --show-toplevel)"
 # opencrane is version-locked in .opencrane/opencrane-version (single source of truth,
 # bumped by hand — never floats to the latest PyPI release). We invoke it through uvx at
 # that exact version, so local runs and CI use the same opencrane. Override with the
-# OPENCRANE env var (e.g. OPENCRANE="uvx opencrane@0.19.0" ./scripts/ensure-index.sh) to
+# OPENCRANE env var (e.g. OPENCRANE="uvx opencrane@0.20.0" ./scripts/ensure-index.sh) to
 # trial a new version before committing the bump. Word-splitting of $OC is intentional.
 OPENCRANE_VERSION="$(tr -d '[:space:]' < .opencrane/opencrane-version)"
 OC="${OPENCRANE:-uvx opencrane@${OPENCRANE_VERSION}}"
@@ -89,6 +89,11 @@ else
 fi
 
 echo "Building vector index (milvus.db)..."
-$OC index
+# DROP_EXISTING=true forces a fresh rebuild. Without it, `opencrane index` sees the
+# committed milvus.db's already-populated collection and SKIPS the rebuild, leaving a
+# stale index that then gets packed into the release (opencrane pack copies milvus.db
+# verbatim). We only reach here when the index actually needs rebuilding, so always
+# drop and repopulate from the freshly-embedded vectors.
+DROP_EXISTING=true $OC index
 
 echo "Done: index is consistent with chunks.json."
