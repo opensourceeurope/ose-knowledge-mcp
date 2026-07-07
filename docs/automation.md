@@ -45,7 +45,7 @@ Publish + deploy run in the *same* `release.yml` run — merging the release PR 
 - **Deploy**: builds + pushes the image and updates the Scaleway serverless container (see
   [`deploy-scaleway.md`](deploy-scaleway.md)); also runnable on its own via `workflow_dispatch`
   to redeploy an already-published version.
-- **Chat function + page**: redeployed on every release so refreshed citation links ship too.
+- **Chat function + page**: redeployed on every release to pick up persona and code changes.
 
 For the full contributor flow and the list of files release-please owns (never hand-edit), see
 the `dev-workflow` skill and [`../AGENTS.md`](../AGENTS.md).
