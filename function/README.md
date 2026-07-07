@@ -87,12 +87,17 @@ All configuration is via environment variables (see `.env.example`):
 
 ## Citations
 
-Citations link to the **specific documentation page**, not just the source root.
-opencrane's `search_docs` already emits that page URL on each result's `Source:`
-line (from the chunk's `metadata.source_url`), so the function reads it directly —
-no page map or generated lookup table. The citation title (shown as the chip
-label in the chat UI) is the last segment of the result's Metadata `Location:`
-breadcrumb, falling back to the source name when a result has no breadcrumb.
+Citations link to the **specific documentation section**, not just the page or
+source root. opencrane's `search_docs` emits the page URL on each result's
+`Source:` line (from `metadata.source_url`) and, for sub-section chunks, a
+`Section Anchor:` slug — the function combines them into `source_url#anchor` so
+the chip links straight to the section (falling back to the plain page URL when
+there's no anchor). No page map or generated lookup table.
+
+The chip label is a **"Page – Section"** title built from the result's Metadata
+`Location:` breadcrumb (page title + most specific section, leading emoji
+stripped), collapsing to just the page title for page-level results and to the
+source name when a result has no breadcrumb.
 
 ## Tests
 - `npm test` runs unit tests (mocked Mistral) + handler validation.
