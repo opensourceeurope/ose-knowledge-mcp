@@ -43,8 +43,9 @@ sequenceDiagram
 ```
 
 The loop (tool call → MCP → results → continue) can repeat up to `MAX_TOOL_ROUNDS`. The function
-holds the inference key, enforces the origin allowlist, and reads each cited chunk's page URL
-straight from the `search_docs` result.
+holds the inference key, enforces the origin allowlist, and builds each citation from the
+`search_docs` result — linking to the exact section (`source_url#section_anchor`) when opencrane
+supplies one, else the page.
 Nothing is persisted; opt-in analytics logs only the anonymized question to Scaleway Cockpit.
 
 ## Flow 2 — Your own agent (local or any MCP client)

@@ -23,18 +23,33 @@ export interface Citation { source_name?: string; url?: string; title?: string; 
 export interface NumberedCitation extends Citation { n: number; }
 export interface SearchResult { text: string; citations: Citation[]; }
 
+// Build a "Page – Section" chip label from the Metadata "Location:" breadcrumb
+// (e.g. "About Open Source Europe > Who We Serve" -> "About Open Source Europe –
+// Who We Serve"). Leading emoji/symbols are stripped from each segment; a
+// page-level breadcrumb collapses to just the page title.
+function titleFromBreadcrumb(location?: string): string | undefined {
+  if (!location) return undefined;
+  const clean = (s: string) => s.replace(/^[^\p{L}\p{N}]+/u, "").trim();
+  const segments = location.split(">").map(clean).filter(Boolean);
+  if (segments.length === 0) return undefined;
+  const page = segments[0];
+  const section = segments[segments.length - 1];
+  return section !== page ? `${page} – ${section}` : page;
+}
+
 // Resolve a single "Result N:" body block into its citation. Each block carries
-// Source (the specific documentation page URL, emitted by opencrane from the
-// chunk's metadata.source_url) and Source Name. When a Metadata "Location:"
-// breadcrumb is present we use its most specific (last) segment as the citation
-// title, so the chat UI can label the chip with a human-readable page/section
-// name instead of the source slug.
+// Source (the documentation page URL, from the chunk's metadata.source_url) and
+// Source Name. opencrane also emits a "Section Anchor:" slug for sub-section
+// chunks; when present we link to the exact section as source_url#anchor,
+// otherwise the plain page. The chip label is the breadcrumb's "Page – Section".
 function citationFromBlock(block: string): Citation | null {
-  const url = block.match(/^Source:\s*(\S+)/m)?.[1];
+  const pageUrl = block.match(/^Source:\s*(\S+)/m)?.[1];
   const sourceName = block.match(/^Source Name:\s*([^\n]+)/m)?.[1]?.trim();
-  if (!url || !sourceName) return null;
+  if (!pageUrl || !sourceName) return null;
+  const anchor = block.match(/^\s*Section Anchor:\s*(\S+)/m)?.[1];
+  const url = anchor ? `${pageUrl}#${anchor}` : pageUrl;
   const location = block.match(/^\s*Location:\s*([^\n]+)/m)?.[1]?.trim();
-  const title = location?.split(">").pop()?.trim() || undefined;
+  const title = titleFromBreadcrumb(location);
   return title
     ? { url, source_name: sourceName, title }
     : { url, source_name: sourceName };

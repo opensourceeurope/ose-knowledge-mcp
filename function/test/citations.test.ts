@@ -1,9 +1,10 @@
 import { describe, it, expect } from "vitest";
 import { parseCitations, annotateAndNumber, newRegistry } from "../src/mcp.js";
 
-// opencrane's search_docs emits the specific documentation page URL on the
-// "Source:" line (from the chunk's metadata.source_url), plus a Metadata
-// "Location:" breadcrumb we turn into the citation title.
+// opencrane's search_docs emits the documentation page URL on the "Source:" line
+// (from metadata.source_url), a Metadata "Location:" breadcrumb (turned into a
+// "Page – Section" title), and — for sub-section chunks — a "Section Anchor:"
+// slug we append to the URL so citations link to the exact section.
 const MCP_TEXT = `Found 2 results:
 
 Result 1:
@@ -13,6 +14,7 @@ Type: list_item
 Chunk ID: aaa111
 Metadata:
   Location: Terms of Service > Payouts > Legal Status
+  Section Anchor: legal-status (link to this section as Source#legal-status)
 Content:
 # Terms of Service
 Some terms text.
@@ -27,21 +29,50 @@ Some internal text.
 `;
 
 describe("parseCitations", () => {
-  it("cites the specific page URL and derives the title from the breadcrumb's last segment", () => {
+  it("links to the exact section (source_url#anchor) with a Page – Section title", () => {
     const citations = parseCitations(MCP_TEXT);
     expect(citations[0]).toEqual({
-      url: "https://docs.opencollective.com/open-source-europe/terms-of-service",
+      url: "https://docs.opencollective.com/open-source-europe/terms-of-service#legal-status",
       source_name: "open-source-europe",
-      title: "Legal Status",
+      title: "Terms of Service – Legal Status",
     });
   });
 
-  it("omits the title when the block has no Location breadcrumb", () => {
+  it("falls back to the plain page URL and no title without breadcrumb/anchor", () => {
     const citations = parseCitations(MCP_TEXT);
     expect(citations[1]).toEqual({
       url: "https://docs.opencollective.com/oc-europe-internal-doc/the-foundation",
       source_name: "oc-europe-internal-doc",
     });
+  });
+
+  it("strips leading emoji from the section in the label", () => {
+    const text = `Result 1:
+Source: https://x/donate
+Source Name: ose
+Metadata:
+  Location: Contributions in cryptocurrencies > ✅ Eligibility Requirements
+  Section Anchor: eligibility-requirements
+Content:
+text
+`;
+    expect(parseCitations(text)[0]).toEqual({
+      url: "https://x/donate#eligibility-requirements",
+      source_name: "ose",
+      title: "Contributions in cryptocurrencies – Eligibility Requirements",
+    });
+  });
+
+  it("collapses a single-segment breadcrumb to just the page title", () => {
+    const text = `Result 1:
+Source: https://x/overview
+Source Name: ose
+Metadata:
+  Location: Overview
+Content:
+text
+`;
+    expect(parseCitations(text)[0]).toMatchObject({ url: "https://x/overview", title: "Overview" });
   });
 
   it("de-duplicates citations pointing at the same URL", () => {
@@ -58,7 +89,7 @@ describe("annotateAndNumber", () => {
     expect(text).toContain("Result 1: [cite this source inline as [1]]");
     expect(text).toContain("Result 2: [cite this source inline as [2]]");
     expect(citations.map((c) => c.n)).toEqual([1, 2]);
-    expect(citations[0]).toMatchObject({ n: 1, title: "Legal Status" });
+    expect(citations[0]).toMatchObject({ n: 1, title: "Terms of Service – Legal Status" });
   });
 
   it("keeps a URL's number stable across rounds and never re-numbers it", () => {
