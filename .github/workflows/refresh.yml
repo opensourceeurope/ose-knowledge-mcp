@@ -37,16 +37,6 @@ jobs:
           uvx "opencrane@${OPENCRANE_VERSION}" llms
           uvx "opencrane@${OPENCRANE_VERSION}" chunk
 
-      - name: Refresh llms.txt page indexes (per-page citation links in chat)
-        # opencrane only fetches llms-full.txt; the per-page index that
-        # function/scripts/bundle-pagemap.mjs needs is fetched here.
-        # Add a line when adding a source to .opencrane/config.yaml.
-        run: |
-          curl -sf https://docs.opencollective.com/open-source-europe/llms.txt \
-            -o .opencrane/llmstxt/open-source-europe/llms.txt
-          curl -sf https://docs.opencollective.com/oc-europe-internal-doc/llms.txt \
-            -o .opencrane/llmstxt/oc-europe-internal-doc/llms.txt
-
       # If the re-chunk changed chunks.json, rebuild embeddings.json + milvus.db so the
       # committed index tracks the refreshed content; a no-op (reuses the committed
       # artifacts) when the sources didn't change. This is where the weekly re-embed

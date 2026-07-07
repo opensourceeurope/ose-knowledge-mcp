@@ -2,7 +2,6 @@ import { Mistral } from "@mistralai/mistralai";
 import { runAgent, type ChatMessage } from "./agent.js";
 import { searchDocs, annotateAndNumber, newRegistry } from "./mcp.js";
 import { PERSONA } from "./persona.generated.js";
-import { PAGE_MAP } from "./pagemap.generated.js";
 
 // Chat-only addendum to the shared persona. The web UI renders the numbered
 // source list separately below the answer, so the model must cite with bracket
@@ -85,8 +84,8 @@ export async function handleChat(body: ChatRequest, env: Env) {
     userMessages,
     mistralChat,
     search: async (q) => {
-      const { text } = await searchDocs(q, env.OSE_MCP_URL, PAGE_MAP);
-      return annotateAndNumber(text, PAGE_MAP, registry);
+      const { text } = await searchDocs(q, env.OSE_MCP_URL);
+      return annotateAndNumber(text, registry);
     },
     maxRounds: env.MAX_TOOL_ROUNDS ? parseInt(env.MAX_TOOL_ROUNDS, 10) : 4,
   });

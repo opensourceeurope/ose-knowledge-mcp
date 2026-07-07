@@ -1,6 +1,6 @@
 name: Deploy chat function to Scaleway
 
-# Builds function/ (persona + pagemap + tsc in the runner), ships a minimal image, and
+# Builds function/ (persona + tsc in the runner), ships a minimal image, and
 # rolls it out to a Scaleway serverless container. Reuses the same Scaleway creds as the
 # MCP deploy.
 #
@@ -51,7 +51,7 @@ jobs:
 
       # The ubuntu-24.04 runner ships Node 20 — no setup-node needed (and it keeps this
       # artifact-publishing job clear of the cache-poisoning class).
-      - name: Build the function (persona + pagemap + tsc), then prune to prod deps
+      - name: Build the function (persona + tsc), then prune to prod deps
         working-directory: function
         run: |
           node --version

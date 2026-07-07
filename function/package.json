@@ -6,10 +6,9 @@
   "engines": { "node": ">=20" },
   "scripts": {
     "build:persona": "node scripts/bundle-persona.mjs",
-    "build:pagemap": "node scripts/bundle-pagemap.mjs",
-    "build": "npm run build:persona && npm run build:pagemap && tsc -p tsconfig.json",
+    "build": "npm run build:persona && tsc -p tsconfig.json",
     "test": "vitest run",
-    "dev": "npm run build:persona && npm run build:pagemap && tsx src/server.ts"
+    "dev": "npm run build:persona && tsx src/server.ts"
   },
   "dependencies": {
     "@mistralai/mistralai": "^1.5.0",
