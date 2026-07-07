@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.5](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.2.4...v0.2.5) (2026-07-07)
+
+
+### Bug Fixes
+
+* link citations to exact page via opencrane source_url ([#18](https://github.com/opensourceeurope/ose-knowledge-mcp/issues/18)) ([1b3b6e7](https://github.com/opensourceeurope/ose-knowledge-mcp/commit/1b3b6e724d520213120acfb79b73fa37df5eb170))
+
 ## [0.2.4](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.2.3...v0.2.4) (2026-07-06)
 
 
