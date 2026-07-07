@@ -29,13 +29,16 @@ jobs:
       - name: Resolve the pinned opencrane version
         run: echo "OPENCRANE_VERSION=$(tr -d '[:space:]' < .opencrane/opencrane-version)" >> "$GITHUB_ENV"
 
+      # The RAG pipeline deps (docling/PyGithub/tiktoken) live in opencrane's optional
+      # `[pipeline]` extra (kept out of the serve-only base so `uvx ose-knowledge-mcp`
+      # stays slim); fetch and chunk need them, so the build steps request the extra.
       - name: Re-fetch sources and regenerate committed inputs
         env:
           GITHUB_TOKEN: ${{ github.token }}   # opencrane fetch needs a non-empty token
         run: |
-          uvx "opencrane@${OPENCRANE_VERSION}" fetch
-          uvx "opencrane@${OPENCRANE_VERSION}" llms
-          uvx "opencrane@${OPENCRANE_VERSION}" chunk
+          uvx "opencrane[pipeline]@${OPENCRANE_VERSION}" fetch
+          uvx "opencrane[pipeline]@${OPENCRANE_VERSION}" llms
+          uvx "opencrane[pipeline]@${OPENCRANE_VERSION}" chunk
 
       # If the re-chunk changed chunks.json, rebuild embeddings.json + milvus.db so the
       # committed index tracks the refreshed content; a no-op (reuses the committed
