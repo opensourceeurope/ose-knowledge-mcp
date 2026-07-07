@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.3.1...v0.3.2) (2026-07-07)
+
+
+### Bug Fixes
+
+* **chat:** stop duplicate source list in chat answers ([#24](https://github.com/opensourceeurope/ose-knowledge-mcp/issues/24)) ([607e24f](https://github.com/opensourceeurope/ose-knowledge-mcp/commit/607e24fb1e302bac88a45001ace1e7cd8b67d1e9))
+
 ## [0.3.1](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.3.0...v0.3.1) (2026-07-07)
 
 
