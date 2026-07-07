@@ -80,8 +80,23 @@ function assignNumber(reg: CiteRegistry, c: Citation): number {
   return numbered.n;
 }
 
+// Drop the raw "Source:" URL and "Section Anchor:" lines from a result body
+// before it is shown to the model. The citation has already been parsed off them
+// (into the numbered chip list the UI renders), and the model cites with the [N]
+// tag — it never needs the raw URL. Leaving URLs in the tool text tempts the model
+// into echoing them as a "Sources:" list that duplicates the UI (the exact
+// duplication CHAT_CITATION_DIRECTIVE tries to prevent). "Source Name:" and
+// "Location:" stay — they carry no raw URL and help the model attribute inline.
+function stripSourceUrls(body: string): string {
+  return body
+    .split("\n")
+    .filter((line) => !/^\s*Source:\s*\S/.test(line) && !/^\s*Section Anchor:\s*\S/.test(line))
+    .join("\n");
+}
+
 // Tag each "Result N:" block in the search text with the stable footnote number
-// of its source, so the model can place matching [N] markers in its prose.
+// of its source, so the model can place matching [N] markers in its prose, and
+// strip the raw source URLs from what the model sees (see stripSourceUrls).
 // Returns the annotated text plus the registry's current numbered citations.
 export function annotateAndNumber(
   text: string,
@@ -95,8 +110,8 @@ export function annotateAndNumber(
     const body = parts[i + 1] ?? "";
     const c = citationFromBlock(body);
     out += c
-      ? `${header} [cite this source inline as [${assignNumber(reg, c)}]]${body}`
-      : header + body;
+      ? `${header} [cite this source inline as [${assignNumber(reg, c)}]]${stripSourceUrls(body)}`
+      : header + stripSourceUrls(body);
   }
   return { text: out, citations: reg.list.slice() };
 }

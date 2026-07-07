@@ -117,4 +117,21 @@ describe("annotateAndNumber", () => {
     expect(text).not.toContain("cite this source inline");
     expect(citations).toHaveLength(0);
   });
+
+  it("strips raw Source URLs + Section Anchor lines from the model-facing text, keeping Source Name and citations", () => {
+    const reg = newRegistry();
+    const { text, citations } = annotateAndNumber(MCP_TEXT, reg);
+    // The model must not see raw URLs — that is what it echoes into a duplicate
+    // "Sources:" list. Both the Source: and Section Anchor: lines are gone.
+    expect(text).not.toMatch(/^\s*Source:\s*https?:\/\//m);
+    expect(text).not.toMatch(/^\s*Section Anchor:/m);
+    expect(text).not.toContain("https://docs.opencollective.com");
+    // The human-readable name, the [N] marker, and the parsed (deep-linked)
+    // chip citations all survive.
+    expect(text).toContain("Source Name: open-source-europe");
+    expect(text).toContain("[cite this source inline as [1]]");
+    expect(citations[0].url).toBe(
+      "https://docs.opencollective.com/open-source-europe/terms-of-service#legal-status"
+    );
+  });
 });
