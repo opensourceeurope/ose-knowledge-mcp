@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.2.5...v0.3.0) (2026-07-07)
+
+
+### Features
+
+* cite exact doc sections via opencrane 0.21.0 section anchors ([#20](https://github.com/opensourceeurope/ose-knowledge-mcp/issues/20)) ([9ffe622](https://github.com/opensourceeurope/ose-knowledge-mcp/commit/9ffe622314f366ea24dc85b12144603375da4507))
+
 ## [0.2.5](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.2.4...v0.2.5) (2026-07-07)
 
 
