@@ -57009,16 +57009,28 @@
     "token_count": 198
   },
   {
-    "chunk_id": "e0cb4e77cb191b25de1ad23120c14b46ed76252b66807ff4183cf3a9ae23cdc3",
+    "chunk_id": "bc2dcab385eb9d82327103aafe85ab506807c71720f3d03c250a00d7f65399d1",
     "chunk_type": "prose",
-    "content": "{% hint style=\"danger\" %}\nFor wires in USD, the bank charge must be added to the disbursement in the processing fee section. It will take time before it is processed and recorded on the KBC dashboard. Wait until you have the bank charge before marking the disbursement as paid manually. &#x20;\n{% endhint %}\n\n<figure><img src=\"/files/00x0AJIS0OIPihHNCDPZ\" alt=\"\"><figcaption></figcaption></figure>\n\n***\n\n### Common Issues and Resolutions\n\n| Issue                                              | What to do                                                                                                             |\n| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |\n| Missing documents                                  | Mark the request as **Incomplete** and notify the submitter with a clear comment.                                      |\n| Incorrect document                                 | Mark as **Incomplete** and explain what document is required.                                                          |\n| Pro forma invoice submitted as reimbursement proof | Ask for proof of payment or a valid receipt.                                                                           |\n| Wrong payout name or bank account mismatch         | Contact the submitter and request a correction before payment.                                                         |\n| Legal name missing from user profile               | Ask the user to complete the **Legal name** section before processing.                                                 |\n| Submitter and payee do not match                   | Do not process unless there is a clearly documented and justified exception.                                           |\n| Payment fails on Wise or PayPal                    | Retry once. If it fails again, follow up and document the issue.                                                       |\n| Duplicate submission                               | Approve only one request and reject the duplicate with a clear reason.                                                 |\n| Insufficient Wise balance                          | Recharge Wise from the relevant KBC account before processing.                                                         |\n| USD transfer to Wise would take too long           | Consider direct payment from KBC if appropriate and documented.                                                        |\n| Unclear eligibility                                | Ask for an explanation of the expense to the collective. Flag internally in doubt.                                     |\n| Unverified PayPal account                          | Ask the submitter to verify the account and fill out the Legal name section of their profile if it isn't already done. |\n\n***\n\n### Best Practices",
+    "content": "{% hint style=\"danger\" %}\nFor wires in USD, the bank charge must be added to the disbursement in the processing fee section. It will take time before it is processed and recorded on the KBC dashboard. Wait until you have the bank charge before marking the disbursement as paid manually. &#x20;\n{% endhint %}\n\n<figure><img src=\"/files/00x0AJIS0OIPihHNCDPZ\" alt=\"\"><figcaption></figcaption></figure>\n\n***\n\n### Common Issues and Resolutions",
     "line_start": null,
     "metadata": {
       "source_url": "https://docs.opencollective.com/oc-europe-internal-doc/financial-operations-introduction/payment-processing-and-disbursements"
     },
     "source_file": ".opencrane/llmstxt/llms-full.txt",
     "source_name": "oc-europe-internal-doc",
-    "token_count": 415
+    "token_count": 106
+  },
+  {
+    "chunk_id": "d6eebfaeb278d95a20ac968b5ed1e9d15e0918e525fcbb8e065af0be01896aef",
+    "chunk_type": "prose",
+    "content": "***\n\n### Best Practices",
+    "line_start": null,
+    "metadata": {
+      "source_url": "https://docs.opencollective.com/oc-europe-internal-doc/financial-operations-introduction/payment-processing-and-disbursements"
+    },
+    "source_file": ".opencrane/llmstxt/llms-full.txt",
+    "source_name": "oc-europe-internal-doc",
+    "token_count": 4
   },
   {
     "chunk_id": "cc0a5f277f66e54bbcf635dd5fc3cd478e7a0ecfa0219a7fc8b856bc42c12871",
@@ -60177,16 +60189,28 @@
     "token_count": 99
   },
   {
-    "chunk_id": "be66f54b1d1c59dcf9ab243e43d0e16091f57a1eb47c1f074156851a695f0b6c",
+    "chunk_id": "011f01c4b5a4ab52060a8194e9581ce13bfe749e42719ef16235509210ae2804",
     "chunk_type": "prose",
-    "content": "{% hint style=\"warning\" %}\nOutside of specific exceptional cases (like COVID-19 or Ukrainian relief), we cannot offer fee waivers or discounts.\n{% endhint %}\n\n***\n\n### Fee Comparison Chart:\n\n| Fiscal Host                                                 | Hosted Collectives   | Fee                                |\n| ----------------------------------------------------------- | -------------------- | ---------------------------------- |\n| Open Source Collective                                      | Open source projects | 10%                                |\n| [Open Collective Europe](https://opencollective.com/europe) | EU-based Collectives | 8-10%                              |\n| [Women Who Code](https://opencollective.com/wwcodeinc)      | Local chapters       | 10%                                |\n| Community Partners                                          | US-based projects    | 9-12% + minimum balance/annual fee |\n| Charitable Allies                                           |                      | 1-25%                              |\n\n### What if I want to become my own fiscal host someday?\n\nNo problem! You're welcome to use Open Collective Europe as your fiscal host for as long as you need and remain eligible.",
+    "content": "{% hint style=\"warning\" %}\nOutside of specific exceptional cases (like COVID-19 or Ukrainian relief), we cannot offer fee waivers or discounts.\n{% endhint %}\n\n***\n\n### Fee Comparison Chart:",
     "line_start": null,
     "metadata": {
       "source_url": "https://docs.opencollective.com/open-source-europe/faq/general-faqs"
     },
     "source_file": ".opencrane/llmstxt/llms-full.txt",
     "source_name": "open-source-europe",
-    "token_count": 211
+    "token_count": 40
+  },
+  {
+    "chunk_id": "478c66b986f5fd1589316c7b838ccba19154f28baddfd917271b680f3af79693",
+    "chunk_type": "prose",
+    "content": "### What if I want to become my own fiscal host someday?\n\nNo problem! You're welcome to use Open Collective Europe as your fiscal host for as long as you need and remain eligible.",
+    "line_start": null,
+    "metadata": {
+      "source_url": "https://docs.opencollective.com/open-source-europe/faq/general-faqs"
+    },
+    "source_file": ".opencrane/llmstxt/llms-full.txt",
+    "source_name": "open-source-europe",
+    "token_count": 38
   },
   {
     "chunk_id": "e19784518fe9980f6af31ffdc7edfa12d60cbc3acf21fc90ea3533e9cbbe0e51",
@@ -60237,16 +60261,28 @@
     "token_count": 45
   },
   {
-    "chunk_id": "16ac131a2f0c8a85883fd170703865dc8d38ae14f92a32f613043f6509e79d1a",
+    "chunk_id": "3281cb82c3b00680c0e2ce085e07684e2b10c346200aee237e3a98a37f29edb6",
     "chunk_type": "prose",
-    "content": "{% hint style=\"info\" %}\nLearn how: [Add a Fiscal Host](https://docs.opencollective.com/help/collectives/add-fiscal-host)\n{% endhint %}\n\n***\n\n### Examples of Fiscal Hosts\n\nHere are a few examples of Fiscal Hosts, each with their own region, focus area, and fees:\n\n| Fiscal Host            | Hosted Collectives   | Fee   |\n| ---------------------- | -------------------- | ----- |\n| Open Source Collective | Open source projects | 5%    |\n| Open Collective Europe | EU-based collectives | 8–10% |\n| Social Change Nest     | UK-based collectives | 5–7%  |\n| Women Who Code         | Local chapters       | 0%    |\n| Operation Code         | Veterans' programs   | 30%   |\n\n***\n\n### More Info\n\nFor full details on how fiscal hosting works, see:\\\n👉 [Fiscal Hosting FAQs](https://docs.opencollective.com/oceurope/faq/fiscal-hosting-faqs)",
+    "content": "{% hint style=\"info\" %}\nLearn how: [Add a Fiscal Host](https://docs.opencollective.com/help/collectives/add-fiscal-host)\n{% endhint %}\n\n***\n\n### Examples of Fiscal Hosts\n\nHere are a few examples of Fiscal Hosts, each with their own region, focus area, and fees:",
     "line_start": null,
     "metadata": {
       "source_url": "https://docs.opencollective.com/open-source-europe/faq/fiscal-hosting-faqs"
     },
     "source_file": ".opencrane/llmstxt/llms-full.txt",
     "source_name": "open-source-europe",
-    "token_count": 215
+    "token_count": 68
+  },
+  {
+    "chunk_id": "4ec628bfd8cb023343b1e41dcbe27dc9763673ef22d89c01ccb2b1ae4d387731",
+    "chunk_type": "prose",
+    "content": "### More Info\n\nFor full details on how fiscal hosting works, see:\\\n👉 [Fiscal Hosting FAQs](https://docs.opencollective.com/oceurope/faq/fiscal-hosting-faqs)",
+    "line_start": null,
+    "metadata": {
+      "source_url": "https://docs.opencollective.com/open-source-europe/faq/fiscal-hosting-faqs"
+    },
+    "source_file": ".opencrane/llmstxt/llms-full.txt",
+    "source_name": "open-source-europe",
+    "token_count": 46
   },
   {
     "chunk_id": "8eae926ba00b0cf0589ff38d9864111b7519f8d865ca68947eb792bd5f794b43",
@@ -60487,5 +60523,914 @@
     "source_file": ".opencrane/llmstxt/llms-full.txt",
     "source_name": "open-source-europe",
     "token_count": 282
+  },
+  {
+    "chunk_id": "8103688ee0900f78910901df4a8ab25d029743c8d0ea358e5e283737b21582ae",
+    "chunk_type": "table_row",
+    "content": "# Payment processing and disbursements > Common Issues and Resolutions\nIssue: Missing documents.\nWhat to do: Mark the request as **Incomplete** and notify the submitter with a clear comment.",
+    "line_start": null,
+    "metadata": {
+      "breadcrumb_path": "Payment processing and disbursements > Common Issues and Resolutions",
+      "columns": [
+        "Issue",
+        "What to do"
+      ],
+      "row_index": 1,
+      "row_key": "Missing documents",
+      "sibling_ids": [
+        "64d21f537e6cd140fdb502e7cf01773656639328aa5acb0b9d2b25ea865126dd",
+        "e2d8d368725de5b607189bf93ace4dbd3d5fdb6e1916584f4380805a4aa52b83",
+        "ca261f50362f78aefbd0d6155d7f7b503a2b0d549a99b12b9a5593f24ca17b2c",
+        "7362f52b3dfab53aa490a04db641234b539b7d531dd1a2e9b82f5cc5fbb6fa96",
+        "c25be6ba0cd1fc11804d1e2cdb3e5c3a98db9af58f4eafda5fc73cf712bb2d74",
+        "0b0c46f0bf3ffb28f08228ee8de9024842839e4d600d8158257e4ed305d84240",
+        "3c754d50ca09465d72f83b06b9f6e7eecb4fe980150d0e19142376aa0357c987",
+        "f83d02287072f0ff2955021b75eab94a50dbf1fce8945c3c4340689a7916b59c",
+        "6a24907a19a69d19c697a98d0f222c311af7c10ace4d3d171538b5a57f9e53df",
+        "3ac04e8e79e2a25ac9985168b2a4a57afbac5d91635f97c492ca08494a57d009",
+        "d190e135383fe4df4e4b08ce965591dc5ac2b5643b6edd35eaa3a76f7e8fdf2b"
+      ],
+      "sibling_previews": [
+        "Incorrect document",
+        "Pro forma invoice submitted a…",
+        "Wrong payout name or bank acc…",
+        "Legal name missing from user …",
+        "Submitter and payee do not ma…",
+        "Payment fails on Wise or PayP…",
+        "Duplicate submission",
+        "Insufficient Wise balance",
+        "USD transfer to Wise would ta…",
+        "Unclear eligibility",
+        "Unverified PayPal account"
+      ],
+      "source_url": "https://docs.opencollective.com/oc-europe-internal-doc/financial-operations-introduction/payment-processing-and-disbursements",
+      "table_id": "b87428d91c9741b6",
+      "total_rows": 12
+    },
+    "source_file": ".opencrane/llmstxt/llms-full.txt",
+    "source_name": "oc-europe-internal-doc",
+    "token_count": 40
+  },
+  {
+    "chunk_id": "64d21f537e6cd140fdb502e7cf01773656639328aa5acb0b9d2b25ea865126dd",
+    "chunk_type": "table_row",
+    "content": "# Payment processing and disbursements > Common Issues and Resolutions\nIssue: Incorrect document.\nWhat to do: Mark as **Incomplete** and explain what document is required.",
+    "line_start": null,
+    "metadata": {
+      "breadcrumb_path": "Payment processing and disbursements > Common Issues and Resolutions",
+      "columns": [
+        "Issue",
+        "What to do"
+      ],
+      "row_index": 2,
+      "row_key": "Incorrect document",
+      "sibling_ids": [
+        "8103688ee0900f78910901df4a8ab25d029743c8d0ea358e5e283737b21582ae",
+        "e2d8d368725de5b607189bf93ace4dbd3d5fdb6e1916584f4380805a4aa52b83",
+        "ca261f50362f78aefbd0d6155d7f7b503a2b0d549a99b12b9a5593f24ca17b2c",
+        "7362f52b3dfab53aa490a04db641234b539b7d531dd1a2e9b82f5cc5fbb6fa96",
+        "c25be6ba0cd1fc11804d1e2cdb3e5c3a98db9af58f4eafda5fc73cf712bb2d74",
+        "0b0c46f0bf3ffb28f08228ee8de9024842839e4d600d8158257e4ed305d84240",
+        "3c754d50ca09465d72f83b06b9f6e7eecb4fe980150d0e19142376aa0357c987",
+        "f83d02287072f0ff2955021b75eab94a50dbf1fce8945c3c4340689a7916b59c",
+        "6a24907a19a69d19c697a98d0f222c311af7c10ace4d3d171538b5a57f9e53df",
+        "3ac04e8e79e2a25ac9985168b2a4a57afbac5d91635f97c492ca08494a57d009",
+        "d190e135383fe4df4e4b08ce965591dc5ac2b5643b6edd35eaa3a76f7e8fdf2b"
+      ],
+      "sibling_previews": [
+        "Missing documents",
+        "Pro forma invoice submitted a…",
+        "Wrong payout name or bank acc…",
+        "Legal name missing from user …",
+        "Submitter and payee do not ma…",
+        "Payment fails on Wise or PayP…",
+        "Duplicate submission",
+        "Insufficient Wise balance",
+        "USD transfer to Wise would ta…",
+        "Unclear eligibility",
+        "Unverified PayPal account"
+      ],
+      "source_url": "https://docs.opencollective.com/oc-europe-internal-doc/financial-operations-introduction/payment-processing-and-disbursements",
+      "table_id": "b87428d91c9741b6",
+      "total_rows": 12
+    },
+    "source_file": ".opencrane/llmstxt/llms-full.txt",
+    "source_name": "oc-europe-internal-doc",
+    "token_count": 35
+  },
+  {
+    "chunk_id": "e2d8d368725de5b607189bf93ace4dbd3d5fdb6e1916584f4380805a4aa52b83",
+    "chunk_type": "table_row",
+    "content": "# Payment processing and disbursements > Common Issues and Resolutions\nIssue: Pro forma invoice submitted as reimbursement proof.\nWhat to do: Ask for proof of payment or a valid receipt.",
+    "line_start": null,
+    "metadata": {
+      "breadcrumb_path": "Payment processing and disbursements > Common Issues and Resolutions",
+      "columns": [
+        "Issue",
+        "What to do"
+      ],
+      "row_index": 3,
+      "row_key": "Pro forma invoice submitted as reimbursement proof",
+      "sibling_ids": [
+        "8103688ee0900f78910901df4a8ab25d029743c8d0ea358e5e283737b21582ae",
+        "64d21f537e6cd140fdb502e7cf01773656639328aa5acb0b9d2b25ea865126dd",
+        "ca261f50362f78aefbd0d6155d7f7b503a2b0d549a99b12b9a5593f24ca17b2c",
+        "7362f52b3dfab53aa490a04db641234b539b7d531dd1a2e9b82f5cc5fbb6fa96",
+        "c25be6ba0cd1fc11804d1e2cdb3e5c3a98db9af58f4eafda5fc73cf712bb2d74",
+        "0b0c46f0bf3ffb28f08228ee8de9024842839e4d600d8158257e4ed305d84240",
+        "3c754d50ca09465d72f83b06b9f6e7eecb4fe980150d0e19142376aa0357c987",
+        "f83d02287072f0ff2955021b75eab94a50dbf1fce8945c3c4340689a7916b59c",
+        "6a24907a19a69d19c697a98d0f222c311af7c10ace4d3d171538b5a57f9e53df",
+        "3ac04e8e79e2a25ac9985168b2a4a57afbac5d91635f97c492ca08494a57d009",
+        "d190e135383fe4df4e4b08ce965591dc5ac2b5643b6edd35eaa3a76f7e8fdf2b"
+      ],
+      "sibling_previews": [
+        "Missing documents",
+        "Incorrect document",
+        "Wrong payout name or bank acc…",
+        "Legal name missing from user …",
+        "Submitter and payee do not ma…",
+        "Payment fails on Wise or PayP…",
+        "Duplicate submission",
+        "Insufficient Wise balance",
+        "USD transfer to Wise would ta…",
+        "Unclear eligibility",
+        "Unverified PayPal account"
+      ],
+      "source_url": "https://docs.opencollective.com/oc-europe-internal-doc/financial-operations-introduction/payment-processing-and-disbursements",
+      "table_id": "b87428d91c9741b6",
+      "total_rows": 12
+    },
+    "source_file": ".opencrane/llmstxt/llms-full.txt",
+    "source_name": "oc-europe-internal-doc",
+    "token_count": 38
+  },
+  {
+    "chunk_id": "ca261f50362f78aefbd0d6155d7f7b503a2b0d549a99b12b9a5593f24ca17b2c",
+    "chunk_type": "table_row",
+    "content": "# Payment processing and disbursements > Common Issues and Resolutions\nIssue: Wrong payout name or bank account mismatch.\nWhat to do: Contact the submitter and request a correction before payment.",
+    "line_start": null,
+    "metadata": {
+      "breadcrumb_path": "Payment processing and disbursements > Common Issues and Resolutions",
+      "columns": [
+        "Issue",
+        "What to do"
+      ],
+      "row_index": 4,
+      "row_key": "Wrong payout name or bank account mismatch",
+      "sibling_ids": [
+        "8103688ee0900f78910901df4a8ab25d029743c8d0ea358e5e283737b21582ae",
+        "64d21f537e6cd140fdb502e7cf01773656639328aa5acb0b9d2b25ea865126dd",
+        "e2d8d368725de5b607189bf93ace4dbd3d5fdb6e1916584f4380805a4aa52b83",
+        "7362f52b3dfab53aa490a04db641234b539b7d531dd1a2e9b82f5cc5fbb6fa96",
+        "c25be6ba0cd1fc11804d1e2cdb3e5c3a98db9af58f4eafda5fc73cf712bb2d74",
+        "0b0c46f0bf3ffb28f08228ee8de9024842839e4d600d8158257e4ed305d84240",
+        "3c754d50ca09465d72f83b06b9f6e7eecb4fe980150d0e19142376aa0357c987",
+        "f83d02287072f0ff2955021b75eab94a50dbf1fce8945c3c4340689a7916b59c",
+        "6a24907a19a69d19c697a98d0f222c311af7c10ace4d3d171538b5a57f9e53df",
+        "3ac04e8e79e2a25ac9985168b2a4a57afbac5d91635f97c492ca08494a57d009",
+        "d190e135383fe4df4e4b08ce965591dc5ac2b5643b6edd35eaa3a76f7e8fdf2b"
+      ],
+      "sibling_previews": [
+        "Missing documents",
+        "Incorrect document",
+        "Pro forma invoice submitted a…",
+        "Legal name missing from user …",
+        "Submitter and payee do not ma…",
+        "Payment fails on Wise or PayP…",
+        "Duplicate submission",
+        "Insufficient Wise balance",
+        "USD transfer to Wise would ta…",
+        "Unclear eligibility",
+        "Unverified PayPal account"
+      ],
+      "source_url": "https://docs.opencollective.com/oc-europe-internal-doc/financial-operations-introduction/payment-processing-and-disbursements",
+      "table_id": "b87428d91c9741b6",
+      "total_rows": 12
+    },
+    "source_file": ".opencrane/llmstxt/llms-full.txt",
+    "source_name": "oc-europe-internal-doc",
+    "token_count": 39
+  },
+  {
+    "chunk_id": "7362f52b3dfab53aa490a04db641234b539b7d531dd1a2e9b82f5cc5fbb6fa96",
+    "chunk_type": "table_row",
+    "content": "# Payment processing and disbursements > Common Issues and Resolutions\nIssue: Legal name missing from user profile.\nWhat to do: Ask the user to complete the **Legal name** section before processing.",
+    "line_start": null,
+    "metadata": {
+      "breadcrumb_path": "Payment processing and disbursements > Common Issues and Resolutions",
+      "columns": [
+        "Issue",
+        "What to do"
+      ],
+      "row_index": 5,
+      "row_key": "Legal name missing from user profile",
+      "sibling_ids": [
+        "8103688ee0900f78910901df4a8ab25d029743c8d0ea358e5e283737b21582ae",
+        "64d21f537e6cd140fdb502e7cf01773656639328aa5acb0b9d2b25ea865126dd",
+        "e2d8d368725de5b607189bf93ace4dbd3d5fdb6e1916584f4380805a4aa52b83",
+        "ca261f50362f78aefbd0d6155d7f7b503a2b0d549a99b12b9a5593f24ca17b2c",
+        "c25be6ba0cd1fc11804d1e2cdb3e5c3a98db9af58f4eafda5fc73cf712bb2d74",
+        "0b0c46f0bf3ffb28f08228ee8de9024842839e4d600d8158257e4ed305d84240",
+        "3c754d50ca09465d72f83b06b9f6e7eecb4fe980150d0e19142376aa0357c987",
+        "f83d02287072f0ff2955021b75eab94a50dbf1fce8945c3c4340689a7916b59c",
+        "6a24907a19a69d19c697a98d0f222c311af7c10ace4d3d171538b5a57f9e53df",
+        "3ac04e8e79e2a25ac9985168b2a4a57afbac5d91635f97c492ca08494a57d009",
+        "d190e135383fe4df4e4b08ce965591dc5ac2b5643b6edd35eaa3a76f7e8fdf2b"
+      ],
+      "sibling_previews": [
+        "Missing documents",
+        "Incorrect document",
+        "Pro forma invoice submitted a…",
+        "Wrong payout name or bank acc…",
+        "Submitter and payee do not ma…",
+        "Payment fails on Wise or PayP…",
+        "Duplicate submission",
+        "Insufficient Wise balance",
+        "USD transfer to Wise would ta…",
+        "Unclear eligibility",
+        "Unverified PayPal account"
+      ],
+      "source_url": "https://docs.opencollective.com/oc-europe-internal-doc/financial-operations-introduction/payment-processing-and-disbursements",
+      "table_id": "b87428d91c9741b6",
+      "total_rows": 12
+    },
+    "source_file": ".opencrane/llmstxt/llms-full.txt",
+    "source_name": "oc-europe-internal-doc",
+    "token_count": 41
+  },
+  {
+    "chunk_id": "c25be6ba0cd1fc11804d1e2cdb3e5c3a98db9af58f4eafda5fc73cf712bb2d74",
+    "chunk_type": "table_row",
+    "content": "# Payment processing and disbursements > Common Issues and Resolutions\nIssue: Submitter and payee do not match.\nWhat to do: Do not process unless there is a clearly documented and justified exception.",
+    "line_start": null,
+    "metadata": {
+      "breadcrumb_path": "Payment processing and disbursements > Common Issues and Resolutions",
+      "columns": [
+        "Issue",
+        "What to do"
+      ],
+      "row_index": 6,
+      "row_key": "Submitter and payee do not match",
+      "sibling_ids": [
+        "8103688ee0900f78910901df4a8ab25d029743c8d0ea358e5e283737b21582ae",
+        "64d21f537e6cd140fdb502e7cf01773656639328aa5acb0b9d2b25ea865126dd",
+        "e2d8d368725de5b607189bf93ace4dbd3d5fdb6e1916584f4380805a4aa52b83",
+        "ca261f50362f78aefbd0d6155d7f7b503a2b0d549a99b12b9a5593f24ca17b2c",
+        "7362f52b3dfab53aa490a04db641234b539b7d531dd1a2e9b82f5cc5fbb6fa96",
+        "0b0c46f0bf3ffb28f08228ee8de9024842839e4d600d8158257e4ed305d84240",
+        "3c754d50ca09465d72f83b06b9f6e7eecb4fe980150d0e19142376aa0357c987",
+        "f83d02287072f0ff2955021b75eab94a50dbf1fce8945c3c4340689a7916b59c",
+        "6a24907a19a69d19c697a98d0f222c311af7c10ace4d3d171538b5a57f9e53df",
+        "3ac04e8e79e2a25ac9985168b2a4a57afbac5d91635f97c492ca08494a57d009",
+        "d190e135383fe4df4e4b08ce965591dc5ac2b5643b6edd35eaa3a76f7e8fdf2b"
+      ],
+      "sibling_previews": [
+        "Missing documents",
+        "Incorrect document",
+        "Pro forma invoice submitted a…",
+        "Wrong payout name or bank acc…",
+        "Legal name missing from user …",
+        "Payment fails on Wise or PayP…",
+        "Duplicate submission",
+        "Insufficient Wise balance",
+        "USD transfer to Wise would ta…",
+        "Unclear eligibility",
+        "Unverified PayPal account"
+      ],
+      "source_url": "https://docs.opencollective.com/oc-europe-internal-doc/financial-operations-introduction/payment-processing-and-disbursements",
+      "table_id": "b87428d91c9741b6",
+      "total_rows": 12
+    },
+    "source_file": ".opencrane/llmstxt/llms-full.txt",
+    "source_name": "oc-europe-internal-doc",
+    "token_count": 42
+  },
+  {
+    "chunk_id": "0b0c46f0bf3ffb28f08228ee8de9024842839e4d600d8158257e4ed305d84240",
+    "chunk_type": "table_row",
+    "content": "# Payment processing and disbursements > Common Issues and Resolutions\nIssue: Payment fails on Wise or PayPal.\nWhat to do: Retry once. If it fails again, follow up and document the issue.",
+    "line_start": null,
+    "metadata": {
+      "breadcrumb_path": "Payment processing and disbursements > Common Issues and Resolutions",
+      "columns": [
+        "Issue",
+        "What to do"
+      ],
+      "row_index": 7,
+      "row_key": "Payment fails on Wise or PayPal",
+      "sibling_ids": [
+        "8103688ee0900f78910901df4a8ab25d029743c8d0ea358e5e283737b21582ae",
+        "64d21f537e6cd140fdb502e7cf01773656639328aa5acb0b9d2b25ea865126dd",
+        "e2d8d368725de5b607189bf93ace4dbd3d5fdb6e1916584f4380805a4aa52b83",
+        "ca261f50362f78aefbd0d6155d7f7b503a2b0d549a99b12b9a5593f24ca17b2c",
+        "7362f52b3dfab53aa490a04db641234b539b7d531dd1a2e9b82f5cc5fbb6fa96",
+        "c25be6ba0cd1fc11804d1e2cdb3e5c3a98db9af58f4eafda5fc73cf712bb2d74",
+        "3c754d50ca09465d72f83b06b9f6e7eecb4fe980150d0e19142376aa0357c987",
+        "f83d02287072f0ff2955021b75eab94a50dbf1fce8945c3c4340689a7916b59c",
+        "6a24907a19a69d19c697a98d0f222c311af7c10ace4d3d171538b5a57f9e53df",
+        "3ac04e8e79e2a25ac9985168b2a4a57afbac5d91635f97c492ca08494a57d009",
+        "d190e135383fe4df4e4b08ce965591dc5ac2b5643b6edd35eaa3a76f7e8fdf2b"
+      ],
+      "sibling_previews": [
+        "Missing documents",
+        "Incorrect document",
+        "Pro forma invoice submitted a…",
+        "Wrong payout name or bank acc…",
+        "Legal name missing from user …",
+        "Submitter and payee do not ma…",
+        "Duplicate submission",
+        "Insufficient Wise balance",
+        "USD transfer to Wise would ta…",
+        "Unclear eligibility",
+        "Unverified PayPal account"
+      ],
+      "source_url": "https://docs.opencollective.com/oc-europe-internal-doc/financial-operations-introduction/payment-processing-and-disbursements",
+      "table_id": "b87428d91c9741b6",
+      "total_rows": 12
+    },
+    "source_file": ".opencrane/llmstxt/llms-full.txt",
+    "source_name": "oc-europe-internal-doc",
+    "token_count": 42
+  },
+  {
+    "chunk_id": "3c754d50ca09465d72f83b06b9f6e7eecb4fe980150d0e19142376aa0357c987",
+    "chunk_type": "table_row",
+    "content": "# Payment processing and disbursements > Common Issues and Resolutions\nIssue: Duplicate submission.\nWhat to do: Approve only one request and reject the duplicate with a clear reason.",
+    "line_start": null,
+    "metadata": {
+      "breadcrumb_path": "Payment processing and disbursements > Common Issues and Resolutions",
+      "columns": [
+        "Issue",
+        "What to do"
+      ],
+      "row_index": 8,
+      "row_key": "Duplicate submission",
+      "sibling_ids": [
+        "8103688ee0900f78910901df4a8ab25d029743c8d0ea358e5e283737b21582ae",
+        "64d21f537e6cd140fdb502e7cf01773656639328aa5acb0b9d2b25ea865126dd",
+        "e2d8d368725de5b607189bf93ace4dbd3d5fdb6e1916584f4380805a4aa52b83",
+        "ca261f50362f78aefbd0d6155d7f7b503a2b0d549a99b12b9a5593f24ca17b2c",
+        "7362f52b3dfab53aa490a04db641234b539b7d531dd1a2e9b82f5cc5fbb6fa96",
+        "c25be6ba0cd1fc11804d1e2cdb3e5c3a98db9af58f4eafda5fc73cf712bb2d74",
+        "0b0c46f0bf3ffb28f08228ee8de9024842839e4d600d8158257e4ed305d84240",
+        "f83d02287072f0ff2955021b75eab94a50dbf1fce8945c3c4340689a7916b59c",
+        "6a24907a19a69d19c697a98d0f222c311af7c10ace4d3d171538b5a57f9e53df",
+        "3ac04e8e79e2a25ac9985168b2a4a57afbac5d91635f97c492ca08494a57d009",
+        "d190e135383fe4df4e4b08ce965591dc5ac2b5643b6edd35eaa3a76f7e8fdf2b"
+      ],
+      "sibling_previews": [
+        "Missing documents",
+        "Incorrect document",
+        "Pro forma invoice submitted a…",
+        "Wrong payout name or bank acc…",
+        "Legal name missing from user …",
+        "Submitter and payee do not ma…",
+        "Payment fails on Wise or PayP…",
+        "Insufficient Wise balance",
+        "USD transfer to Wise would ta…",
+        "Unclear eligibility",
+        "Unverified PayPal account"
+      ],
+      "source_url": "https://docs.opencollective.com/oc-europe-internal-doc/financial-operations-introduction/payment-processing-and-disbursements",
+      "table_id": "b87428d91c9741b6",
+      "total_rows": 12
+    },
+    "source_file": ".opencrane/llmstxt/llms-full.txt",
+    "source_name": "oc-europe-internal-doc",
+    "token_count": 37
+  },
+  {
+    "chunk_id": "f83d02287072f0ff2955021b75eab94a50dbf1fce8945c3c4340689a7916b59c",
+    "chunk_type": "table_row",
+    "content": "# Payment processing and disbursements > Common Issues and Resolutions\nIssue: Insufficient Wise balance.\nWhat to do: Recharge Wise from the relevant KBC account before processing.",
+    "line_start": null,
+    "metadata": {
+      "breadcrumb_path": "Payment processing and disbursements > Common Issues and Resolutions",
+      "columns": [
+        "Issue",
+        "What to do"
+      ],
+      "row_index": 9,
+      "row_key": "Insufficient Wise balance",
+      "sibling_ids": [
+        "8103688ee0900f78910901df4a8ab25d029743c8d0ea358e5e283737b21582ae",
+        "64d21f537e6cd140fdb502e7cf01773656639328aa5acb0b9d2b25ea865126dd",
+        "e2d8d368725de5b607189bf93ace4dbd3d5fdb6e1916584f4380805a4aa52b83",
+        "ca261f50362f78aefbd0d6155d7f7b503a2b0d549a99b12b9a5593f24ca17b2c",
+        "7362f52b3dfab53aa490a04db641234b539b7d531dd1a2e9b82f5cc5fbb6fa96",
+        "c25be6ba0cd1fc11804d1e2cdb3e5c3a98db9af58f4eafda5fc73cf712bb2d74",
+        "0b0c46f0bf3ffb28f08228ee8de9024842839e4d600d8158257e4ed305d84240",
+        "3c754d50ca09465d72f83b06b9f6e7eecb4fe980150d0e19142376aa0357c987",
+        "6a24907a19a69d19c697a98d0f222c311af7c10ace4d3d171538b5a57f9e53df",
+        "3ac04e8e79e2a25ac9985168b2a4a57afbac5d91635f97c492ca08494a57d009",
+        "d190e135383fe4df4e4b08ce965591dc5ac2b5643b6edd35eaa3a76f7e8fdf2b"
+      ],
+      "sibling_previews": [
+        "Missing documents",
+        "Incorrect document",
+        "Pro forma invoice submitted a…",
+        "Wrong payout name or bank acc…",
+        "Legal name missing from user …",
+        "Submitter and payee do not ma…",
+        "Payment fails on Wise or PayP…",
+        "Duplicate submission",
+        "USD transfer to Wise would ta…",
+        "Unclear eligibility",
+        "Unverified PayPal account"
+      ],
+      "source_url": "https://docs.opencollective.com/oc-europe-internal-doc/financial-operations-introduction/payment-processing-and-disbursements",
+      "table_id": "b87428d91c9741b6",
+      "total_rows": 12
+    },
+    "source_file": ".opencrane/llmstxt/llms-full.txt",
+    "source_name": "oc-europe-internal-doc",
+    "token_count": 37
+  },
+  {
+    "chunk_id": "6a24907a19a69d19c697a98d0f222c311af7c10ace4d3d171538b5a57f9e53df",
+    "chunk_type": "table_row",
+    "content": "# Payment processing and disbursements > Common Issues and Resolutions\nIssue: USD transfer to Wise would take too long.\nWhat to do: Consider direct payment from KBC if appropriate and documented.",
+    "line_start": null,
+    "metadata": {
+      "breadcrumb_path": "Payment processing and disbursements > Common Issues and Resolutions",
+      "columns": [
+        "Issue",
+        "What to do"
+      ],
+      "row_index": 10,
+      "row_key": "USD transfer to Wise would take too long",
+      "sibling_ids": [
+        "8103688ee0900f78910901df4a8ab25d029743c8d0ea358e5e283737b21582ae",
+        "64d21f537e6cd140fdb502e7cf01773656639328aa5acb0b9d2b25ea865126dd",
+        "e2d8d368725de5b607189bf93ace4dbd3d5fdb6e1916584f4380805a4aa52b83",
+        "ca261f50362f78aefbd0d6155d7f7b503a2b0d549a99b12b9a5593f24ca17b2c",
+        "7362f52b3dfab53aa490a04db641234b539b7d531dd1a2e9b82f5cc5fbb6fa96",
+        "c25be6ba0cd1fc11804d1e2cdb3e5c3a98db9af58f4eafda5fc73cf712bb2d74",
+        "0b0c46f0bf3ffb28f08228ee8de9024842839e4d600d8158257e4ed305d84240",
+        "3c754d50ca09465d72f83b06b9f6e7eecb4fe980150d0e19142376aa0357c987",
+        "f83d02287072f0ff2955021b75eab94a50dbf1fce8945c3c4340689a7916b59c",
+        "3ac04e8e79e2a25ac9985168b2a4a57afbac5d91635f97c492ca08494a57d009",
+        "d190e135383fe4df4e4b08ce965591dc5ac2b5643b6edd35eaa3a76f7e8fdf2b"
+      ],
+      "sibling_previews": [
+        "Missing documents",
+        "Incorrect document",
+        "Pro forma invoice submitted a…",
+        "Wrong payout name or bank acc…",
+        "Legal name missing from user …",
+        "Submitter and payee do not ma…",
+        "Payment fails on Wise or PayP…",
+        "Duplicate submission",
+        "Insufficient Wise balance",
+        "Unclear eligibility",
+        "Unverified PayPal account"
+      ],
+      "source_url": "https://docs.opencollective.com/oc-europe-internal-doc/financial-operations-introduction/payment-processing-and-disbursements",
+      "table_id": "b87428d91c9741b6",
+      "total_rows": 12
+    },
+    "source_file": ".opencrane/llmstxt/llms-full.txt",
+    "source_name": "oc-europe-internal-doc",
+    "token_count": 40
+  },
+  {
+    "chunk_id": "3ac04e8e79e2a25ac9985168b2a4a57afbac5d91635f97c492ca08494a57d009",
+    "chunk_type": "table_row",
+    "content": "# Payment processing and disbursements > Common Issues and Resolutions\nIssue: Unclear eligibility.\nWhat to do: Ask for an explanation of the expense to the collective. Flag internally in doubt.",
+    "line_start": null,
+    "metadata": {
+      "breadcrumb_path": "Payment processing and disbursements > Common Issues and Resolutions",
+      "columns": [
+        "Issue",
+        "What to do"
+      ],
+      "row_index": 11,
+      "row_key": "Unclear eligibility",
+      "sibling_ids": [
+        "8103688ee0900f78910901df4a8ab25d029743c8d0ea358e5e283737b21582ae",
+        "64d21f537e6cd140fdb502e7cf01773656639328aa5acb0b9d2b25ea865126dd",
+        "e2d8d368725de5b607189bf93ace4dbd3d5fdb6e1916584f4380805a4aa52b83",
+        "ca261f50362f78aefbd0d6155d7f7b503a2b0d549a99b12b9a5593f24ca17b2c",
+        "7362f52b3dfab53aa490a04db641234b539b7d531dd1a2e9b82f5cc5fbb6fa96",
+        "c25be6ba0cd1fc11804d1e2cdb3e5c3a98db9af58f4eafda5fc73cf712bb2d74",
+        "0b0c46f0bf3ffb28f08228ee8de9024842839e4d600d8158257e4ed305d84240",
+        "3c754d50ca09465d72f83b06b9f6e7eecb4fe980150d0e19142376aa0357c987",
+        "f83d02287072f0ff2955021b75eab94a50dbf1fce8945c3c4340689a7916b59c",
+        "6a24907a19a69d19c697a98d0f222c311af7c10ace4d3d171538b5a57f9e53df",
+        "d190e135383fe4df4e4b08ce965591dc5ac2b5643b6edd35eaa3a76f7e8fdf2b"
+      ],
+      "sibling_previews": [
+        "Missing documents",
+        "Incorrect document",
+        "Pro forma invoice submitted a…",
+        "Wrong payout name or bank acc…",
+        "Legal name missing from user …",
+        "Submitter and payee do not ma…",
+        "Payment fails on Wise or PayP…",
+        "Duplicate submission",
+        "Insufficient Wise balance",
+        "USD transfer to Wise would ta…",
+        "Unverified PayPal account"
+      ],
+      "source_url": "https://docs.opencollective.com/oc-europe-internal-doc/financial-operations-introduction/payment-processing-and-disbursements",
+      "table_id": "b87428d91c9741b6",
+      "total_rows": 12
+    },
+    "source_file": ".opencrane/llmstxt/llms-full.txt",
+    "source_name": "oc-europe-internal-doc",
+    "token_count": 40
+  },
+  {
+    "chunk_id": "d190e135383fe4df4e4b08ce965591dc5ac2b5643b6edd35eaa3a76f7e8fdf2b",
+    "chunk_type": "table_row",
+    "content": "# Payment processing and disbursements > Common Issues and Resolutions\nIssue: Unverified PayPal account.\nWhat to do: Ask the submitter to verify the account and fill out the Legal name section of their profile if it isn't already done.",
+    "line_start": null,
+    "metadata": {
+      "breadcrumb_path": "Payment processing and disbursements > Common Issues and Resolutions",
+      "columns": [
+        "Issue",
+        "What to do"
+      ],
+      "row_index": 12,
+      "row_key": "Unverified PayPal account",
+      "sibling_ids": [
+        "8103688ee0900f78910901df4a8ab25d029743c8d0ea358e5e283737b21582ae",
+        "64d21f537e6cd140fdb502e7cf01773656639328aa5acb0b9d2b25ea865126dd",
+        "e2d8d368725de5b607189bf93ace4dbd3d5fdb6e1916584f4380805a4aa52b83",
+        "ca261f50362f78aefbd0d6155d7f7b503a2b0d549a99b12b9a5593f24ca17b2c",
+        "7362f52b3dfab53aa490a04db641234b539b7d531dd1a2e9b82f5cc5fbb6fa96",
+        "c25be6ba0cd1fc11804d1e2cdb3e5c3a98db9af58f4eafda5fc73cf712bb2d74",
+        "0b0c46f0bf3ffb28f08228ee8de9024842839e4d600d8158257e4ed305d84240",
+        "3c754d50ca09465d72f83b06b9f6e7eecb4fe980150d0e19142376aa0357c987",
+        "f83d02287072f0ff2955021b75eab94a50dbf1fce8945c3c4340689a7916b59c",
+        "6a24907a19a69d19c697a98d0f222c311af7c10ace4d3d171538b5a57f9e53df",
+        "3ac04e8e79e2a25ac9985168b2a4a57afbac5d91635f97c492ca08494a57d009"
+      ],
+      "sibling_previews": [
+        "Missing documents",
+        "Incorrect document",
+        "Pro forma invoice submitted a…",
+        "Wrong payout name or bank acc…",
+        "Legal name missing from user …",
+        "Submitter and payee do not ma…",
+        "Payment fails on Wise or PayP…",
+        "Duplicate submission",
+        "Insufficient Wise balance",
+        "USD transfer to Wise would ta…",
+        "Unclear eligibility"
+      ],
+      "source_url": "https://docs.opencollective.com/oc-europe-internal-doc/financial-operations-introduction/payment-processing-and-disbursements",
+      "table_id": "b87428d91c9741b6",
+      "total_rows": 12
+    },
+    "source_file": ".opencrane/llmstxt/llms-full.txt",
+    "source_name": "oc-europe-internal-doc",
+    "token_count": 50
+  },
+  {
+    "chunk_id": "fe18fe51fa1267d9dd8685f4f207551a3bc5985807fadd0cbbbc6026dabb3780",
+    "chunk_type": "table_row",
+    "content": "# General FAQs > Fee Comparison Chart:\nFiscal Host: Open Source Collective.\nHosted Collectives: Open source projects.\nFee: 10%.",
+    "line_start": null,
+    "metadata": {
+      "breadcrumb_path": "General FAQs > Fee Comparison Chart:",
+      "columns": [
+        "Fiscal Host",
+        "Hosted Collectives",
+        "Fee"
+      ],
+      "row_index": 1,
+      "row_key": "Open Source Collective",
+      "sibling_ids": [
+        "356727ea7e0af0949e6cea00e8d79ab47ff5da746852093d4d01c6e0231466aa",
+        "caa68e126c5e2c3171681127b990e6e95ab370d9ca6afcd5a7410057566665d8",
+        "8603ddd1c29a4c0fe786550e1d005f19762b17b7ddf40bd500acb4952b1cf6b4",
+        "42d81355980a1df087c8fa935a6f255942cb8da1ec60d5f51f06816c2e94c756"
+      ],
+      "sibling_previews": [
+        "[Open Collective Europe](http…",
+        "[Women Who Code](https://open…",
+        "Community Partners",
+        "Charitable Allies"
+      ],
+      "source_url": "https://docs.opencollective.com/open-source-europe/faq/general-faqs",
+      "table_id": "177eb1fb8d202216",
+      "total_rows": 5
+    },
+    "source_file": ".opencrane/llmstxt/llms-full.txt",
+    "source_name": "open-source-europe",
+    "token_count": 30
+  },
+  {
+    "chunk_id": "356727ea7e0af0949e6cea00e8d79ab47ff5da746852093d4d01c6e0231466aa",
+    "chunk_type": "table_row",
+    "content": "# General FAQs > Fee Comparison Chart:\nFiscal Host: [Open Collective Europe](https://opencollective.com/europe).\nHosted Collectives: EU-based Collectives.\nFee: 8-10%.",
+    "line_start": null,
+    "metadata": {
+      "breadcrumb_path": "General FAQs > Fee Comparison Chart:",
+      "columns": [
+        "Fiscal Host",
+        "Hosted Collectives",
+        "Fee"
+      ],
+      "row_index": 2,
+      "row_key": "[Open Collective Europe](https://opencollective.com/europe)",
+      "sibling_ids": [
+        "fe18fe51fa1267d9dd8685f4f207551a3bc5985807fadd0cbbbc6026dabb3780",
+        "caa68e126c5e2c3171681127b990e6e95ab370d9ca6afcd5a7410057566665d8",
+        "8603ddd1c29a4c0fe786550e1d005f19762b17b7ddf40bd500acb4952b1cf6b4",
+        "42d81355980a1df087c8fa935a6f255942cb8da1ec60d5f51f06816c2e94c756"
+      ],
+      "sibling_previews": [
+        "Open Source Collective",
+        "[Women Who Code](https://open…",
+        "Community Partners",
+        "Charitable Allies"
+      ],
+      "source_url": "https://docs.opencollective.com/open-source-europe/faq/general-faqs",
+      "table_id": "177eb1fb8d202216",
+      "total_rows": 5
+    },
+    "source_file": ".opencrane/llmstxt/llms-full.txt",
+    "source_name": "open-source-europe",
+    "token_count": 44
+  },
+  {
+    "chunk_id": "caa68e126c5e2c3171681127b990e6e95ab370d9ca6afcd5a7410057566665d8",
+    "chunk_type": "table_row",
+    "content": "# General FAQs > Fee Comparison Chart:\nFiscal Host: [Women Who Code](https://opencollective.com/wwcodeinc).\nHosted Collectives: Local chapters.\nFee: 10%.",
+    "line_start": null,
+    "metadata": {
+      "breadcrumb_path": "General FAQs > Fee Comparison Chart:",
+      "columns": [
+        "Fiscal Host",
+        "Hosted Collectives",
+        "Fee"
+      ],
+      "row_index": 3,
+      "row_key": "[Women Who Code](https://opencollective.com/wwcodeinc)",
+      "sibling_ids": [
+        "fe18fe51fa1267d9dd8685f4f207551a3bc5985807fadd0cbbbc6026dabb3780",
+        "356727ea7e0af0949e6cea00e8d79ab47ff5da746852093d4d01c6e0231466aa",
+        "8603ddd1c29a4c0fe786550e1d005f19762b17b7ddf40bd500acb4952b1cf6b4",
+        "42d81355980a1df087c8fa935a6f255942cb8da1ec60d5f51f06816c2e94c756"
+      ],
+      "sibling_previews": [
+        "Open Source Collective",
+        "[Open Collective Europe](http…",
+        "Community Partners",
+        "Charitable Allies"
+      ],
+      "source_url": "https://docs.opencollective.com/open-source-europe/faq/general-faqs",
+      "table_id": "177eb1fb8d202216",
+      "total_rows": 5
+    },
+    "source_file": ".opencrane/llmstxt/llms-full.txt",
+    "source_name": "open-source-europe",
+    "token_count": 42
+  },
+  {
+    "chunk_id": "8603ddd1c29a4c0fe786550e1d005f19762b17b7ddf40bd500acb4952b1cf6b4",
+    "chunk_type": "table_row",
+    "content": "# General FAQs > Fee Comparison Chart:\nFiscal Host: Community Partners.\nHosted Collectives: US-based projects.\nFee: 9-12% + minimum balance/annual fee.",
+    "line_start": null,
+    "metadata": {
+      "breadcrumb_path": "General FAQs > Fee Comparison Chart:",
+      "columns": [
+        "Fiscal Host",
+        "Hosted Collectives",
+        "Fee"
+      ],
+      "row_index": 4,
+      "row_key": "Community Partners",
+      "sibling_ids": [
+        "fe18fe51fa1267d9dd8685f4f207551a3bc5985807fadd0cbbbc6026dabb3780",
+        "356727ea7e0af0949e6cea00e8d79ab47ff5da746852093d4d01c6e0231466aa",
+        "caa68e126c5e2c3171681127b990e6e95ab370d9ca6afcd5a7410057566665d8",
+        "42d81355980a1df087c8fa935a6f255942cb8da1ec60d5f51f06816c2e94c756"
+      ],
+      "sibling_previews": [
+        "Open Source Collective",
+        "[Open Collective Europe](http…",
+        "[Women Who Code](https://open…",
+        "Charitable Allies"
+      ],
+      "source_url": "https://docs.opencollective.com/open-source-europe/faq/general-faqs",
+      "table_id": "177eb1fb8d202216",
+      "total_rows": 5
+    },
+    "source_file": ".opencrane/llmstxt/llms-full.txt",
+    "source_name": "open-source-europe",
+    "token_count": 38
+  },
+  {
+    "chunk_id": "42d81355980a1df087c8fa935a6f255942cb8da1ec60d5f51f06816c2e94c756",
+    "chunk_type": "table_row",
+    "content": "# General FAQs > Fee Comparison Chart:\nFiscal Host: Charitable Allies.\nFee: 1-25%.",
+    "line_start": null,
+    "metadata": {
+      "breadcrumb_path": "General FAQs > Fee Comparison Chart:",
+      "columns": [
+        "Fiscal Host",
+        "Hosted Collectives",
+        "Fee"
+      ],
+      "row_index": 5,
+      "row_key": "Charitable Allies",
+      "sibling_ids": [
+        "fe18fe51fa1267d9dd8685f4f207551a3bc5985807fadd0cbbbc6026dabb3780",
+        "356727ea7e0af0949e6cea00e8d79ab47ff5da746852093d4d01c6e0231466aa",
+        "caa68e126c5e2c3171681127b990e6e95ab370d9ca6afcd5a7410057566665d8",
+        "8603ddd1c29a4c0fe786550e1d005f19762b17b7ddf40bd500acb4952b1cf6b4"
+      ],
+      "sibling_previews": [
+        "Open Source Collective",
+        "[Open Collective Europe](http…",
+        "[Women Who Code](https://open…",
+        "Community Partners"
+      ],
+      "source_url": "https://docs.opencollective.com/open-source-europe/faq/general-faqs",
+      "table_id": "177eb1fb8d202216",
+      "total_rows": 5
+    },
+    "source_file": ".opencrane/llmstxt/llms-full.txt",
+    "source_name": "open-source-europe",
+    "token_count": 23
+  },
+  {
+    "chunk_id": "274b94f371edc8569a6b83fc8fe5583268dbcfed92f62407f8064d220cca0e93",
+    "chunk_type": "table_row",
+    "content": "# Fiscal Hosting FAQs > Examples of Fiscal Hosts\nHere are a few examples of Fiscal Hosts, each with their own region, focus area, and fees:\nFiscal Host: Open Source Collective.\nHosted Collectives: Open source projects.\nFee: 5%.",
+    "line_start": null,
+    "metadata": {
+      "breadcrumb_path": "Fiscal Hosting FAQs > Examples of Fiscal Hosts",
+      "columns": [
+        "Fiscal Host",
+        "Hosted Collectives",
+        "Fee"
+      ],
+      "row_index": 1,
+      "row_key": "Open Source Collective",
+      "sibling_ids": [
+        "3b724da6e06058552f8d2ceea81befdbc08eaad7b668ee6d1fba8105832c96e9",
+        "54400dffbdf8ac6993bbfe3eb5181302a44060a1d4a04bc01dea14ff53e22f67",
+        "06125ded96af4779bd7d7dbab2f71014e3cc43a99c03602c54b207e7b8e23ebc",
+        "26f7d79bf80ed2fe9415f564348755a8988e7ed29aff17b02e086f8d19364a10"
+      ],
+      "sibling_previews": [
+        "Open Collective Europe",
+        "Social Change Nest",
+        "Women Who Code",
+        "Operation Code"
+      ],
+      "source_url": "https://docs.opencollective.com/open-source-europe/faq/fiscal-hosting-faqs",
+      "table_caption": "Here are a few examples of Fiscal Hosts, each with their own region, focus area, and fees:",
+      "table_id": "e55355471cd78d91",
+      "total_rows": 5
+    },
+    "source_file": ".opencrane/llmstxt/llms-full.txt",
+    "source_name": "open-source-europe",
+    "token_count": 55
+  },
+  {
+    "chunk_id": "3b724da6e06058552f8d2ceea81befdbc08eaad7b668ee6d1fba8105832c96e9",
+    "chunk_type": "table_row",
+    "content": "# Fiscal Hosting FAQs > Examples of Fiscal Hosts\nHere are a few examples of Fiscal Hosts, each with their own region, focus area, and fees:\nFiscal Host: Open Collective Europe.\nHosted Collectives: EU-based collectives.\nFee: 8–10%.",
+    "line_start": null,
+    "metadata": {
+      "breadcrumb_path": "Fiscal Hosting FAQs > Examples of Fiscal Hosts",
+      "columns": [
+        "Fiscal Host",
+        "Hosted Collectives",
+        "Fee"
+      ],
+      "row_index": 2,
+      "row_key": "Open Collective Europe",
+      "sibling_ids": [
+        "274b94f371edc8569a6b83fc8fe5583268dbcfed92f62407f8064d220cca0e93",
+        "54400dffbdf8ac6993bbfe3eb5181302a44060a1d4a04bc01dea14ff53e22f67",
+        "06125ded96af4779bd7d7dbab2f71014e3cc43a99c03602c54b207e7b8e23ebc",
+        "26f7d79bf80ed2fe9415f564348755a8988e7ed29aff17b02e086f8d19364a10"
+      ],
+      "sibling_previews": [
+        "Open Source Collective",
+        "Social Change Nest",
+        "Women Who Code",
+        "Operation Code"
+      ],
+      "source_url": "https://docs.opencollective.com/open-source-europe/faq/fiscal-hosting-faqs",
+      "table_caption": "Here are a few examples of Fiscal Hosts, each with their own region, focus area, and fees:",
+      "table_id": "e55355471cd78d91",
+      "total_rows": 5
+    },
+    "source_file": ".opencrane/llmstxt/llms-full.txt",
+    "source_name": "open-source-europe",
+    "token_count": 58
+  },
+  {
+    "chunk_id": "54400dffbdf8ac6993bbfe3eb5181302a44060a1d4a04bc01dea14ff53e22f67",
+    "chunk_type": "table_row",
+    "content": "# Fiscal Hosting FAQs > Examples of Fiscal Hosts\nHere are a few examples of Fiscal Hosts, each with their own region, focus area, and fees:\nFiscal Host: Social Change Nest.\nHosted Collectives: UK-based collectives.\nFee: 5–7%.",
+    "line_start": null,
+    "metadata": {
+      "breadcrumb_path": "Fiscal Hosting FAQs > Examples of Fiscal Hosts",
+      "columns": [
+        "Fiscal Host",
+        "Hosted Collectives",
+        "Fee"
+      ],
+      "row_index": 3,
+      "row_key": "Social Change Nest",
+      "sibling_ids": [
+        "274b94f371edc8569a6b83fc8fe5583268dbcfed92f62407f8064d220cca0e93",
+        "3b724da6e06058552f8d2ceea81befdbc08eaad7b668ee6d1fba8105832c96e9",
+        "06125ded96af4779bd7d7dbab2f71014e3cc43a99c03602c54b207e7b8e23ebc",
+        "26f7d79bf80ed2fe9415f564348755a8988e7ed29aff17b02e086f8d19364a10"
+      ],
+      "sibling_previews": [
+        "Open Source Collective",
+        "Open Collective Europe",
+        "Women Who Code",
+        "Operation Code"
+      ],
+      "source_url": "https://docs.opencollective.com/open-source-europe/faq/fiscal-hosting-faqs",
+      "table_caption": "Here are a few examples of Fiscal Hosts, each with their own region, focus area, and fees:",
+      "table_id": "e55355471cd78d91",
+      "total_rows": 5
+    },
+    "source_file": ".opencrane/llmstxt/llms-full.txt",
+    "source_name": "open-source-europe",
+    "token_count": 58
+  },
+  {
+    "chunk_id": "06125ded96af4779bd7d7dbab2f71014e3cc43a99c03602c54b207e7b8e23ebc",
+    "chunk_type": "table_row",
+    "content": "# Fiscal Hosting FAQs > Examples of Fiscal Hosts\nHere are a few examples of Fiscal Hosts, each with their own region, focus area, and fees:\nFiscal Host: Women Who Code.\nHosted Collectives: Local chapters.\nFee: 0%.",
+    "line_start": null,
+    "metadata": {
+      "breadcrumb_path": "Fiscal Hosting FAQs > Examples of Fiscal Hosts",
+      "columns": [
+        "Fiscal Host",
+        "Hosted Collectives",
+        "Fee"
+      ],
+      "row_index": 4,
+      "row_key": "Women Who Code",
+      "sibling_ids": [
+        "274b94f371edc8569a6b83fc8fe5583268dbcfed92f62407f8064d220cca0e93",
+        "3b724da6e06058552f8d2ceea81befdbc08eaad7b668ee6d1fba8105832c96e9",
+        "54400dffbdf8ac6993bbfe3eb5181302a44060a1d4a04bc01dea14ff53e22f67",
+        "26f7d79bf80ed2fe9415f564348755a8988e7ed29aff17b02e086f8d19364a10"
+      ],
+      "sibling_previews": [
+        "Open Source Collective",
+        "Open Collective Europe",
+        "Social Change Nest",
+        "Operation Code"
+      ],
+      "source_url": "https://docs.opencollective.com/open-source-europe/faq/fiscal-hosting-faqs",
+      "table_caption": "Here are a few examples of Fiscal Hosts, each with their own region, focus area, and fees:",
+      "table_id": "e55355471cd78d91",
+      "total_rows": 5
+    },
+    "source_file": ".opencrane/llmstxt/llms-full.txt",
+    "source_name": "open-source-europe",
+    "token_count": 54
+  },
+  {
+    "chunk_id": "26f7d79bf80ed2fe9415f564348755a8988e7ed29aff17b02e086f8d19364a10",
+    "chunk_type": "table_row",
+    "content": "# Fiscal Hosting FAQs > Examples of Fiscal Hosts\nHere are a few examples of Fiscal Hosts, each with their own region, focus area, and fees:\nFiscal Host: Operation Code.\nHosted Collectives: Veterans' programs.\nFee: 30%.",
+    "line_start": null,
+    "metadata": {
+      "breadcrumb_path": "Fiscal Hosting FAQs > Examples of Fiscal Hosts",
+      "columns": [
+        "Fiscal Host",
+        "Hosted Collectives",
+        "Fee"
+      ],
+      "row_index": 5,
+      "row_key": "Operation Code",
+      "sibling_ids": [
+        "274b94f371edc8569a6b83fc8fe5583268dbcfed92f62407f8064d220cca0e93",
+        "3b724da6e06058552f8d2ceea81befdbc08eaad7b668ee6d1fba8105832c96e9",
+        "54400dffbdf8ac6993bbfe3eb5181302a44060a1d4a04bc01dea14ff53e22f67",
+        "06125ded96af4779bd7d7dbab2f71014e3cc43a99c03602c54b207e7b8e23ebc"
+      ],
+      "sibling_previews": [
+        "Open Source Collective",
+        "Open Collective Europe",
+        "Social Change Nest",
+        "Women Who Code"
+      ],
+      "source_url": "https://docs.opencollective.com/open-source-europe/faq/fiscal-hosting-faqs",
+      "table_caption": "Here are a few examples of Fiscal Hosts, each with their own region, focus area, and fees:",
+      "table_id": "e55355471cd78d91",
+      "total_rows": 5
+    },
+    "source_file": ".opencrane/llmstxt/llms-full.txt",
+    "source_name": "open-source-europe",
+    "token_count": 54
   }
 ]
