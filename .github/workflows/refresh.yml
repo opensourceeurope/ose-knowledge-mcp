@@ -48,10 +48,13 @@ jobs:
         # ensure-index.sh reads the same pinned version from .opencrane/opencrane-version.
         run: ./scripts/ensure-index.sh
 
-      - name: Commit refreshed inputs if changed
+      - name: Commit refreshed inputs and open a PR if changed
         id: commit
         env:
-          GH_TOKEN: ${{ github.token }}   # step-scoped; not persisted in .git/config
+          # main is branch-protected (no direct push), and the org blocks the built-in
+          # GITHUB_TOKEN from creating PRs — so use RELEASE_TOKEN (the org PAT release.yml
+          # already uses) to push the branch + open the PR. It also gives the PR its CI runs.
+          GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -62,18 +65,26 @@ jobs:
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No source changes this week."
           else
+            branch="chore/knowledge-refresh"
+            git checkout -B "$branch"
             # `fix:` (not `chore:`) so release-please rolls this into the release PR — see below.
             git commit -m "fix(knowledge): refresh OSE knowledge sources ($(date -u +%Y-%m-%d))"
-            # checkout ran with persist-credentials:false, so push with a step-scoped token.
-            # GH_TOKEN / GITHUB_REPOSITORY are plain shell env vars here.
             remote="https://x-access-token:$GH_TOKEN@github.com/$GITHUB_REPOSITORY.git"
-            git push "$remote" HEAD:main
+            git push --force "$remote" "HEAD:$branch"
+            if ! gh pr view "$branch" --json state --jq .state 2>/dev/null | grep -q OPEN; then
+              gh pr create --base main --head "$branch" \
+                --title "fix(knowledge): weekly OSE knowledge refresh" \
+                --body "Automated weekly source refresh (llms.txt + chunks + embeddings + milvus.db). Rolls into the release PR on merge."
+            fi
+            # Keep shipping hands-off: auto-merge once the required checks (validate +
+            # commitlint) are green. Squash so release-please detects the fix: and rolls it in.
+            gh pr merge "$branch" --auto --squash --repo "$GITHUB_REPOSITORY"
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
-# Shipping: the refresh commit is a `fix:`, so release-please rolls it into the rolling
-# release PR (a patch bump). Merging that release PR cuts vX.Y.Z and, in the same run,
-# release.yml publishes ose-knowledge-mcp to PyPI and deploys the MCP container +
-# chat function + chat page with the refreshed knowledge baked in. Shipping is now fully
-# hands-off: release.yml arms GitHub auto-merge on the release PR, so once its CI is green
-# the PR merges itself and the publish + deploy chain runs — no manual merge needed.
+# Shipping: main is protected, so the refresh now lands via an auto-merging PR (above)
+# instead of a direct push. Its commit is a `fix:`, so once that PR auto-merges,
+# release-please rolls it into the rolling release PR (a patch bump). Merging that release
+# PR cuts vX.Y.Z and, in the same run, release.yml publishes ose-knowledge-mcp to PyPI and
+# deploys the MCP container + chat function + chat page with the refreshed knowledge baked
+# in. Still fully hands-off: both the refresh PR and the release PR auto-merge on green CI.
