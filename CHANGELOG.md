@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.3](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.3.2...v0.3.3) (2026-07-27)
+
+
+### Bug Fixes
+
+* bump opencrane to 0.30.2 so fresh installs keep pkg_resources ([#27](https://github.com/opensourceeurope/ose-knowledge-mcp/issues/27)) ([b30010b](https://github.com/opensourceeurope/ose-knowledge-mcp/commit/b30010bb686f11ca475423f45b918beb47adf254))
+
 ## [0.3.2](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.3.1...v0.3.2) (2026-07-07)
 
 
