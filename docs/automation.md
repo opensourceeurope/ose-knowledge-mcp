@@ -8,7 +8,9 @@ continuously; **shipping is release-gated** — deploys happen only when a relea
   regenerates `chunks.json`, rebuilds the committed vector index (`embeddings.json` +
   `milvus.db`, via `scripts/ensure-index.sh` — only when the chunks changed), and commits any
   changes as a `fix:` so release-please rolls the refreshed content into the release PR. Run it
-  manually any time from the Actions tab.
+  manually any time from the Actions tab; the manual run has a `force_reindex` checkbox that
+  drops `embeddings.json` + `milvus.db` first so the index is rebuilt with the pinned
+  opencrane even when the chunks are unchanged (use after an opencrane bump).
 - **CI** (`ci.yml`): on every push/PR — checks the plugin agent is in sync with
   `agent/ose-researcher.md`, checks the committed vector index is in sync with `chunks.json`
   (`scripts/ensure-index.sh --check`), builds and tests the chat function, and lints all
