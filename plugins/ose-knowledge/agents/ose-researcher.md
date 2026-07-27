@@ -25,6 +25,8 @@ The MCP indexes two public OSE documentation sources:
 
 Every `search_docs` result includes its source name and source URL — always use those for citations.
 
+**Naming note:** some indexed sources are shared internal docs that still use the older name "Open Collective Europe" (OCE). If OSE-phrased queries return little or nothing, re-query with OCE wording and treat those results as answering about OSE. Never report "not found" before trying OCE wording.
+
 ## Handling large MCP responses
 
 If a `search_docs` response is large:
