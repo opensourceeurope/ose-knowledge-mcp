@@ -3,7 +3,12 @@ name: Weekly knowledge refresh
 on:
   schedule:
     - cron: "0 3 * * 6"   # Saturdays 03:00 UTC
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      force_reindex:
+        description: "Rebuild embeddings.json + milvus.db with the pinned opencrane even if chunks.json is unchanged (use after an opencrane bump)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -39,6 +44,15 @@ jobs:
           uvx "opencrane[pipeline]@${OPENCRANE_VERSION}" fetch
           uvx "opencrane[pipeline]@${OPENCRANE_VERSION}" llms
           uvx "opencrane[pipeline]@${OPENCRANE_VERSION}" chunk
+
+      # Manual runs can force a full re-embed even when chunks.json is unchanged —
+      # needed after an opencrane bump, where the committed index was built by the old
+      # version but the diff-gate below would otherwise see nothing to ship. Dropping
+      # the artifacts makes ensure-index.sh regenerate them (same trick as
+      # run-local.sh --fresh).
+      - name: Drop the committed index (force_reindex)
+        if: github.event_name == 'workflow_dispatch' && inputs.force_reindex
+        run: rm -f .opencrane/embeddings.json .opencrane/milvus.db
 
       # If the re-chunk changed chunks.json, rebuild embeddings.json + milvus.db so the
       # committed index tracks the refreshed content; a no-op (reuses the committed
