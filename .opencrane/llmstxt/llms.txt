@@ -92,4 +92,3 @@
 - [Expense FAQs](https://docs.opencollective.com/open-source-europe/faq/expense-faqs)
 - [Contributions FAQ](https://docs.opencollective.com/open-source-europe/faq/contributions-faq)
 - [Deciding on How to Use Your Money](https://docs.opencollective.com/open-source-europe/guides/deciding-on-how-to-use-your-money)
-<!-- refresh-flow nudge: this generated file is rebuilt by refresh.yml; the next refresh removes this line, producing the diff that exercises the auto-PR + release chain -->
