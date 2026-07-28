@@ -67,7 +67,7 @@ flowchart LR
     end
 
     DB[(Milvus Lite index)]
-    plugin["Claude plugin 'ose-knowledge'<br/>MCP config + ose-researcher agent"]
+    plugin["Claude plugin 'ose-knowledge'<br/>MCP config + ose-researcher agent<br/>+ ask-about-ose skill"]
 
     plugin -. "installs / configures" .-> client
     client -- "search_docs" --> local
