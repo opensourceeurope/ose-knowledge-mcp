@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.4.0...v0.4.1) (2026-07-28)
+
+
+### Documentation
+
+* mention the ask-about-ose skill in plugin descriptions ([#37](https://github.com/opensourceeurope/ose-knowledge-mcp/issues/37)) ([0ebca62](https://github.com/opensourceeurope/ose-knowledge-mcp/commit/0ebca62d4425a63277acc3729313d174991705ee))
+
 ## [0.4.0](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.3.5...v0.4.0) (2026-07-28)
 
 
