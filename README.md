@@ -61,7 +61,7 @@ See [`docs/architecture.md`](docs/architecture.md) for how it works.
 The knowledge base is published to PyPI as a standalone MCP package, so any MCP client can
 search the OSE docs.
 
-**Claude Code plugin** — adds the MCP server + an `ose-researcher` agent:
+**Claude Code plugin** — adds the MCP server, an `ose-researcher` agent, and an `ask-about-ose` skill that routes OSE questions to the agent (also invocable as `/ose-knowledge:ask-about-ose`):
 
 ```
 /plugin marketplace add opensourceeurope/ose-knowledge-mcp

@@ -8,7 +8,7 @@
     {
       "name": "ose-knowledge",
       "source": "./plugins/ose-knowledge",
-      "description": "Open Source Europe documentation: an ose-researcher agent backed by the public OSE docs MCP server."
+      "description": "Open Source Europe documentation: an ask-about-ose skill + ose-researcher agent backed by the public OSE docs MCP server."
     }
   ]
 }
