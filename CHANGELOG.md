@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.4.1...v0.5.0) (2026-07-28)
+
+
+### Features
+
+* add plugin displayName for the /plugin picker ([#40](https://github.com/opensourceeurope/ose-knowledge-mcp/issues/40)) ([0e6a9c7](https://github.com/opensourceeurope/ose-knowledge-mcp/commit/0e6a9c778e6780b16ed571aa260d9ae5774d7e62))
+
 ## [0.4.1](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.4.0...v0.4.1) (2026-07-28)
 
 
