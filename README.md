@@ -64,7 +64,7 @@ search the OSE docs.
 **Claude Code plugin** — adds the MCP server, an `ose-researcher` agent, and an `ask-about-ose` skill that routes OSE questions to the agent (also invocable as `/ose-knowledge:ask-about-ose`):
 
 ```
-/plugin marketplace add opensourceeurope/ose-knowledge-mcp
+/plugin marketplace add opensourceeurope/ose-ai
 /plugin install ose-knowledge@ose-ai
 ```
 
