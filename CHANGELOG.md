@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.3.5...v0.4.0) (2026-07-28)
+
+
+### Features
+
+* add ask-about-ose skill to invoke the ose-researcher agent ([#35](https://github.com/opensourceeurope/ose-knowledge-mcp/issues/35)) ([dfc80b8](https://github.com/opensourceeurope/ose-knowledge-mcp/commit/dfc80b8f58fde2d2ad45d1a46e63394fd1c576a0))
+
 ## [0.3.5](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.3.4...v0.3.5) (2026-07-27)
 
 
