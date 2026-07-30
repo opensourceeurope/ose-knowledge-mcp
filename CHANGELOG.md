@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.1](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.5.0...v0.5.1) (2026-07-30)
+
+
+### Bug Fixes
+
+* **chat:** point plugin marketplace snippet at opensourceeurope/ose-ai ([#42](https://github.com/opensourceeurope/ose-knowledge-mcp/issues/42)) ([9bbac15](https://github.com/opensourceeurope/ose-knowledge-mcp/commit/9bbac154589be18b1e1fa0b392fd39824436c19c))
+
 ## [0.5.0](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.4.1...v0.5.0) (2026-07-28)
 
 
