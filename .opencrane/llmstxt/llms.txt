@@ -3,9 +3,9 @@
 ## oc-europe-internal-doc
 - [The Foundation](https://docs.opencollective.com/oc-europe-internal-doc/the-foundation)
 - [Meet the Open Collective Europe Team](https://docs.opencollective.com/oc-europe-internal-doc/the-foundation/meet-the-open-collective-europe-team)
-- [Director (JF)](https://docs.opencollective.com/oc-europe-internal-doc/the-foundation/meet-the-open-collective-europe-team/director-jf)
-- [Financial Compliance & Platform Specialist (Ivan)](https://docs.opencollective.com/oc-europe-internal-doc/the-foundation/meet-the-open-collective-europe-team/financial-compliance-and-platform-specialist-ivan)
-- [Grant & Operations Lead (Laura)](https://docs.opencollective.com/oc-europe-internal-doc/the-foundation/meet-the-open-collective-europe-team/grant-and-operations-lead-laura)
+- [Executive Director (JF)](https://docs.opencollective.com/oc-europe-internal-doc/the-foundation/meet-the-open-collective-europe-team/executive-director-jf)
+- [Financial Operations & Platform Specialist (Ivan)](https://docs.opencollective.com/oc-europe-internal-doc/the-foundation/meet-the-open-collective-europe-team/financial-operations-and-platform-specialist-ivan)
+- [Strategic Projects & Operations Lead (Laura)](https://docs.opencollective.com/oc-europe-internal-doc/the-foundation/meet-the-open-collective-europe-team/strategic-projects-and-operations-lead-laura)
 - [Tools & Platforms Used at OCE](https://docs.opencollective.com/oc-europe-internal-doc/tools-and-platforms-used-at-oce)
 - [AI Usage Policy](https://docs.opencollective.com/oc-europe-internal-doc/tools-and-platforms-used-at-oce/ai-usage-policy)
 - [Key Links & Meeting Rhythms](https://docs.opencollective.com/oc-europe-internal-doc/tools-and-platforms-used-at-oce/key-links-and-meeting-rhythms)

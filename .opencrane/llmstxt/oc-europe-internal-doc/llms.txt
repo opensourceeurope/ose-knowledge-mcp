@@ -4,9 +4,9 @@
 
 - [The Foundation](https://docs.opencollective.com/oc-europe-internal-doc/the-foundation.md)
 - [Meet the Open Collective Europe Team](https://docs.opencollective.com/oc-europe-internal-doc/the-foundation/meet-the-open-collective-europe-team.md)
-- [Director (JF)](https://docs.opencollective.com/oc-europe-internal-doc/the-foundation/meet-the-open-collective-europe-team/director-jf.md)
-- [Financial Compliance & Platform Specialist (Ivan)](https://docs.opencollective.com/oc-europe-internal-doc/the-foundation/meet-the-open-collective-europe-team/financial-compliance-and-platform-specialist-ivan.md)
-- [Grant & Operations Lead (Laura)](https://docs.opencollective.com/oc-europe-internal-doc/the-foundation/meet-the-open-collective-europe-team/grant-and-operations-lead-laura.md)
+- [Executive Director (JF)](https://docs.opencollective.com/oc-europe-internal-doc/the-foundation/meet-the-open-collective-europe-team/executive-director-jf.md)
+- [Financial Operations & Platform Specialist (Ivan)](https://docs.opencollective.com/oc-europe-internal-doc/the-foundation/meet-the-open-collective-europe-team/financial-operations-and-platform-specialist-ivan.md)
+- [Strategic Projects & Operations Lead (Laura)](https://docs.opencollective.com/oc-europe-internal-doc/the-foundation/meet-the-open-collective-europe-team/strategic-projects-and-operations-lead-laura.md)
 - [Tools & Platforms Used at OCE](https://docs.opencollective.com/oc-europe-internal-doc/tools-and-platforms-used-at-oce.md): Core tools and platforms used by the Open Collective Europe Foundation
 - [AI Usage Policy](https://docs.opencollective.com/oc-europe-internal-doc/tools-and-platforms-used-at-oce/ai-usage-policy.md)
 - [Key Links & Meeting Rhythms](https://docs.opencollective.com/oc-europe-internal-doc/tools-and-platforms-used-at-oce/key-links-and-meeting-rhythms.md): This page centralizes key links and the recurring internal routines that structure collaboration within Open Collective Europe Foundation.
@@ -29,7 +29,7 @@
 - [No Politics on the Platform](https://docs.opencollective.com/oc-europe-internal-doc/support-ops/application-review/no-politics-on-the-platform.md)
 - [The Onboarding Call](https://docs.opencollective.com/oc-europe-internal-doc/support-ops/the-onboarding-call.md)
 - [Freezing Collectives](https://docs.opencollective.com/oc-europe-internal-doc/support-ops/freezing-collectives.md)
-- [Virtual Cards](https://docs.opencollective.com/oc-europe-internal-doc/support-ops/virtual-cards.md): This page outlines the internal policy of Open Collective Europe regarding the use of virtual cards.
+- [Virtual Cards](https://docs.opencollective.com/oc-europe-internal-doc/support-ops/virtual-cards.md): Internal policy for virtual cards used by Open Collective Europe.
 - [Google Workspace & Drive Structure](https://docs.opencollective.com/oc-europe-internal-doc/support-ops/google-workspace-and-drive-structure.md)
 - [OCE – Periodic Cleanup](https://docs.opencollective.com/oc-europe-internal-doc/support-ops/oce-periodic-cleanup.md)
 - [Financial Operations – Introduction](https://docs.opencollective.com/oc-europe-internal-doc/financial-operations-introduction.md)
