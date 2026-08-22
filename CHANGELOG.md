@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.2](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.5.1...v0.5.2) (2026-08-22)
+
+
+### Bug Fixes
+
+* **knowledge:** refresh OSE knowledge sources (2026-08-22) ([#44](https://github.com/opensourceeurope/ose-knowledge-mcp/issues/44)) ([2ef39d5](https://github.com/opensourceeurope/ose-knowledge-mcp/commit/2ef39d5627270973a71d3da177f289a6af11f34e))
+
 ## [0.5.1](https://github.com/opensourceeurope/ose-knowledge-mcp/compare/v0.5.0...v0.5.1) (2026-07-30)
 
 
