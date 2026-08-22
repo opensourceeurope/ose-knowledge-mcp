@@ -159,7 +159,7 @@ This structure allows communities to manage funds, hire contributors, and receiv
 
 * **Simplified Legal Framework:** Skip the complexity of non-profit incorporation, bank account openings, and statutory bookkeeping.
 * **Grant Eligibility:** Access funding from foundations, corporations, and public authorities that require a registered non-profit intermediary.
-* **Professional Back-office:** We handle the administrative heavy lifting, including invoicing, VAT compliance, and annual financial reporting.
+* **Professional Back-office:** We handle the administrative heavy lifting, including expense processing, bookkeeping, and annual financial reporting.
 * **Radical Transparency:** Every transaction is logged in real-time, building immediate trust with your backers and contributors.
 * **Ecosystem Access:** Join a network of like-minded maintainers and projects within the European open source landscape.
 
@@ -180,7 +180,7 @@ To maintain the integrity of the umbrella, hosted projects must adhere to three 
 
 ### Use Cases We Support
 
-* **Open Source Libraries:** A legal home for critical libraries to receive corporate sponsorships and individual donations.
+* **Open Source Libraries:** A legal home for critical libraries to receive corporate and individual donations.
 * **Project Ecosystems:** A unified structure for a suite of related tools managed by a distributed community.
 * **Tech Communities:** Regional developer groups or meetups managing funds for events, travel stipends, and venues.
 
@@ -197,7 +197,7 @@ A shared tool for managing contributions, expenses, and grants with full transpa
 
 Open Collective is a digital platform that enables hosted initiatives and philanthropic partners to raise, manage, and distribute funds with full transparency. Each group or fund hosted by Open Collective Europe receives its own public page, equipped with tools to:
 
-* Collect financial contributions: Accept donations and sponsorships via credit card, PayPal, or bank transfer.
+* Collect financial contributions: Accept donations via credit card, PayPal, or bank transfer, and manage grants.
 * Manage expenses and disbursements: Submit, approve, and reimburse expenses directly through the platform.
 * Display a transparent budget: All income and expenditures are visible in real-time, enhancing trust and accountability.
 * Engage with the community: Post updates, host events, and share progress with supporters.
@@ -228,7 +228,7 @@ Financial transactions are public, but personal details like names and email add
 
 * Real-time budget tracking
 * Integrated expense and payout tools
-* Custom contribution tiers and fundraising campaigns
+* Custom donation tiers and fundraising campaigns
 * Event management tools
 * Automated monthly financial summaries
 * Public updates and communication channels
@@ -340,7 +340,7 @@ The Agreement starts from the Effective Date and continues unless terminated (se
 #### Soliciting Contributions
 
 * You may raise funds, but must notify OCE at least 60 days in advance of any public fundraising campaign.
-* A signed service agreement is required before fundraising begins.
+* A signed Mandate Agreement is required before fundraising begins.
 
 #### Agreements with Third Parties
 
@@ -1200,9 +1200,9 @@ Open Collective Europe (OCE) enables hosted Collectives to receive grants from i
 
    The funder will provide a grant agreement. This must be signed by OCE as the legal recipient.\
    Please share the agreement with us via <oce@opencollective.com>, or have the funder reach out to us directly.
-2. **Service Agreement**
+2. **Mandate Agreement**
 
-   Your initiative will also need to sign a Service Agreement with OCE.\
+   Your initiative will also need to sign a Mandate Agreement with OCE.\
    This formalizes the arrangement and must be signed by two members of your initiative.
 3. **Bank Transfer**
 
@@ -1343,7 +1343,7 @@ To accept cryptocurrency donations, your Collective must:
 * Have a minimum balance of **€2,000**.
 * Not engage in the sale of goods or services.
 * Have at least **two administrators**.
-* Sign a specific **Service Agreement** with OCE.
+* Sign a specific **Mandate Agreement** with OCE.
 
 {% hint style="info" %}
 To apply, contact us at <oce@opencollective.com>.
@@ -1361,7 +1361,7 @@ To apply, contact us at <oce@opencollective.com>.
    * Converted funds are transferred to OCE and then allocated to your Collective's balance on the Open Collective platform.
 
 {% hint style="info" %}
-**Note**: Transfers from Every.org to OCE occur **twice per year**.&#x20;
+**Note**: Transfers from Every.org to OCE occur **twice per year**.
 {% endhint %}
 
 ***
@@ -1380,7 +1380,7 @@ Detailed fee information will be provided upon request.
 ### ⚠️ Important Considerations
 
 * Your Collective will receive **only fiat currency**; OCE does not distribute cryptocurrency directly.
-* Ensure that your fundraising activities comply with OCE's guidelines and the terms of [the Service Agreement](/open-source-europe/terms-of-service).
+* Ensure that your fundraising activities comply with OCE's guidelines and the terms of the Mandate Agreement.
 
 ***
 
@@ -1827,11 +1827,11 @@ Our small but mighty team is here to help you Monday to Friday across multiple t
 
 # General FAQs
 
-### What can I do with an Open Collective Europe account?
+### What can I do with an Open Source Europe account?
 
-By joining Open Collective Europe, your initiative can:
+By joining Open Source Europe, your initiative can:
 
-* Collect financial contributions (donations, memberships, sponsorships)
+* Collect recurring or one-off donations
 * Apply for subsidies or grants
 * Pay invoices and reimburse expenses
 * Offer full budget transparency to your community
@@ -1844,7 +1844,7 @@ By joining Open Collective Europe, your initiative can:
 
 To stay compliant with our legal and charitable framework, you **may not**:
 
-* Issue invoices or sign documents in the name of OCE
+* Issue invoices or sign documents in the name of OSE
 * Use funds to influence legislation or politics (lobbying)
 * Support or engage in illegal activity
 * Use funds for personal profit
@@ -1868,7 +1868,7 @@ Benefits include:
 
 ***
 
-### How is Open Collective Europe different?
+### How is Open Source Europe different?
 
 Here’s what makes us special:
 
@@ -1887,13 +1887,13 @@ Open Collective Europe charges a standard **administrative fee**:
   * 1.5% + €0.25 for European cards
   * 2.5% + €0.25 for non-European cards
 * **10%** if your Collective:
-  * Receives a **grant or sponsorship**
+  * Receives a **grant**
   * Receives a **tax-deductible donation**
   * Receives a **public subsidy**
   * Receives a **manual bank transfer**
 
 {% hint style="info" %}
-&#x20;Part of this fee goes to support the Open Collective platform (which we use to operate our fiscal hosting).
+Part of this fee goes to support the Open Collective platform (which we use to operate our fiscal hosting).
 {% endhint %}
 
 ***
@@ -1962,8 +1962,8 @@ A **Fiscal Host** is an organization that holds funds on behalf of Collectives, 
 
 This arrangement — also called fiscal sponsorship — allows your Collective to:
 
-* Receive and manage donations, sponsorships, grants
-* Issue invoices and receipts to contributors
+* Receive and manage donations and grants
+* Provide donation confirmations and administer grants
 * Handle taxes, bookkeeping, and legal compliance
 * Pay expenses approved by your Collective admins
 
@@ -2072,7 +2072,7 @@ Write to us on <oce@opencollective.com> or send us a message via[ Slack](http://
 
 ### **What if a financial contributor requests an invoice before making the donation?**
 
-Reach out to us at <oce@opencollective.com>. We are happy to procure an invoice of this kind when requested. Please provide: Donor name, Email, Collective Name, & Donation amount (+ screenshots/links if applicable) for context.
+OSE can provide confirmation that a donation was received, but not a sales or VAT invoice. If a contributor requires an invoice in exchange for goods, services, visibility, or another benefit, OSE cannot accept the payment.
 
 ### **Can we use outside fundraising platforms to fundraise for our collective?**
 
@@ -2084,15 +2084,15 @@ If you’re interested in taking advantage of our partnership with GitHub Sponso
 
 ### Can we receive earned income (i.e., non-donations)?
 
-No. Open Collective Europe can receive only donations and grants.
+OSE accepts only donations and grants. It does not accept earned income or payments made in exchange for goods or services.
 
 ### **Can we offer financial contributors something in return for their donation?**
 
-You can use the [Tiers](https://docs.opencollective.com/help/collectives/collective-settings/tiers-goals#tiers) feature. What you cannot do is sell products or services through this feature because it is taxable income, and not in line with our hosting. We recommend creating a clear contribution policy in case of membership tiers.
+Donation [tiers](https://docs.opencollective.com/help/collectives/collective-settings/tiers-goals#tiers) may suggest different contribution amounts, but they cannot include promised goods, services, advertising, promotional visibility, access, or other benefits. Optional donor acknowledgment that is not promised as part of a tier is permitted.
 
 ### **Can my group offer memberships/accept membership fees?**
 
-Check out Open Collective’s [Tiers](https://docs.opencollective.com/help/collectives/collective-settings/tiers-goals#tiers) feature!
+Supporter membership is a symbolic community designation and confers no rights or benefits.
 
 ### Can my collective donate to another hosted collective?
 

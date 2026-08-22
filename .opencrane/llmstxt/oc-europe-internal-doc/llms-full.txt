@@ -85,12 +85,13 @@ Our goal is to provide trusted and accessible infrastructure to communities and 
 
 * **Jean-François De Hertogh**\
   Executive Director\
-  Leads the foundation’s strategy, partnerships, and governance.
+  Sets OCE’s strategy, leads governance and major institutional relationships, allocates resources, and makes final executive decisions on material commitments, risks and exceptions.
 * **Ivan Cukeric**\
-  Financial Operations\
-  Handles daily financial processes, expense reviews, fund transfers, and reporting.
+  Financial Operations & Platform Specialist\
+  Executes routine payments, performs first-line document checks, handles standard platform operations and Tier 1 onboarding, and provides operational financial information to Michael.
 * **Laura Manne**\
-  Grant & Operations Lead
+  Strategic Projects & Operations Lead\
+  Triages new applications, leads the operational delivery of strategic funds and complex partnerships—including the GSF, Ma Earth and Myriad USA—and coordinates structural platform requests with Open Finance Consortium’s engineers.
 
 ***
 
@@ -103,269 +104,739 @@ The foundation is legally administered by three board members:
 * **Shannon Wray**
 
 
-# Director (JF)
-
-### 1. Purpose of the Role
-
-The Director is responsible for the overall direction, integrity, and reliability of Open Collective Europe.
-
-The role ensures that the foundation operates:
-
-* in line with its mission
-* with a high level of trust and compliance
-* with clear structure, accountability, and scalability
-
-The Director acts as the final point of responsibility across all areas of the organization.
-
-***
-
-### 2. Core Responsibilities
-
-#### 2.1 Strategic Direction
-
-* Define and drive the strategic positioning of the foundation
-* Develop relationships with:
-  * partner foundations
-  * major donors
-  * institutional stakeholders
-* Identify and develop key opportunities for growth and impact
-
-***
-
-#### 2.2 Financial Oversight
-
-* Ensure overall financial integrity of the organization
-* Supervise:
-  * budget preparation
-  * annual accounts
-  * audit processes
-* Work closely with:
-  * external CFO
-  * accountant
-* Validate:
-  * high-value transactions
-  * exceptional financial decisions
-
-***
-
-#### 2.3 Organizational Structure & Delegation
-
-* Define roles, responsibilities, and internal processes
-* Ensure that operational responsibilities are clearly assigned and understood, in particular:
-  * day-to-day operations to the Operations & Support Associate
-  * advanced operations and coordination to the Operations & Coordination role
-* Ensure operations are:
-  * reliable
-  * scalable
-  * well-structured
-* Identify gaps and implement improvements
-
-***
-
-#### 2.4 Oversight of Operations
-
-* Ensure that operations are executed according to defined standards and processes
-* Put in place appropriate validation mechanisms for critical operations
-* Maintain visibility over:
-  * financial operations
-  * platform configuration
-  * key interactions with collectives
-* Intervene selectively when:
-  * a situation is complex or high-risk
-  * an issue requires escalation
-  * a decision is needed
-
-> The role is not to systematically review or correct operational work, but to ensure that systems and responsibilities are in place to guarantee quality.
-
-***
-
-#### 2.5 Final Validation & Risk Management
-
-* Act as final decision-maker on:
-  * sensitive financial matters
-  * exceptions and special agreements
-  * high-risk situations
-* Ensure risks are identified and mitigated
-
-***
-
-#### 2.6 External Relations
-
-* Represent the foundation externally
-* Maintain relationships with:
-  * key projects (e.g. GSF)
-  * strategic partners
-  * major stakeholders
-* Ensure alignment between messaging and positioning
-
-***
-
-#### 2.7 Team Oversight
-
-* Supervise team members and role evolution
-* Ensure clarity of expectations and responsibilities
-* Provide direction and feedback when needed
-
-***
-
-### 3. Operating Principles
-
-#### 3.1 Accountability
-
-The Director retains ultimate responsibility for:
-
-* financial accuracy
-* operational reliability
-* external relationships
-
-***
-
-#### 3.2 Delegation & Responsibility
-
-Operational responsibilities are delegated to the team with clear ownership.
-
-Each role is expected to:
-
-* execute tasks independently
-* ensure accuracy and completeness
-* take responsibility for the quality of their work
-
-The Director:
-
-* defines the framework
-* ensures accountability
-* does not act as a systematic validation layer
-
-> Recurring need for correction or supervision indicates a need to adjust roles, processes, or responsibilities.
-
-***
-
-#### 3.3 Clarity over Informality
-
-The organization should not rely on informal corrections or implicit knowledge.
-
-The Director ensures:
-
-* clear processes
-* documented expectations
-* structured decision-making
-
-***
-
-#### 3.4 Risk Awareness
-
-All critical operations must be:
-
-* understood
-* monitored
-* secured
-
-***
-
-### 4. Scope & Positioning
-
-The Director:
-
-* leads strategy and structure
-* validates critical decisions
-* ensures overall coherence
-
-While the Director may remain involved in certain operational aspects, these are delegated by default and should not rely on continuous direct execution.
-
-***
-
-### 5. Expected Outcomes
-
-* a reliable and structured organization
-* strong trust from partners and collectives
-* clear delegation and accountability across the team
-* reduced dependency on the Director for day-to-day operations
-* operations that function without systematic correction
-
-
-# Financial Compliance & Platform Specialist (Ivan)
+# Executive Director (JF)
 
 {% hint style="info" %}
-Current Position: Financial Compliance & Platform Specialist
+Current Position: Executive Director
+
+Governance: Reports to the Foundation Board
+{% endhint %}
+
+## 1. Purpose of the role
+
+JF leads Open Collective Europe’s strategy, organizational model and institutional development. He is responsible for ensuring that OCE has a clear direction, an economically sustainable operating model, appropriate governance and a team structure capable of delivering its mission.
+
+JF is the final executive decision point for material strategic, contractual, financial, legal, reputational and resource matters within the authority delegated to him by the Foundation Board.
+
+The Board retains its legal governance responsibilities and any decisions reserved to it. JF’s role is not to personally execute or recheck all operational work.
+
+## 2. Strategy and organizational direction
+
+JF is responsible for:
+
+* defining OCE’s strategic priorities and positioning;
+* deciding which services, partnerships and organizational capabilities OCE should develop;
+* ensuring that OCE’s activities remain aligned with its mission;
+* evaluating opportunities against their impact, cost, complexity and risk;
+* translating strategic priorities into clear objectives for the team;
+* deciding what OCE will not pursue when capacity or risk does not justify it;
+* adapting the organizational structure as OCE’s activities evolve;
+* preparing significant strategic proposals for the Board.
+
+## 3. Governance and Board relationship
+
+JF:
+
+* keeps the Board informed about OCE’s activities, financial position, principal risks and material commitments;
+* prepares the information and proposals required for Board decisions;
+* implements Board decisions and follows up on agreed actions;
+* ensures that governance requirements, delegations and decision records are clear;
+* escalates matters that exceed his delegated authority or require formal Board approval;
+* contributes to the preparation of Board meetings, annual reporting and other governance obligations.
+
+JF is a member of the Foundation Board, but his executive role remains distinct from the Board’s collective legal and governance responsibilities.
+
+## 4. Financial governance and resource allocation
+
+JF retains executive responsibility for OCE’s overall financial sustainability and resource allocation.
+
+He:
+
+* sets financial priorities and planning assumptions;
+* reviews budgets, forecasts, cash visibility and management information prepared with Michael;
+* decides material spending priorities and resource trade-offs within his authority;
+* validates exceptional or high-value financial commitments when required;
+* reviews significant financial risks, anomalies and unresolved issues;
+* ensures that the Board receives an appropriate view of OCE’s financial position;
+* decides when additional financial, legal or operational expertise is required.
+
+Michael, as external CFO, owns financial steering, controls, reconciliations and coordination of accounting. Ivan executes and documents routine financial operations. Saïd maintains the accounting under Michael’s exclusive operational coordination.
+
+JF does not perform routine reconciliations, accounting entries or first-line payment checks.
+
+## 5. Institutional relationships and development
+
+JF leads OCE’s strategic external relationships, including:
+
+* major foundations, funders and institutional donors;
+* strategic partners and prospective partners;
+* high-value or organization-shaping projects;
+* Open Finance Consortium at the institutional and strategic level;
+* advisers, legal counsel and other senior external stakeholders;
+* public representation of OCE where executive involvement is appropriate.
+
+JF leads or approves major negotiations, partnership terms and institutional commitments. Once a partnership has an agreed operating model, its day-to-day delivery is delegated to the relevant owner.
+
+For example:
+
+* Laura manages the operational relationship with Myriad USA, while JF remains involved in supervision and major strategic, contractual or risk matters;
+* Laura leads the operational implementation of Ma Earth, while JF retains the strategic relationship and major negotiations;
+* Laura leads the delivery of the Global Statelessness Fund and escalates decisions that materially affect OCE.
+
+## 6. Material decisions, risk and exceptions
+
+JF decides or escalates as appropriate:
+
+* acceptance of significant legal, financial or reputational risk;
+* material exceptions to OCE’s standard model or procedures;
+* non-standard contractual commitments;
+* new strategic partnerships or materially expanded scopes;
+* significant pricing or fee exceptions;
+* disputes or incidents with substantial organizational consequences;
+* commitments requiring meaningful additional capacity or expenditure;
+* ambiguous or high-risk applications escalated by Laura;
+* matters that may require Board approval.
+
+Before deciding, JF expects the responsible person to provide the relevant facts, risks, options, recommendation and required decision date.
+
+JF does not become the permanent operational owner of an issue simply because it has been escalated to him.
+
+## 7. Team leadership and organizational capacity
+
+JF directly manages the internal team and is responsible for:
+
+* defining roles, reporting lines and decision authority;
+* setting priorities and resolving material conflicts between them;
+* reviewing performance, workload and organizational needs;
+* giving direction and feedback;
+* deciding recruitment, consultancy and capacity investments;
+* ensuring that responsibilities are assigned to the appropriate level;
+* addressing recurring ownership, performance or process problems;
+* building an organization that does not depend on his continuous intervention.
+
+Delegation includes the authority to organize work within the agreed scope. JF intervenes when priorities conflict, a decision exceeds delegated authority or a material risk requires executive judgment.
+
+## 8. Working relationships
+
+### Laura — Strategic Projects & Operations Lead
+
+Laura owns application triage, complex projects, strategic-fund delivery, operational partnerships and structural platform workflows.
+
+JF:
+
+* sets priorities and expected outcomes;
+* makes material strategic, contractual, risk and resource decisions;
+* supports major partner negotiations where needed;
+* reviews concise decision notes and portfolio updates;
+* does not take over Laura’s routine coordination, tracking or reporting work.
+
+### Michael — External CFO
+
+Michael owns financial steering, financial controls, reconciliations and coordination with Saïd.
+
+JF:
+
+* agrees financial priorities and reporting expectations with Michael;
+* reviews Michael’s conclusions, forecasts and recommendations;
+* decides material resource, risk and commitment questions;
+* ensures that unresolved financial issues receive an owner and deadline;
+* does not replicate Michael’s control or reconciliation work.
+
+### Ivan — Financial Operations & Platform Specialist
+
+Ivan executes routine payments, performs first-line documentary checks, handles standard platform operations and manages Tier 1 onboarding assigned by Laura.
+
+JF intervenes only when Ivan escalates a significant strategic, contractual, legal, reputational or resource issue.
+
+### Saïd — Accountant
+
+Michael is Saïd’s sole operational contact. JF does not coordinate routine accounting work or send day-to-day requests to Saïd. JF may participate when a formal governance, legal or exceptional executive matter requires it.
+
+### Foundation Board
+
+JF provides the Board with clear information, recommendations and escalation of reserved matters. The Board provides governance oversight and takes decisions that fall within its legal or reserved authority.
+
+## 9. Decisions reserved to JF
+
+Within his delegated authority, JF retains final executive approval for:
+
+* organizational strategy and annual priorities;
+* allocation of significant team and financial resources;
+* new institutional partnerships;
+* major commercial, grant or partnership commitments;
+* material changes to pricing or service scope;
+* non-standard contracts and significant exceptions;
+* acceptance of material risk;
+* senior external representation and major negotiations;
+* changes to team structure or role ownership;
+* matters explicitly escalated because they exceed another role’s authority.
+
+Where Board approval is required, JF prepares the recommendation rather than deciding alone.
+
+## 10. Responsibilities delegated by default
+
+JF is not the default owner of:
+
+* initial application review and routing;
+* Tier 1 onboarding;
+* day-to-day management of complex projects;
+* routine relationships with Myriad USA or other operational partners;
+* project calendars, registers and routine narrative reporting;
+* routine payment execution or documentary checks;
+* bank–platform–accounting reconciliations;
+* accounting coordination or communication with Saïd;
+* standard platform support;
+* structural platform request management;
+* routine contract preparation from approved templates;
+* correcting work that already has a clearly assigned owner.
+
+These responsibilities remain with Laura, Michael, Ivan or Saïd according to their documented roles.
+
+## 11. Expected outputs
+
+JF maintains or ensures delivery of:
+
+* a clear set of organizational priorities;
+* an annual budget and resource plan supported by appropriate financial information;
+* regular strategic and financial reporting to the Board;
+* documented decisions on material risks, exceptions and commitments;
+* clear role definitions and decision routes;
+* progress on priority institutional relationships and negotiations;
+* timely arbitration of material capacity and priority conflicts;
+* an organization-wide view of principal risks and dependencies;
+* clear mandates for the work delegated to Laura, Michael and Ivan.
+
+## 12. Success measures
+
+JF’s work is assessed through:
+
+* progress against OCE’s strategic priorities;
+* financial sustainability and visibility;
+* quality and durability of institutional relationships;
+* timely, well-supported executive and Board decisions;
+* clear ownership across the organization;
+* effective use of limited team capacity;
+* early treatment of material risks;
+* reduced dependence on JF for routine operations;
+* the team’s ability to deliver reliably within clearly delegated authority;
+* alignment between OCE’s commitments, capacity and mission.
+
+## 13. Boundaries of the role
+
+JF provides direction, arbitration and executive accountability. He is not a universal operational fallback or an additional validation layer for every task.
+
+JF should not routinely:
+
+* execute work assigned to Laura, Michael or Ivan;
+* recreate financial controls already owned by Michael;
+* manage projects that have an appointed operational lead;
+* answer routine support or onboarding questions;
+* absorb unclear ownership without explicitly assigning it;
+* allow informal urgency to bypass documented roles and controls.
+
+When recurring issues reach JF, the expected response is to correct the decision, ownership, capacity or process problem—not to permanently take over the underlying task.
+
+
+# Financial Operations & Platform Specialist (Ivan)
+
+{% hint style="info" %}
+Current Position: Financial Operations & Platform Specialist
 
 Reporting Line: Reports to the Executive Director
 {% endhint %}
 
-**1. Purpose of the Role**
+## 1. Purpose of the role
 
-Ivan is the Guardian of Integrity and Financial Accuracy for the Foundation. His mission is to ensure that every transaction on the platform is legally sound and perfectly reconciled for accounting purposes. He acts as the operational bridge between the Open Collective platform and our external financial partners (Accountant & CFO).
+Ivan executes and documents OCE’s routine financial operations. His role is to ensure that approved payments, incoming transfers, standard platform actions and Tier 1 onboarding tasks are processed consistently and supported by the required information.
 
-**2. Key Operational Responsibilities**
+He performs the first operational and documentary review of transactions and provides Michael, OCE’s external CFO, with the bank, platform and payment information needed for financial control and reconciliation.
 
-* **Fiduciary Validation & Payouts:**
-  * Managing the full cycle of payment execution (Wise, PayPal, Bank Transfers).
-  * Systematic verification of every invoice/receipt against Belgian "Public Utility Foundation" standards. He is the last line of defense against non-compliant spending.
-* **Contract drafting**
-  * Responsible for preparing all necessary contracts and agreements (Mandate Agreements, Service Contracts) based on the Foundation’s approved templates.
-* **Accounting Coordination & Reporting:**
-  * Liaison with Accountant & CFO: Primary point of contact for daily accounting queries. He ensures that the accountant has all necessary documents and explanations for month-end/year-end closing.
-  * Audit Readiness: Maintaining an "audit-ready" digital archive of all justifications.
-  * Operational Budget Encoding: Ensuring the Foundation's own operational costs are accurately tracked and reported to the Director and CFO.
-* **Platform Expertise & Data Stewardship:**
-  * Ensuring the "Source of Truth" (Open Collective) matches the bank reality through rigorous reconciliation.
-  * Managing manual fund assignments and technical troubleshooting for the community.
-* **Compliance Vetting (Tier 1):**
-  * Onboarding standard Collectives and ensuring their setup strictly follows the "Indirect Representation" model.
+Ivan is not OCE’s financial controller, accountant or strategic project manager. Michael owns financial oversight and reconciliation; Saïd maintains the accounting under Michael’s exclusive coordination; Laura leads applications, complex projects, partnerships and non-standard workflows.
 
-**3. Operating Scope & Professional Boundaries**
+## 2. Routine financial operations
 
-* The Compliance Shield: Ivan has the mandate to block or pause any payment that does not meet the required documentation standards, protecting the Foundation’s legal status.
-* Accounting Rigor: He focuses on *financial truth* and *process compliance*. He does not engage in strategic project negotiation or fee exceptions (which are handled by the Grant & Operations Lead).
-* Escalation: Any complex grant structure (Tier 2/3) or non-standard financial flow must be transferred to Laura for operational design.
+Ivan is responsible for:
 
-{% hint style="warning" %}
-**Expected Outcomes**
+* reviewing routine expenses and payment requests for completeness;
+* checking that the required invoice, receipt, approval and payee information are present;
+* requesting missing or corrected documents from the relevant collective;
+* executing approved payments through Wise, PayPal or bank transfer according to the agreed payment schedule;
+* recording payment status and relevant internal notes on the Open Collective platform;
+* saving or linking the supporting documentation in the correct location;
+* processing and allocating identifiable incoming bank transfers and manual contributions;
+* flagging unidentified or ambiguous incoming transfers for follow-up;
+* encoding OCE’s routine operational costs and payroll expenses on the platform according to the documented procedure;
+* monitoring operational balances and payment-tool issues sufficiently to identify a practical blocker before payment execution;
+* escalating cash, currency, banking or payment-tool issues to Michael and JF when a decision or additional funds are required.
 
-* **Flawless Audits:** No missing receipts or non-compliant payments.
-* **Operational Stability:** A platform that is always up-to-date and technical issues resolved swiftly.
-* **Reliability:** Being the rock-solid foundation upon which the scaling of the Foundation is built.
-  {% endhint %}
+Ivan is responsible for correct execution under the approved procedure. He is not responsible for deciding the strategic purpose of a payment or approving a non-standard financial structure.
+
+## 3. First-line documentary review
+
+Before executing a payment, Ivan verifies that:
+
+* the request has the required approval;
+* the payee and payout method are sufficiently identified;
+* the invoice, receipt or other required supporting document is present;
+* the amount, currency and payment instructions are consistent;
+* the payment falls within an established workflow;
+* no obvious documentary or operational anomaly remains unresolved.
+
+Ivan may pause a payment when required information is missing, contradictory or clearly outside the documented procedure.
+
+This is a first-line operational control. Ivan does not independently provide legal, tax or VAT advice, accept material risk, or make the final determination on a complex compliance question.
+
+He escalates:
+
+* project-specific or non-standard workflow questions to Laura;
+* financial-control, reconciliation or accounting questions to Michael;
+* significant legal, reputational or strategic risks to JF;
+* urgent matters to the relevant person without bypassing the established responsibility chain.
+
+## 4. Information provided to Michael
+
+Ivan provides Michael with the operational information needed for financial control, reconciliation and accounting coordination, including:
+
+* bank statements and transaction details;
+* Open Collective exports and platform information;
+* payment records and payout confirmations;
+* available invoices, receipts and other supporting documents;
+* explanations of manual contributions, transfers, currencies, funds and unusual movements;
+* a list of unresolved or unidentified transactions;
+* information about operational corrections that have been made.
+
+Ivan responds to Michael’s questions and carries out operational corrections requested after Michael’s review.
+
+**Michael is solely responsible for leading reconciliations, validating the final financial position and coordinating all communication with Saïd.**
+
+## 5. No direct relationship with Saïd
+
+Ivan has no direct operational interaction with Saïd.
+
+In practice:
+
+1. Ivan sends the relevant operational information to Michael.
+2. Michael reviews it and determines what the accountant needs.
+3. Michael communicates with Saïd.
+4. Michael receives and checks the accounting response.
+5. Michael communicates any required operational correction to Ivan.
+
+Ivan does not send documents, questions, instructions or reminders directly to Saïd.
+
+## 6. Routine Open Collective platform administration
+
+Ivan handles standard platform actions required for daily operations, including:
+
+* routine troubleshooting for collectives;
+* manual contribution and fund allocation tasks;
+* standard corrections or administrative actions covered by an existing procedure;
+* practical support concerning expenses, payment methods and routine platform use;
+* maintaining accurate operational notes and transaction information;
+* testing a structural platform change when coordinated by Laura.
+
+Ivan does not own structural product requests, new fund architecture or non-standard platform workflows. Laura defines and coordinates those requests with Open Finance Consortium’s engineers. Ivan supplies operational detail and participates in testing where useful.
+
+## 7. Tier 1 applications and onboarding
+
+Laura owns the initial review and routing of all applications.
+
+When Laura classifies an application as Tier 1 and assigns it to Ivan, he:
+
+* contacts the applicant;
+* explains OCE’s standard operating model and requirements;
+* collects the standard onboarding information and documents;
+* performs the established first-line identity and documentation checks;
+* ensures that the standard platform setup is completed;
+* communicates the applicable routine procedures to the new collective;
+* records the status and outcome of the onboarding;
+* returns the application to Laura if it becomes complex, non-standard, high-risk or requires a tailored arrangement.
+
+Ivan does not decide the initial classification of applications and does not lead Tier 2 or Tier 3 relationships.
+
+## 8. Standard contracts and templates
+
+When assigned, Ivan may prepare a standard agreement using an approved OCE template and the information supplied for the project.
+
+Ivan does not:
+
+* design non-standard contractual structures;
+* negotiate material contractual terms;
+* approve exceptions to OCE’s standard model;
+* make the final decision to commit OCE;
+* provide legal advice.
+
+Laura coordinates contracts connected to complex projects and workflows. JF retains authority for material commitments and signatures.
+
+## 9. Working relationships
+
+### Michael — External CFO
+
+Ivan supplies operational financial information, answers factual questions and implements operational corrections. Michael performs the control, reconciliation and accounting coordination.
+
+### Laura — Strategic Projects & Operations Lead
+
+Laura assigns Tier 1 applications to Ivan and defines the operational framework for complex projects. Ivan executes the routine financial and platform tasks required within that framework.
+
+### JF — Executive Director
+
+JF decides significant strategic, contractual, legal, reputational and resource matters. Ivan escalates issues requiring such a decision with the relevant facts and supporting documentation.
+
+### Saïd — Accountant
+
+There is no direct working relationship. All communication passes through Michael.
+
+## 10. Decision authority
+
+Ivan may:
+
+* execute a payment that is properly approved and documented under an established procedure;
+* request missing or corrected supporting documents;
+* pause a payment when the documentary or operational requirements are not met;
+* carry out standard platform actions covered by an existing procedure;
+* organize his daily payment and operational workload within the agreed priorities;
+* escalate an issue before execution.
+
+Ivan may not independently:
+
+* approve a new project or partnership;
+* change pricing or grant a fee exception;
+* approve a non-standard financial flow;
+* accept a significant financial, legal or reputational risk;
+* validate a financial reconciliation;
+* instruct the accountant;
+* design a complex fund or partnership;
+* commit OCE contractually outside an approved mandate.
+
+## 11. Expected outputs
+
+Ivan maintains and provides:
+
+* processed payment records and payout confirmations;
+* complete supporting documentation for routine transactions;
+* correctly recorded manual contributions and fund allocations;
+* bank statements, platform exports and explanations requested by Michael;
+* a visible list of unidentified transfers, blocked payments and unresolved operational issues;
+* accurate internal platform notes;
+* status information for Tier 1 onboarding cases assigned by Laura;
+* standard agreements prepared from approved templates when requested.
+
+## 12. Success measures
+
+Ivan’s work is assessed on:
+
+* timely and accurate execution of routine payments;
+* completeness of supporting documentation;
+* early identification of missing or contradictory information;
+* accurate recording of payments, contributions and allocations on the platform;
+* reliable and timely provision of information to Michael;
+* clear escalation of non-standard or high-risk situations;
+* resolution of routine platform issues;
+* timely follow-up of Tier 1 applications assigned by Laura;
+* adherence to the rule that all accounting communication goes through Michael.
+
+## 13. Boundaries of the role
+
+Ivan is not responsible for:
+
+* financial leadership or final financial control;
+* leading or approving reconciliations;
+* accounting entries or accounting judgments;
+* any direct interaction with Saïd;
+* the initial triage of applications;
+* Tier 2 or Tier 3 project management;
+* the GSF, Ma Earth or Myriad USA partnership;
+* donor or institutional-partner management;
+* structural platform requests to Open Finance Consortium;
+* legal, tax or VAT advice;
+* acceptance of significant exceptions or risks;
+* compensating for unclear ownership by informally taking over another person’s role.
+
+When ownership is unclear, Ivan asks Laura, Michael or JF for clarification before proceeding.
 
 
-# Grant & Operations Lead (Laura)
+# Strategic Projects & Operations Lead (Laura)
 
 {% hint style="info" %}
-Current Position: Grant & Operations Lead
+Current Position: Strategic Projects & Operations Lead
 
 Reporting Line: Reports to the Executive Director
 {% endhint %}
 
-#### 1. Core Mission
+## 1. Purpose of the role
 
-The Grant & Operations Lead is the Director’s primary deputy. The role is designed to drive the Foundation’s scaling by professionalizing grant management, optimizing internal workflows, and ensuring high-level coordination of strategic funds. Laura acts as a bridge between vision and execution.
+Laura leads the operational delivery of OCE’s strategic funds, grants and complex partnerships. She turns commitments made with funders and partners into clear, workable and documented operating models.
 
-***
+She coordinates stakeholders, milestones, reporting obligations, risks and decisions, and helps professionalize OCE’s internal workflows. She is responsible for overall progress, but is not expected to personally execute every task within a project.
 
-**2. Core Responsibilities & Scaling Pillars**
+Her main portfolio currently includes the **Global Statelessness Fund (GSF)**, the partnership with **Ma Earth**, and OCE’s partnership with **Myriad USA**, as well as other complex or non-standard projects assigned by the Executive Director.
 
-* **Strategic Grant Management (The GSF & Beyond):**&#x20;
-  * Lead coordinator for Internal Funds and Tier 3 projects (e.g., Global Statelessness Fund).
-  * Design and implement scalable grant-making workflows that can be replicated for future funds.
-* **Contractual Oversight & Execution:**&#x20;
-  * Responsible for the final review of all contracts drafted by Ivan. She ensures they align with the project’s specific needs and the Foundation’s strategy. She is the sole person responsible for sending contracts for signature via YouSign.
-* **Operational Scaling & Process Design:**
-  * Identify bottlenecks in the current hosting model and propose structural improvements.
-  * Draft and update Standard Operating Procedures (SOPs) to ensure the Foundation can handle a growing number of Collectives without losing quality.
-* **Institutional Interface:**
-  * Support the Director in high-level meetings with foundations and institutional partners.
-  * Oversee complex compliance requirements (NGOsource, Equivalency Determinations) to position OCE as a top-tier European fiscal host.
-* **Onboarding & Mandate Authority:**
-  * Manage the legal and operational "architecture" of new complex projects.
-  * Ensure all "Mandate Agreements" for strategic initiatives are bulletproof and aligned with the Foundation's public interest mission.
+## 2. Strategic funds and project management
 
-{% hint style="warning" %}
+For each project in her portfolio, Laura:
 
-#### Boundaries & Escalation (Strict)
+* defines objectives, deliverables, milestones and responsibilities;
+* maintains a project plan, action list, decision log and reporting calendar;
+* coordinates internal and external contributors;
+* organizes launch and follow-up meetings;
+* anticipates dependencies, delays, risks and resource conflicts;
+* prepares concise decision notes and recommendations for the Executive Director;
+* coordinates narrative and financial reporting, obtaining financial information through Michael;
+* ensures that contracts, budgets, reports and supporting documents are organized and accessible;
+* documents lessons and converts successful approaches into reusable workflows.
 
-* **Supervision of Back-Office Flow:** While Ivan executes the payments, Laura defines the operational standards and priorities he must follow. She ensures the "Back-Office" scales at the same pace as the "Front-Office."
-* **Strict Fiduciary Alignment:** As a "Sparring Partner," she must challenge any project or expenditure that risks the Foundation’s "Public Utility" status or deviates from the "Indirect Representation" model.
-* **No Tax/Legal Advice:** Strictly adheres to the rule of directing members to qualified experts for personal tax/VAT matters.
-  {% endhint %}
+## 3. Global Statelessness Fund (GSF)
+
+Laura is the lead operational coordinator for the **Global Statelessness Fund**, an internal OCE fund supporting people, initiatives and organizations working on statelessness and nationality rights.
+
+Her responsibilities include:
+
+* maintaining a complete overview of the fund’s grants, consultancies, administration, convenings and leadership grants;
+* coordinating the operational relationship with GSF leadership;
+* tracking contracts, budgets, beneficiaries, deliverables, payment milestones and reporting requirements;
+* coordinating onboarding and the collection of necessary information and documentation;
+* ensuring that Open Collective roles, permissions and approval flows are clearly defined and avoid self-approval;
+* helping design proportionate solutions for informal, unregistered or high-risk beneficiaries while preserving OCE’s legal, banking, accounting and audit requirements;
+* monitoring exceptions, open questions and decisions;
+* coordinating the preparation of narrative and financial reports;
+* overseeing the operational follow-up of the internal GSF Wise virtual card arrangement managed by Sabine Larribeau and Elif, including receipt collection and budget tracking.
+
+Michael retains responsibility for financial control. Ivan provides the operational data and payment information required by Michael.
+
+## 4. Ma Earth partnership
+
+Laura is responsible for the operational implementation of OCE’s partnership with **Ma Earth**.
+
+She:
+
+* translates the agreed partnership into an implementation plan;
+* identifies stakeholders, roles, milestones, deliverables and open questions;
+* coordinates setup of the required fund and workflows on Open Collective;
+* structures onboarding, approval, payment and reporting processes;
+* keeps a decision log and risk register;
+* coordinates contributions from JF, Michael and Ivan;
+* manages day-to-day operational follow-up with Ma Earth;
+* escalates strategic, contractual or material resource decisions to JF;
+* documents the model so it can be evaluated and, where appropriate, reused.
+
+JF retains responsibility for the strategic relationship and major negotiations with Ma Earth.
+
+## 5. Myriad USA partnership
+
+Laura manages OCE’s operational relationship with **Myriad USA** from beginning to end. This includes funds raised through **Every.org** and substantial donations coordinated directly through Myriad USA.
+
+Once she has received her individual portal access, Laura is responsible for:
+
+* serving as OCE’s primary operational contact for Myriad USA;
+* guiding eligible collectives through the Every.org or direct-Myriad route;
+* collecting the information required for each grant request;
+* preparing and submitting the Myriad USA application before funds are transferred to OCE;
+* drafting the short narrative explaining what each project does and how the funds will be used;
+* entering and validating a realistic project end date;
+* coordinating follow-up questions with Myriad USA and the collective;
+* tracking expected grants and confirming that Michael and Ivan have the information needed to identify incoming transfers;
+* ensuring that received funds are allocated to the correct collective;
+* maintaining a complete Myriad register containing application, transfer, end-date and reporting information;
+* monitoring all project end dates and contacting collectives before deadlines;
+* obtaining the information required for final reporting;
+* preparing and submitting final narrative reports to Myriad USA;
+* recording submission evidence and maintaining the complete file in Drive;
+* escalating material changes, delays, exceptions or partnership issues to JF and financial-control questions to Michael.
+
+**Responsibility boundary:** Laura owns the relationship, applications, narratives, deadlines, reporting and overall completion of the Myriad process. Ivan executes the allocation of received funds. Michael retains responsibility for financial control and reconciliation. JF intervenes only for major strategic, contractual or risk decisions.
+
+## 6. Coordination with Open Finance Consortium and the Open Collective platform
+
+OCE works in partnership with **Open Finance Consortium (OFiCo)**, the nonprofit organization responsible for the Open Collective software and its engineering team.
+
+Laura is OCE’s main functional contact for structural platform requests linked to strategic funds, partnerships and new operating models. She acts as the product owner of OCE’s operational need: she defines the problem and expected outcome, coordinates input, follows the request and validates that the solution meets the project’s requirements.
+
+Laura is responsible for:
+
+* translating partner and project needs into clear functional requests;
+* requesting new fund structures or non-standard platform configurations, such as the fund required for Ma Earth;
+* defining expected roles, permissions, approval flows, reporting needs and operational constraints;
+* coordinating discussions with OFiCo’s engineers;
+* maintaining a central register of platform requests, priorities, owners, target dates, decisions and status;
+* involving Ivan to provide operational detail and test solutions using real workflows;
+* involving Michael when a proposed configuration affects financial controls, reconciliation or accounting;
+* escalating strategic or relationship-level matters with OFiCo to JF;
+* documenting the final configuration and related internal procedure.
+
+**Responsibility boundary:** Laura leads structural configurations, new workflows and feature requests. Ivan handles routine operational incidents and standard platform troubleshooting, and participates in testing solutions coordinated by Laura.
+
+## 7. Application intake and triage
+
+Laura owns the initial triage of applications submitted to OCE under the new application flow. Her role is to ensure that each application is reviewed consistently and routed to the person best placed to continue the relationship.
+
+Laura is responsible for:
+
+* reviewing new applications against OCE’s eligibility, mission-alignment, complexity and risk criteria;
+* identifying missing information and deciding whether clarification is needed before routing;
+* assigning each application to the appropriate project tier or operational route;
+* directing standard, lower-complexity applications to Ivan for initial contact, due diligence and onboarding;
+* retaining responsibility for contacting and assessing complex, strategic, high-value or non-standard applicants;
+* identifying applications that may require a tailored workflow, contractual structure, platform configuration or institutional relationship;
+* escalating ambiguous, sensitive or high-risk applications to JF and involving Michael where there are material financial-control implications;
+* maintaining visibility over the application pipeline, routing decisions, owners and response times;
+* reviewing triage outcomes periodically so that the criteria and application flow can be improved.
+
+**Responsibility boundary:** Laura decides who owns the next step after the initial application review. Ivan owns the contact and onboarding of standard applications routed to him. Laura owns the relationship and operational architecture for complex or strategic applications.
+
+## 8. Onboarding of complex partners and beneficiaries
+
+Laura coordinates onboarding for the complex funds and partnerships in her portfolio. She:
+
+* explains OCE’s role, services and limitations;
+* clarifies the responsibilities of OCE, the partner and beneficiaries;
+* identifies unusual requirements at the start of the relationship;
+* defines roles and approval routes;
+* coordinates collection of required information and documents;
+* prevents exceptional practices from being introduced without validation;
+* directs strategic questions to JF and all financial or accounting questions to Michael.
+
+The objective is to provide infrastructure that is both robust and sufficiently flexible for initiatives without their own legal entity and beneficiaries working in difficult contexts.
+
+## 9. Workflow design and organizational improvement
+
+Laura helps professionalize OCE by:
+
+* mapping who requests, verifies, approves and executes each step;
+* ensuring appropriate segregation of duties;
+* defining how incidents and exceptions are handled;
+* identifying the records and evidence that must be retained;
+* obtaining Michael’s validation for financial-control aspects;
+* testing workflows with the relevant people;
+* documenting validated procedures in GitBook;
+* reviewing workflows after initial use and proposing improvements;
+* identifying bottlenecks that limit OCE’s ability to scale without losing quality.
+
+A non-standard offer should not be treated as fully operational until its workflow, responsibilities, evidence requirements and principal controls are clear.
+
+## 10. Risks, incidents, exceptions and documentation
+
+For her portfolio, Laura:
+
+* maintains risk, incident and exception registers;
+* assigns owners, priorities and deadlines;
+* follows corrective actions and recurring issues;
+* ensures that material decisions and approved exceptions are documented;
+* escalates significant risks to JF and financial risks or anomalies to Michael;
+* maintains project documentation and updates relevant internal procedures;
+* ensures that institutional knowledge does not remain only in meetings, emails or individual memory.
+
+Laura does not independently accept significant legal, financial, regulatory or reputational risk.
+
+## 11. Working relationships and governance
+
+### JF — Executive Director
+
+JF retains responsibility for OCE’s strategy, major institutional relationships, negotiations, significant contractual commitments, acceptance of material risks and resource arbitration.
+
+Laura organizes the daily delivery of her portfolio and prepares decisions for JF by setting out the facts, risks, options, recommendation and required decision date.
+
+### Michael — External CFO
+
+Michael is responsible for financial steering, financial controls, reconciliations and coordination of accounting.
+
+Laura:
+
+* informs Michael early about new projects and financial commitments;
+* provides contracts, budgets, deadlines and reporting obligations;
+* sends him all requests for financial or accounting information;
+* integrates his control requirements into project workflows;
+* reports financial risks, anomalies and exceptions to him;
+* receives the financial and accounting information needed for her projects from him.
+
+**Michael is Saïd’s sole contact. Laura has no direct interaction with Saïd and sends him no request, instruction or reminder.**
+
+### Ivan — Financial Operations
+
+Ivan executes and documents routine financial operations.
+
+For Laura’s projects:
+
+* Laura communicates operational requirements and deadlines;
+* Ivan executes payments and other operations under the validated procedures;
+* Ivan provides bank, platform, payment and supporting information to Michael;
+* Laura monitors the progress of operations that affect her projects;
+* Ivan contributes operational expertise and testing to platform changes coordinated by Laura;
+* control, reconciliation and accounting questions go to Michael.
+
+Laura does not replace Ivan in payment execution and does not validate financial reconciliations.
+
+## 12. Decision authority and escalation
+
+Laura may decide autonomously on:
+
+* the daily organization of her projects;
+* project plans, working methods and tracking tools;
+* meeting schedules, follow-ups and information requests;
+* organization of project documentation;
+* preparation of workflows and coordination of agreed actions;
+* functional coordination of structural platform requests;
+* initial classification and routing of applications under the validated intake criteria;
+* routine Myriad USA grant submissions and narrative reports within the approved partnership framework.
+
+Laura seeks a decision from JF for:
+
+* new commitments to a partner;
+* material scope or budget changes;
+* significant exceptions to OCE rules;
+* significant legal, financial or reputational risks;
+* major conflicts with a partner or beneficiary;
+* substantial additional resource commitments.
+
+Financial-control and accounting matters are referred to Michael.
+
+## 13. Expected deliverables
+
+Laura maintains:
+
+* a consolidated portfolio dashboard;
+* an application pipeline and triage tracker showing routing decisions, owners and response status;
+* a work plan for the GSF;
+* a launch and follow-up plan for Ma Earth;
+* a Myriad USA register covering applications, narratives, amounts, project end dates, transfers and final report status;
+* a calendar of deliverables and reporting obligations;
+* action lists and decision records;
+* risk, incident and exception registers;
+* a register of structural platform requests to OFiCo;
+* documented workflows for complex projects and non-standard offers;
+* up-to-date internal documentation;
+* concise decision notes for JF;
+* regular portfolio progress updates.
+
+## 14. Success measures
+
+Success is assessed through:
+
+* measurable progress on the GSF, Ma Earth, Myriad USA and other assigned projects;
+* complete and timely Myriad USA applications and final reports, with no missed project end dates;
+* consistent and timely triage of applications, with clear ownership of every next step;
+* timely delivery of key milestones and reports;
+* quality of operational relationships with partners and beneficiaries;
+* early identification of risks and blockers;
+* clear responsibilities and decision routes;
+* reliable, accessible documentation;
+* fewer late-discovered issues and avoidable emergencies;
+* effective coordination without absorbing other people’s responsibilities;
+* useful recommendations and well-prepared decisions for JF;
+* reuse of project experience in improved organizational processes.
+
+## 15. Boundaries of the role
+
+Laura is not responsible for:
+
+* executing all daily payments;
+* financial reconciliations or final validation of figures;
+* maintaining or correcting the accounting records;
+* any direct interaction with Saïd;
+* personally resolving every exceptional situation;
+* accepting significant risks on behalf of OCE;
+* replacing delayed work from other team members on a permanent basis;
+* providing personal legal, tax or VAT advice.
+
+When requests exceed available capacity, Laura makes the priority conflict visible and asks JF for arbitration.
 
 
 # Tools & Platforms Used at OCE
@@ -1131,7 +1602,7 @@ This page provides an internal reference for how Open Collective Europe Foundati
 ### Grant acceptance and fund reception
 
 * All grant agreements must be signed by an OCE administrator (Jean-François, Shannon, or Pia).
-* A service agreement is required between the hosted initiative and OCE before accepting the grant.
+* A Mandate Agreement is required between the hosted initiative and OCE before accepting the grant.
 * OCE receives the funds into its central bank account and allocates them to the corresponding Collective via the platform.
 * The agreement and documentation are stored in the relevant funder and Collective folders in Drive.
 
@@ -1139,10 +1610,14 @@ This page provides an internal reference for how Open Collective Europe Foundati
 
 ### Tax-deductible donations (US)
 
-* We process tax-deductible donations for U.S.-based donors through Myriad USA.
-* Donors can route contributions through Myriad’s interface, which generates a tax receipt.
-* These funds are later transferred to OCE and allocated to the intended Collective.
-* All Myriad-related donations should be clearly marked in Drive and tracked in platform Notes.
+* OCE processes eligible U.S. tax-deductible donations through Every.org and Myriad USA.
+* Myriad USA holds the donations and transfers them to OCE as a grant.
+* Laura is the operational owner of the Myriad USA relationship and grant cycle.
+* Before each transfer, Laura submits the required grant request, including a short project narrative and a project end date.
+* Laura records the end date in the Myriad register and tracks the related final narrative reporting obligation.
+* At project end, Laura obtains an update from the collective, prepares the final narrative report and submits it to Myriad USA.
+* Ivan allocates received funds to the intended collective; Michael oversees financial control and reconciliation.
+* All applications, narratives, dates, correspondence, transfer records and reports must be stored in Drive and linked from the Myriad register.
 
 ***
 
@@ -1359,7 +1834,7 @@ OCE can receive grants from:
 #### Key requirements
 
 * The grant agreement must be signed by an authorized board member (Jean-François, Pia, or Shannon)
-* A **service agreement** must be signed between OCE and the receiving collective or project
+* A **Mandate Agreement** must be signed between OCE and the receiving collective or project
 * All grant-related documents (contract, budget, communication, deliverables) must be stored in the relevant Drive folder
 
 {% hint style="info" %}
@@ -1438,7 +1913,7 @@ This page outlines how the Open Collective Europe Foundation (OCE) receives and 
 OCE is not a U.S. legal entity, but we have structured mechanisms to legally and transparently receive U.S. funds.
 
 {% hint style="danger" %}
-**Important**: These services are available **only to collectives hosted by the Foundation,** not by the ASBL. &#x20;
+**Important**: These services are available **only to collectives hosted by the Foundation,** not by the ASBL.
 
 If a collective hosted under the ASBL wishes to access U.S. fundraising mechanisms, it must first be transferred to the Foundation. Contact the team to initiate this process.
 {% endhint %}
@@ -1447,29 +1922,34 @@ If a collective hosted under the ASBL wishes to access U.S. fundraising mechanis
 
 ### 1. Tax-deductible donations from individual donors
 
-When a hosted collective wants to receive tax-deductible donations from individual donors in the United States, the process is as follows:
+OCE works with **Every.org and Myriad USA** to allow eligible collectives hosted by the Foundation to receive tax-deductible donations from U.S.-based individuals and companies.
 
-#### Step-by-step process:
+Every.org is generally used for public campaigns and repeated donations. Myriad USA acts as the U.S. fiscal sponsor, holds the donations and transfers the funds to OCE as a grant.
+
+#### Step-by-step process
 
 1. **Collective request**\
-   The collective contacts OCE to request support for receiving U.S. tax-deductible donations.
-2. **Setup via Every.org**\
-   We provide the collective with a link and instructions to set up a fundraising page on [Every.org](https://www.every.org/), a U.S.-based donation platform.
-3. **Donations via Every.org**\
-   U.S. donors contribute through Every.org and receive a tax-deductible receipt.\
-   The collective does not interact with Myriad USA (Every.org's fiscal sponsor).
-4. **End of campaign**\
-   When the collective informs us that they are done fundraising via Every.org, we initiate the next step.
-5. **Fund transfer from Myriad USA**\
-   OCE contacts Myriad USA (the fiscal sponsor holding the funds) and requests the transfer of the collected donations. This is treated as a grant from Myriad USA to the Foundation.
-6. **Funds are received and credited**\
-   Once OCE receives the funds from Myriad USA, we allocate them to the relevant collective on the Open Collective platform.
+   The collective asks OCE to access U.S. tax-deductible fundraising.
+2. **Eligibility and route**\
+   Laura confirms eligibility and determines whether the Every.org route or direct coordination through Myriad USA is appropriate.
+3. **Fundraising**\
+   Donors contribute through Every.org or through the direct route agreed with Myriad USA and receive the applicable U.S. tax receipt.
+4. **Grant request to Myriad USA**\
+   Before the funds are transferred, Laura submits OCE’s grant request in the Myriad USA portal. For each project, the request includes a short narrative describing the project and a project end date.
+5. **Transfer to OCE**\
+   Myriad USA transfers the approved funds to OCE as a grant.
+6. **Allocation**\
+   Ivan allocates the funds to the intended collective on the Open Collective platform, with Michael overseeing financial control and reconciliation.
+7. **Deadline tracking and final reporting**\
+   Laura tracks the project end date, obtains an update from the collective and submits the required final narrative report to Myriad USA.
 
-#### Fees:
+The collective does not manage the relationship with Myriad USA directly. Laura is OCE’s operational owner of the process.
 
-* **OCE applies its standard 10% hosting fee** on all funds received.
-* **Myriad USA also deducts a fee** (typically between 1–2%) before sending the grant to OCE.&#x20;
-* Collectives should be informed that **only the OCE fee (10%) applies to their received amount**, regardless of Myriad's internal handling fee.
+For the complete procedure, register fields, reporting requirements and current fee structure, see Myriad USA.
+
+#### Fees
+
+Myriad USA deducts its applicable fee before transferring the grant to OCE. OCE applies the administrative contribution agreed with the collective to the net amount received. Current fees must be checked before communicating an expected net amount.
 
 ***
 
@@ -1479,8 +1959,8 @@ OCE is eligible to directly receive grants from U.S.-based foundations thanks to
 
 #### Step-by-step process:
 
-1. **Service agreement**\
-   Before any grant can be accepted, a **service agreement** must be signed between OCE and the collective.
+1. **Mandate Agreement**\
+   Before any grant can be accepted, a **Mandate Agreement** must be signed between OCE and the collective.
 2. **Grant approval**\
    The collective leads the grant application process with the U.S. foundation.\
    Once approved, OCE steps in as the legal recipient.
@@ -1510,8 +1990,8 @@ These donations are simpler and faster to process, and still subject to the 10% 
 
 ### Internal tracking and compliance
 
-* **All grants and major donations** must be backed by a signed service agreement.
-* **All documents** (service agreements, grant agreements, funder communications) should be stored in the collective’s Drive folder.
+* **All grants and major donations** must be backed by a signed Mandate Agreement.
+* **All documents** (Mandate Agreements, grant agreements, funder communications) should be stored in the collective’s Drive folder.
 * Use internal notes on the platform and GitBook to flag special handling cases (e.g., Myriad, ED Certificate use).
 * For anything unclear, escalate to the executive director or financial operations team.
 
@@ -1522,191 +2002,177 @@ Questions? Contact <oce@opencollective.com>
 
 # Myriad USA
 
-## Tax-Deductible Donations from the U.S. (Every.org / Myriad USA)
+## Purpose of the partnership
 
-This page explains how U.S.-based donors can make tax-deductible donations to collectives hosted by **Open Collective Europe Foundation**, through **Myriad USA**.
+Open Collective Europe Foundation (OCE) works with **Myriad USA** to enable eligible collectives to receive tax-deductible donations from U.S.-based individuals and companies.
 
-There are **two different routes**, depending on the type of donation:
+Myriad USA is the U.S. fiscal sponsor and legal recipient of these donations. When the funds are released to OCE, Myriad USA sends them as a **grant to Open Collective Europe Foundation**. OCE then allocates the funds to the relevant hosted collective on the Open Collective platform.
 
-* **Every.org** is used for **public fundraising, crowdfunding, or repeated donations from many small U.S. donors**
-* **Direct coordination with OCE / Myriad USA** is used for **large one-off donations that will not go through a public fundraising page**, typically by wire transfer
+There are two main fundraising routes:
 
-{% hint style="info" %}
-This process is part of the same mechanism described in the "Receiving Funds from the U.S." page.\
-Every.org provides the public-facing donation page, while Myriad USA serves as the fiscal sponsor and fund holder.
-{% endhint %}
+* **Every.org** for public fundraising, crowdfunding and repeated donations;
+* **direct coordination through Myriad USA** for substantial one-off donations outside a public fundraising page.
 
-***
-
-### Who is this for?
-
-This route is available for:
-
-* **U.S.-based individuals or companies** seeking a U.S. tax-deductible receipt
-* **Collectives hosted by Open Collective Europe Foundation**
+This mechanism is available only to collectives hosted by the **Foundation**, not the ASBL.
 
 {% hint style="danger" %}
-This route is **not** intended for U.S. foundations making grants. Foundations should instead use the **Equivalency Determination Certificate (EDC)** process.
+This route is not intended for grants from U.S. private foundations. Those grants should normally use OCE’s Equivalency Determination Certificate process.
 {% endhint %}
 
-***
+## Operational owner
 
-### Which route should be used?
+The **Strategic Projects & Operations Lead (Laura)** is responsible for the Myriad USA partnership and its operational management from beginning to end.
 
-#### 1. Every.org: crowdfunding and repeated small donations
+Once she has received her individual access to the Myriad portal, Laura is the primary operational contact for:
 
-This route should be used when a collective wants to raise funds from many U.S.-based donors, especially through a public campaign, crowdfunding, or repeated small donations.
+* requests from collectives wishing to use Every.org or Myriad USA;
+* setup and guidance for the appropriate fundraising route;
+* preparation and submission of grant requests to Myriad USA;
+* communication with Myriad USA and relevant donors;
+* tracking expected and received transfers;
+* maintaining project end dates and reporting deadlines;
+* preparing and submitting final narrative reports;
+* keeping the complete file and internal register up to date.
 
-In this case:
+JF remains responsible for major partnership, contractual or strategic decisions. Michael retains financial-control responsibility. Ivan performs the financial allocation of received funds and provides the relevant operational information to Michael.
 
-* OCE sends the collective a link to create a fundraising page on Every.org
-* Donors give through the public page
-* Myriad USA acts as the U.S. fiscal sponsor and legal recipient of the funds
-* Donors receive their tax-deductible receipt from Myriad USA
-* No separate coordination with Myriad USA is normally needed for standard donations made through Every.org
+## Route 1 — Every.org
 
-#### 2. Direct coordination: large donations outside crowdfunding
+Every.org should be used when a collective wants to raise funds publicly from multiple U.S.-based donors.
 
-This route should be used when a major donor wants to make a substantial one-off donation and will not donate through a public crowdfunding page.
+The process is:
 
-In this case:
+1. The collective asks OCE for access to U.S. tax-deductible fundraising.
+2. Laura confirms that the collective is hosted by the Foundation and that the intended activities are eligible.
+3. Laura provides the instructions required to create or use the appropriate Every.org fundraising page.
+4. Donors contribute through Every.org and receive a U.S. tax-deductible receipt through the Myriad USA mechanism.
+5. The donations are held by Myriad USA.
+6. Before Myriad USA transfers the funds to OCE, Laura submits the required grant request through the Myriad USA portal.
+7. Myriad USA sends the approved amount to OCE as a grant.
+8. Ivan allocates the amount received to the relevant collective on the Open Collective platform, with the required information available to Michael for control and reconciliation.
+9. Laura tracks the project until its declared end date and submits the required final narrative report.
 
-* the collective can share the donor’s details with OCE, or
-* the donor can contact OCE directly
+The collective does not contact Myriad USA directly. Laura coordinates the process on OCE’s behalf.
 
-OCE then shares the relevant donation instructions for Myriad USA.
+## Route 2 — Direct Myriad USA coordination
 
-If applicable, the donation may be completed by wire transfer.
+This route should be used when a donor wants to make a substantial one-off tax-deductible donation without using a public Every.org campaign.
 
-The donor receives the tax-deductible receipt from Myriad USA.
+Laura collects, as relevant:
 
-### How it works
+* the donor’s full name and contact details;
+* the expected donation amount;
+* the intended collective or project;
+* the purpose of the donation;
+* whether a company matching program such as Benevity or CyberGrants is involved.
 
-#### Option 1 — Every.org for crowdfunding and repeated donations
+Laura then coordinates the donation instructions and subsequent grant request with Myriad USA.
 
-**Request from the collective**
+## Requesting the grant from Myriad USA
 
-The collective informs OCE that it wants to receive U.S.-based, tax-deductible donations from individuals or companies through a public fundraising page.
+Funds raised through Every.org or coordinated directly through Myriad USA are not transferred automatically to OCE. OCE must first submit a grant request through the Myriad USA application portal.
 
-**Page creation on Every.org**
+Portal: <https://www.grantinterface.com/Dashboard/Applicant>
 
-OCE sends the collective a link to create a fundraising page on Every.org.
+The current application route uses the Apply function and the access code maintained in OCE’s secure internal records.
 
-Every.org is connected to Myriad USA, which acts as the fiscal sponsor and legal recipient of the funds in the U.S.
+For each project included in a request, Laura must provide at least:
 
-**Donations and tax receipts**
+* the project or collective name;
+* the amount requested, where required;
+* a short narrative explaining what the project does and the purpose for which the funds will be used;
+* a realistic project end date;
+* any additional information requested by Myriad USA.
 
-Donors contribute through the collective’s public Every.org page.
+The narrative should be concise, factual and consistent with the collective’s mission, activities and public information. It must be sufficiently clear for Myriad USA to understand the charitable purpose of the project.
 
-They receive a tax-deductible receipt from Myriad USA (501(c)(3)).
+Before submission, Laura verifies that the relevant Mandate Agreement, project information and supporting documents are available in the collective’s Drive folder.
 
-The collective does not need to coordinate separately with Myriad USA for standard Every.org donations.
+## Project end date and final narrative report
 
-#### **Option 2 — Large donation outside Every.org**
+The end date entered in the Myriad USA request creates a reporting obligation. It must therefore be treated as a tracked deadline, not as an indicative date that can be forgotten after the funds are received.
 
-1. **Initial coordination**
+Laura maintains a Myriad USA register containing at least:
 
-   If a donor wishes to make a **large donation outside the public fundraising page**, the process is handled separately.
+* collective and project name;
+* Every.org or direct-Myriad route;
+* amount raised or expected;
+* date the grant request was submitted;
+* narrative used in the request;
+* project start date, if applicable;
+* project end date;
+* date funds were received by OCE;
+* date funds were allocated on Open Collective;
+* final narrative report due date;
+* report status and submission date;
+* links to the application, correspondence and Drive folder;
+* open questions, exceptions or follow-up actions.
 
-   Either:
+Before the project end date, Laura contacts the collective and collects a short update describing:
 
-   * the collective sends OCE the donor’s details, or
-   * the donor contacts OCE directly
+* the activities carried out;
+* the main results or progress achieved;
+* how the funds supported the project;
+* any material change from the original purpose or timeline;
+* any remaining activities, if applicable.
 
-   The information shared should include, where relevant:
+Laura prepares and submits the final narrative report to Myriad USA and records the submission date and supporting evidence in the register.
 
-   * donor’s full name
-   * donor’s contact details
-   * expected donation amount
-   * intended collective / project
-   * whether a company matching program is involved (i.e. Benevity or Cybergrants).
-   * We then pass along this information to Suzana Erickson, the Myriad USA responsible for Europe - <suzana@myriadusa.org>.
+If a project will not end on the date initially declared, Laura contacts Myriad USA before the deadline to clarify whether the end date or reporting timetable must be amended.
 
-   **Donation instructions**
+## Receipt and allocation of funds
 
-   OCE then shares the relevant **Myriad USA donation instructions** directly for that donation.
+When Myriad USA transfers funds to OCE:
 
-   Where needed, the donation can be made by wire transfer to Myriad USA.
+1. Laura identifies the relevant Myriad grant and collective.
+2. She ensures that Michael and Ivan have the information required to identify the transfer and its intended allocation.
+3. Ivan allocates the amount received to the relevant collective on the Open Collective platform.
+4. Michael oversees the financial control and reconciliation.
+5. Laura confirms that the receipt and allocation are recorded in the Myriad register and that all relevant documentation is saved.
 
-   **Tax receipt**
+Myriad’s fee is deducted before the transfer to OCE. OCE’s administrative contribution is applied according to the agreement and pricing applicable to the collective.
 
-   Once the donation is processed, Myriad USA issues the tax-deductible receipt to the donor.
-2. **Fund release**\
-   Once the collective informs OCE that they are done fundraising on Every.org, we follow this procedure:
-   1. Go to <https://www.grantinterface.com/Dashboard/Applicant>
-   2. Enter login details
-   3. Click on Apply and enter the code `friends`
-   4. submit the application (one application with several projects listed)
-3. **Allocation**\
-   Once OCE receives the funds, we credit them to the collective’s balance on the Open Collective platform.
+## Documentation
 
-***
+The following must be stored in the relevant Drive folder:
 
-### Fees
+* fundraising or donor information;
+* the Myriad USA grant request;
+* the narrative submitted with the request;
+* the declared project end date;
+* correspondence with Myriad USA;
+* confirmation of the grant and transfer;
+* evidence of allocation to the collective;
+* the final narrative report;
+* confirmation that the report was submitted.
 
-#### Myriad USA
+The Myriad register is the central control tool for deadlines and status. Information should not remain only in email or in the Myriad portal.
 
-Myriad USA charges a fee based on the total amount collected:
+## Myriad USA fees
 
-* **5%** on the first $100,000
-* **3%** from $100,001 to $500,000
-* **1%** from $500,001 to $1,000,000
-* **0.5%** on any amount above $1,000,000
-* An additional **3%** processing fee applies to **credit card donations**
+Myriad USA’s documented fee structure is:
 
-#### Open Collective Europe
+* 5% on the first $100,000;
+* 3% from $100,001 to $500,000;
+* 1% from $500,001 to $1,000,000;
+* 0.5% on amounts above $1,000,000;
+* an additional 3% processing fee for credit-card donations.
 
-OCE applies its **standard 10% hosting fee** to all amounts received via this channel.
+The current fee must be verified before communicating a net expected amount to a collective or donor.
 
-{% hint style="warning" %}
-Myriad’s fee is deducted before the transfer to OCE. The OCE fee is calculated on the net amount received.
-{% endhint %}
+## Myriad USA contact
 
-***
+For operational coordination, OCE has previously worked with:
 
-### Wire transfer instructions (if used)
+**Suzana Erickson — Myriad USA**\
+<suzana@myriadusa.org>\
++1 212 713 7661
 
-If a donor prefers to contribute by wire, the following information applies:
+Contact information and portal procedures must be verified periodically.
 
-**Bank**: JPMorgan Chase, 270 Park Avenue, New York, NY, 10017\
-**Routing Number**: 021000021 (domestic)\
-**SWIFT/BIC**: CHASUS33 (international)\
-**Beneficiary**: MyriadUSA, 551 Fifth Avenue, Suite 2400, New York, NY 10176\
-**Account Number**: 939282908
+## Wire transfer information
 
-***
-
-### Donor coordination
-
-Donors who wire funds should contact directly OCE.
-
-OCE then contacts:
-
-**Suzana Erickson – Myriad USA**\
-📧 <suzana@myriadusa.org>\
-📞 (212) 713-7661
-
-Include:
-
-* Donor’s full name and contact details
-* Date and amount of transfer
-* Intended use (project name / Collective)
-* Whether a company matching program is involved (i.e. Benevity or Cybergrants).
-
-***
-
-### End-of-year reporting
-
-At the end of each year, OCE must submit a brief report on how the funds were used, based on updates received from the collective.\
-This report is consolidated and sent to **Myriad USA**, as required for fiscal transparency.
-
-***
-
-### Notes
-
-* This mechanism is only available to collectives hosted under the **Foundation** (not the ASBL)
-* Use Every.org for public-facing fundraising; no separate application to Myriad is required
-* All related documents must be saved in the collective’s Drive folder and flagged in internal notes
+Where Myriad USA confirms that a donor may contribute by wire transfer, use only the latest instructions confirmed by Myriad USA. Bank details must be verified before being shared; do not rely on an old copy of the documentation for payment instructions.
 
 
 # Receiving Funds from Europe
@@ -1734,7 +2200,7 @@ At present, there is no standardized or automated process, and each case is hand
 3. **Agreement and reception**\
    OCE signs the grant agreement and receives the funds, which are then credited to the relevant collective.
 4. **Documentation**\
-   As always, the service agreement with the collective must be in place before receiving any funds.\
+   As always, the Mandate Agreement with the collective must be in place before receiving any funds.\
    All related documents must be stored in the Drive folder.
 
 ***
@@ -2137,7 +2603,7 @@ You can also review the platform-wide policy:\
 # The Onboarding Call
 
 {% hint style="danger" %}
-**Before executing this process, you must go through** [**the Operational Checklist**](/oc-europe-internal-doc/support-ops/operational-checklist-mandatory-before-action)**.**
+**Before executing this process, you must go through** **the Operational Checklist.**
 {% endhint %}
 
 ## The Onboarding Call
@@ -2253,7 +2719,7 @@ Ask the collective:
 
 If the collective is accepted:
 
-* We send a **Service Agreement** to sign
+* We send a **Mandate Agreement** to sign
 * Once signed, we create the page on the platform
 * They receive an onboarding guide and can start fundraising
 
@@ -2278,7 +2744,7 @@ If the collective is accepted:
 ### 10. After the call
 
 * Send a follow-up email with:
-  * Service agreement template (if ready)
+  * Mandate Agreement template (if ready)
   * Link to documentation: [OCE Docs](https://docs.opencollective.com/oceurope)
   * Summary of next steps
 * Add call notes in internal Slack or Drive
@@ -2359,51 +2825,50 @@ Once the issue is reviewed, one of the following outcomes is applied:
 
 # Virtual Cards
 
-This page outlines the internal policy of Open Collective Europe regarding the use of virtual cards.
+Internal policy for virtual cards used by Open Collective Europe.
 
-### General rule
+## Policy
 
-We **do not provide virtual cards to hosted collectives**.
+Virtual cards are an **internal OCE payment tool**. They are not offered, issued or made available to hosted collectives.
 
-The use of virtual cards is restricted to internal Foundation operations only.\
-No exceptions are granted to external collectives under normal circumstances.
+There is no standard or exceptional request route through which a hosted collective can obtain a virtual card.
 
-***
+OCE may use virtual cards only for:
 
-### Internal use of virtual cards
+* recurring or one-off operating expenses of the Foundation;
+* internal infrastructure, software and administrative costs;
+* internal OCE projects or funds, including the Global Statelessness Fund (GSF), where the card remains legally and operationally an OCE payment instrument.
 
-OCE uses virtual cards exclusively for internal recurring operational expenses such as:
+## Authorization and setup
 
-* Web hosting (e.g. our website)
-* SaaS subscriptions
-* Admin and infrastructure tools
+Before a new internal virtual card is created:
 
-These cards are centrally managed and only accessible by authorized team members.
+1. The functional owner documents the business purpose, budget, proposed cardholder, spending limit and expected duration.
+2. Michael validates the financial controls, documentation requirements and reconciliation treatment.
+3. JF approves the creation of the card and any material subsequent change.
+4. Ivan creates or configures the card in Wise after approval and records the relevant operational information.
 
-***
+A card must not be created or materially changed without the required validation and approval.
 
-### Exception: Global Statelessness Fund
+## Use and documentation
 
-An exception is made for the **Global Statelessness Fund**, which is hosted directly by Open Collective Europe and considered part of our internal structure.
+* Each card has a named cardholder and an approved purpose.
+* The card may only be used within the approved budget, limits and scope.
+* It must not be shared with another person.
+* The cardholder must obtain and provide a valid invoice or receipt for every transaction.
+* Where applicable, the invoice must identify Open Collective Europe Foundation as the customer.
+* Each transaction and its supporting document must be recorded promptly in the appropriate internal workflow or Open Collective budget.
+* Approval flows must avoid self-approval wherever the platform or process provides an approval step.
 
-* A virtual card has been issued for this fund via **Wise**
-* It is co-managed by **Sabine** and **Elif**
-* They are responsible for:
-  * Ensuring the card is used exclusively for the fund’s mission
-  * Uploading receipts for all expenses on the fund’s Open Collective page
-  * Keeping the fund’s budget documentation up to date
+## Monitoring and irregularities
 
-This arrangement is contractually defined and is **not replicable for other collectives**.
+* Ivan performs the first-line operational monitoring of card transactions and requests missing supporting documents.
+* Michael owns financial control, reconciliation and the accounting treatment coordinated with Saïd.
+* For the GSF card, Laura coordinates operational follow-up with Sabine and Elif, including receipt collection and budget tracking.
+* Missing documentation, use outside the approved purpose or any other anomaly must be documented and corrected promptly.
+* Repeated non-compliance, suspected misuse or material financial exposure is escalated to JF.
 
-***
-
-### Oversight
-
-* Virtual card activity is subject to internal review
-* Ivan oversees all virtual card usage and reconciliations
-* Any exceptions or edge cases must be escalated for approval
-
-Always confirm with the financial ops team before issuing or proposing a virtual card.
+Any future change to the internal-only policy requires an explicit organization-level decision by JF. It must not be introduced through a one-off exception for a hosted collective.
 
 
 # Google Workspace & Drive Structure
@@ -2764,39 +3229,30 @@ These tasks are time-sensitive and must be performed regularly each week.
 * **Bank reconciliation and estimate — first round of the week**
 
   Match incoming bank transfers with the Open Collective platform. Read the Bank transfers for the Collectives chapter for details.
-
 * During the reconciliation:
-
   * Identify unknown sources.
   * Tag transfers requiring follow-up.
   * Assign unidentified contributions to the holding fund, following the procedure for unclaimed or unreconciliable funds.
   * Estimate available funds and expected payout capacity for the week or upcoming period.
-
 * **Top up Wise accounts**\
   Check Wise balances and request funds from KBC via Jean-François when necessary.
-
 * **Check blocked or delayed expenses**
 
   Review expenses that are blocked, delayed, incomplete, or awaiting clarification.
 
   Follow up with collective admins or submitters where needed.
-
 * **Check PayPal and Stripe disputes**
 
   Review whether there are any open disputes on PayPal or Stripe. Handle disputes according to the relevant dispute guidelines: confirm the transaction, gather evidence where appropriate, coordinate with OFiCo or OC Inc. if needed, and issue a refund only when required or approved.
-
 * **Review incoming grant-related communications**
 
   Check for incoming grant-related emails, funder communications, due diligence requests, or banking documentation. Sync with JF and the grants team where needed.
-
 * **Review Freshdesk tickets related to financial operations**
 
   Review and address Freshdesk tickets related to payments, expenses, bank transfers, refunds, grant payments, invoices, or other financial operations.
-
 * **New collective onboarding — finance side**
 
   Handle finance-related onboarding steps for new collectives, including setup checks, payment configuration, banking information, and any related financial documentation.
-
 * **Review incoming grant-related comms**\
   Check oce@ inbox for new grant agreements, funder updates, or due diligence requests.
 
@@ -2821,14 +3277,14 @@ These tasks are time-sensitive and must be performed regularly each week.
 
 * **Application review and collective exchanges**\
   Evaluate new applications and exchange with collectives about missing information, eligibility, onboarding steps, or financial setup.
-* **Collective onboarding** \
+* **Collective onboarding**\
   Support the onboarding of new collectives, especially where financial setup, missing information, or platform configuration needs to be clarified.
-* **Freshdesk review** \
+* **Freshdesk review**\
   Review Freshdesk tickets and respond to finance-related questions or route them to the appropriate team member when needed.
 
 #### Thursdays
 
-* **Expense payout day** \
+* **Expense payout day**\
   Process approved and ready-to-pay expenses through Wise, PayPal, or bank transfer. The payout order is:
 
 1. OCEF USD
@@ -2838,18 +3294,18 @@ These tasks are time-sensitive and must be performed regularly each week.
 
 * **Check incoming grants on bank accounts**\
   Review bank accounts for incoming grants and ensure that they are identified, documented, and prepared for correct allocation on the platform.
-* **Process operational expenses** \
-  Process OCE operational expenses as needed. OCE Operational expenses are mostly paid manually via KBC Budget EUR account. Platform fees to OFiTech can be paid via Wise transfer to OFiTech Wise account. \
+* **Process operational expenses**\
+  Process OCE operational expenses as needed. OCE Operational expenses are mostly paid manually via KBC Budget EUR account. Platform fees to OFiTech can be paid via Wise transfer to OFiTech Wise account.\
   Pay particular attention to **Wise virtual card expenses**, as these must all be added manually to the platform.
-* **Collective onboarding** \
+* **Collective onboarding**\
   Support onboarding calls and follow-up with collectives, especially where financial setup, documentation, or payout readiness needs to be confirmed.
 
 #### Fridays
 
-* **Review urgent Freshdesk tickets and late payouts** \
+* **Review urgent Freshdesk tickets and late payouts**\
   Review urgent finance-related Freshdesk tickets, unresolved payout issues, and any late payments that need attention before the weekend.
-* **Reconciliation of transactions in Zoho/Odoo** \
-  Reconcile transactions in Zoho/Odoo and verify that all bank and Wise transactions are reflected correctly on the Open Collective platform. \
+* **Reconciliation of transactions in Zoho/Odoo**\
+  Reconcile transactions in Zoho/Odoo and verify that all bank and Wise transactions are reflected correctly on the Open Collective platform.\
   This includes checking that incoming transfers, outgoing payouts, operational expenses, and manual adjustments are properly mirrored across systems.
 
 ***
@@ -2896,7 +3352,7 @@ These tasks support external reporting, compliance, and strategic clarity.
 These tasks occur irregularly but must be tracked and coordinated.
 
 * **New collective onboarding (finance side)**\
-  Set up Drive folder, check for service agreement, verify Stripe/PayPal/Wise linkage.
+  Set up Drive folder, check for Mandate Agreement, verify Stripe/PayPal/Wise linkage.
 * **Large grant setup**\
   Ensure banking details and documentation are provided to the funder.\
   Confirm allocation of funds on the platform.
@@ -4567,29 +5023,33 @@ As the Foundation's primary internal fund (Model 3), the GSF requires proactive 
 
 #### Objective
 
-This matrix categorizes projects to ensure that senior resources (Grant & Operations Lead) are focused on complex, high-impact scaling, while rigorous oversight (Financial Compliance & Platform Specialist) secures standard operations.
+This matrix routes projects according to complexity. Laura leads complex and strategic projects; Ivan handles standard onboarding and routine financial and platform execution within established procedures.
 
 ***
 
 ### 🟢 TIER 1 – Standard Collectives
 
-Lead: Ivan Cukeric (Financial Compliance & Platform Specialist) *Profile: Standard open-source or community projects, simple financial flows, low fiduciary risk.*
+Lead: Ivan Cukeric (Financial Operations & Platform Specialist) *Profile: Standard open-source or community projects, simple financial flows, low fiduciary risk.*
 
 * Criteria:
   * Annual Budget: < €100,000
   * Funding Sources: Individual donations, standard small-scale grants.
   * Nature of Expenses: Travel reimbursements, standard freelancer invoices, equipment.
 * Ivan’s Role:
-  * Full ownership of technical onboarding and KYC.
-  * Independent validation and execution of 100% of payouts.
-  * Direct technical support on platform features.
-* Laura’s Role: None, unless a conflict or ethical concern is escalated by Ivan.
+  * Contact and standard onboarding after Laura’s routing decision.
+  * First-line identity, document and procedural checks under the approved workflow.
+  * Execution of properly approved and documented routine payments.
+  * Routine platform support and escalation of non-standard cases.
+* Laura’s Role:
+  * Initial review and classification of the application.
+  * Routing the application to Ivan when it meets the Tier 1 criteria.
+  * No further day-to-day involvement unless the classification changes or a complex issue is escalated.
 
 ***
 
 ### 🟡 TIER 2 – Established Projects
 
-Lead: Laura (Grant & Operations Lead) | Support: Ivan *Profile: Structured initiatives with recurring activity, specific donor requirements, or international funding.*
+Lead: Laura (Strategic Projects & Operations Lead) | Support: Ivan *Profile: Structured initiatives with recurring activity, specific donor requirements, or international funding.*
 
 * Criteria:
   * Annual Budget: €100,000 – €250,000
@@ -4600,8 +5060,9 @@ Lead: Laura (Grant & Operations Lead) | Support: Ivan *Profile: Structured initi
   * Validation of the project’s financial architecture before launch.
   * Ensuring the "Cost Contribution" (fees) is correctly applied and understood.
 * Ivan’s Role:
-  * Execution of payments once the framework is validated by Laura.
-  * Monthly accounting reconciliation and liaison with the CFO for these specific balances.
+  * Execution of payments once the framework is defined by Laura and the requests are properly approved and documented.
+  * Provision of bank, platform, payment and supporting information to Michael.
+  * No ownership of reconciliation or accounting coordination.
 
 ***
 
@@ -4618,17 +5079,20 @@ Lead: Laura & Executive Director | Support: Ivan (Execution only) *Profile: High
   * Design of scalable workflows for specialized payouts.
   * Strategic alignment with the Foundation’s Public Utility mission.
 * Ivan’s Role:
-  * Strict Technical Execution: Ivan acts as the "Check & Balance." He executes payments only after Laura’s operational clearance and a final compliance verification of the documents.
-  * Providing granular financial data to the CFO and Accountant for these specific funds.
+  * Routine payment and platform execution under the workflow defined by Laura.
+  * First-line verification that the required approval and supporting documents are present.
+  * Provision of granular operational financial information to Michael; no direct communication with the accountant.
 
 ***
 
 #### 🛠️ Operational Rules for the Team:
 
-1. Incoming Projects: All new applications are filtered by Ivan. If a project meets Tier 2 or Tier 3 criteria, it must be automatically transferred to Laura for architectural setup.
-2. The "Veto" Rule: For all Tiers, Ivan retains a compliance veto. Even if Laura or the Director approves a project, Ivan must block a payment if the invoice or receipt is legally non-compliant.
-3. Communication Flow: \* Tier 1: Ivan communicates directly with the Collective.
-   * Tier 2 & 3: Laura handles the relationship; Ivan handles the backend and accounting liaison.
+1. Incoming Projects: Laura owns the initial triage of all new applications. She reviews each application and assigns the appropriate route. Tier 1 applications are transferred to Ivan for contact, due diligence and onboarding. Laura retains Tier 2 and Tier 3 applications for direct contact and operational architecture. Ambiguous or high-risk applications are escalated to JF and, where relevant, Michael.
+2. Routing Ownership: Laura records the routing decision, the person responsible for the next step and any information still required. The receiving owner is responsible for timely follow-up.
+3. Payment Pause Rule: Ivan must pause a payment when required approval or documentation is missing, contradictory or outside the established procedure. Complex compliance or risk decisions are escalated to Michael, Laura or JF according to their area of responsibility.
+4. Communication Flow:
+   * Tier 1: After Laura’s triage and routing decision, Ivan communicates directly with the applicant and manages standard onboarding.
+   * Tier 2 & 3: Laura communicates directly with the applicant and leads the operational design; Ivan supports execution and provides financial information to Michael.
 
 
 # GSF
