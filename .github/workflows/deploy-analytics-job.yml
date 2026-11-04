@@ -98,16 +98,20 @@ jobs:
           [ -n "$LOKI_URL" ] || { echo "::error::repo variable OSE_ANALYTICS_LOKI_URL is not set"; exit 1; }
           [ -n "$ANALYTICS_BUCKET" ] || { echo "::error::repo variable ANALYTICS_BUCKET is not set"; exit 1; }
 
-          # Idempotent by name: create on first run, image-only update thereafter.
-          # Image-only update is deliberate — it must NOT touch environment-variables,
-          # or it would wipe the hand-added COCKPIT_TOKEN on every redeploy.
+          # Keep this at 500 mCPU or more. At 70 mCPU, TLS handshakes and the Python aws CLI
+          # are so slow that a run passes the 300 s job timeout before its uploads finish.
+          CPU_LIMIT=500
+
+          # Idempotent by name: create on first run; later runs update only the image
+          # and the CPU limit. The update must NOT touch environment-variables, or it
+          # would wipe the hand-added COCKPIT_TOKEN on every redeploy.
           ID="$(scw jobs definition list region="$REGION" -o json \
             | jq -r --arg n "$NAME" '.[] | select(.name==$n) | .id' | head -n1)"
 
           if [ -z "$ID" ]; then
             echo "Creating job definition $NAME"
             scw jobs definition create region="$REGION" \
-              name="$NAME" cpu-limit=70 memory-limit=128 local-storage-capacity=1000 job-timeout=300s \
+              name="$NAME" cpu-limit="$CPU_LIMIT" memory-limit=128 local-storage-capacity=1000 job-timeout=300s \
               image-uri="$IMAGE" \
               cron-schedule.schedule="0 4 */3 * *" cron-schedule.timezone="Europe/Warsaw" \
               environment-variables.LOKI_URL="$LOKI_URL" \
@@ -119,5 +123,5 @@ jobs:
             echo "::notice::to it in the Scaleway console (Serverless Jobs), then start a run."
           else
             echo "Rolling image forward on existing job definition $ID"
-            scw jobs definition update "$ID" region="$REGION" image-uri="$IMAGE"
+            scw jobs definition update "$ID" region="$REGION" image-uri="$IMAGE" cpu-limit="$CPU_LIMIT"
           fi
