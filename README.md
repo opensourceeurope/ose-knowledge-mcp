@@ -1,5 +1,29 @@
 # OSE Knowledge RAG
 
+> [!IMPORTANT]
+> This repository is archived and read-only. The Open Source Europe (OSE) knowledge base, the Model Context Protocol (MCP) server, the chat, and the `ose-knowledge` plugin now live in [opensourceeurope/opensourceeurope.org](https://github.com/opensourceeurope/opensourceeurope.org). Open new issues and pull requests there.
+
+## Where the code moved
+
+The following table lists where each folder of this repository is now in opensourceeurope.org:
+
+| Folder in this repository | Folder in opensourceeurope.org |
+|---|---|
+| `.opencrane/` | `.opencrane/` |
+| `agent/` | `agent/` |
+| `analytics/` | `analytics/` |
+| `chat/` | `src/components/chat/` and `src/pages/ask.astro` |
+| `docs/` | `docs/knowledge/` |
+| `function/` | `functions/chat/` |
+| `plugins/ose-knowledge/` | `plugins/ose-knowledge/` |
+| `scripts/` | `scripts/knowledge/` |
+
+The `ose-knowledge-mcp` package on PyPI keeps its name, and releases of opensourceeurope.org publish it. The `ose-knowledge` plugin in the [ose-ai marketplace](https://github.com/opensourceeurope/ose-ai) installs from opensourceeurope.org. For the current version and install commands, read the [opensourceeurope.org README](https://github.com/opensourceeurope/opensourceeurope.org#readme).
+
+The rest of this README describes the repository as it was when it was archived.
+
+---
+
 AI-powered documentation search for **Open Source Europe**, built with
 [OpenCrane](https://github.com/derberg/OpenCrane). It indexes
 the OSE handbook + internal operations docs into a retrieval MCP server (the `search_docs`
